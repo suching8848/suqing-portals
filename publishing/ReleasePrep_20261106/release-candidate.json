@@ -1,0 +1,87 @@
+{
+  "prepared_at": "2026-11-06T20:25:17.219275+08:00",
+  "status": "LOCAL_STAGING_DRAFT_NOT_PUBLISHED",
+  "published": false,
+  "upload_attempted": false,
+  "release_ready": false,
+  "stable_accepted": false,
+  "mod_id": "SuQingPortals",
+  "display_name": "SuQing's Portals",
+  "display_name_zh": "蘇清的传送门",
+  "version": "0.1.3-lua-test.2",
+  "schema": 3,
+  "version_changed_for_publication": false,
+  "supported_game_metadata": {
+    "versionMin": "42.21",
+    "versionMax": "42.21"
+  },
+  "scope": "single-player characters; vehicle/multiplayer transport excluded",
+  "dependencies": {
+    "required_portal_java": false,
+    "required_zombiebuddy": false,
+    "optional_viewpoint": true,
+    "loadModAfter": "Viewpoint"
+  },
+  "candidate_content_root": "staging/content",
+  "mod_root": "staging/content/mods/SuQingPortals",
+  "file_count": 133,
+  "total_bytes": 13470235,
+  "source_isolated_and_staging_hash_equal": true,
+  "recorded_offline_validation_matches": true,
+  "offline_validation_result": "PASS",
+  "offline_tests_rerun_during_preparation": false,
+  "gameplay_acceptance": {
+    "current_candidate_fully_accepted": false,
+    "status": "Latest power display/resizing/item-giver removal awaits user in-game acceptance; offline PASS does not establish stable acceptance"
+  },
+  "art": {
+    "cover": {
+      "status": "SELECTED_APPLIED",
+      "selected_variant": "C",
+      "variant_count_requested": 4,
+      "selection_record": "art/selection.json",
+      "selected_cover": "art/final/cover.png",
+      "selected_poster": "art/final/poster.png",
+      "variant_exports": {
+        "A": "art/exports/A-1024.png",
+        "B": "art/exports/B-1024.png",
+        "C": "art/exports/C-1024.png",
+        "D": "art/exports/D-1024.png"
+      },
+      "comparison": "art/四版封面对比.png",
+      "inherited_test_poster_in_staging": false
+    },
+    "icon": {
+      "status": "GENERATED_PENDING_USER_REVIEW",
+      "independently_generated": true,
+      "exports": [
+        "art/exports/icon-32.png",
+        "art/exports/icon-64.png",
+        "art/exports/icon-128.png",
+        "art/exports/icon-256.png"
+      ],
+      "actual_size_sheet": "art/icon实际尺寸检查.png",
+      "inherited_test_icon_in_staging": true
+    },
+    "manifest": "art-files.json",
+    "rebuild_hashes_after_art_changes": true
+  },
+  "text": {
+    "directory": "text",
+    "status": "bilingual local drafts; no publishing/upload action"
+  },
+  "manifest": {
+    "json": "runtime-files.json",
+    "json_sha256": "c5792229ee6d0ed9a232353a9e96c4fcbf37b07dd2f5ad754a374467833e7aa1",
+    "sha256_file": "runtime-files.sha256",
+    "sha256_file_sha256": "6b2cb0693bfdb59a6b0f1ea86d66c914539c7db1074b99d37b51b8578ec024d0"
+  },
+  "local_audit": "read-only-audit.json",
+  "local_audit_is_not_upload_content": true,
+  "open_items": [
+    "User reviews the generated independent icon and actual-size sheet before final runtime art export",
+    "User verifies the latest management UI and gameplay",
+    "Rebuild hashes after any runtime/art change",
+    "Publication requires a later explicit user instruction"
+  ]
+}

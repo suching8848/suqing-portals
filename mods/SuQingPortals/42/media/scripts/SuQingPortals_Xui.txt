@@ -1,0 +1,13 @@
+module Base
+{
+    xuiSkin default
+    {
+        entity ES_SuQingPortal
+        {
+            LuaWindowClass = ISEntityWindow,
+            DisplayName = IGUI_SQP_Name,
+            BuildDescription = IGUI_SQP_BuildDescription,
+            Icon = Item_SuQingPortal,
+        }
+    }
+}

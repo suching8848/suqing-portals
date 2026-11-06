@@ -1,0 +1,901 @@
+{
+  "tiledef": 7836,
+  "sprites": [
+    {
+      "name": "suqing_portal_01_0",
+      "slotMask": 0,
+      "installedCount": 0,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_1",
+      "slotMask": 0,
+      "installedCount": 0,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_2",
+      "slotMask": 0,
+      "installedCount": 0,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_3",
+      "slotMask": 0,
+      "installedCount": 0,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_4",
+      "slotMask": 1,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_5",
+      "slotMask": 1,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_6",
+      "slotMask": 1,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_7",
+      "slotMask": 1,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_8",
+      "slotMask": 2,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_9",
+      "slotMask": 2,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_10",
+      "slotMask": 2,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_11",
+      "slotMask": 2,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_12",
+      "slotMask": 3,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_13",
+      "slotMask": 3,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_14",
+      "slotMask": 3,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_15",
+      "slotMask": 3,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_16",
+      "slotMask": 4,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_17",
+      "slotMask": 4,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_18",
+      "slotMask": 4,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_19",
+      "slotMask": 4,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_20",
+      "slotMask": 5,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_21",
+      "slotMask": 5,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_22",
+      "slotMask": 5,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_23",
+      "slotMask": 5,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_24",
+      "slotMask": 6,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_25",
+      "slotMask": 6,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_26",
+      "slotMask": 6,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_27",
+      "slotMask": 6,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_28",
+      "slotMask": 7,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_29",
+      "slotMask": 7,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_30",
+      "slotMask": 7,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_31",
+      "slotMask": 7,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_32",
+      "slotMask": 8,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_33",
+      "slotMask": 8,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_34",
+      "slotMask": 8,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_35",
+      "slotMask": 8,
+      "installedCount": 1,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_36",
+      "slotMask": 9,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_37",
+      "slotMask": 9,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_38",
+      "slotMask": 9,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_39",
+      "slotMask": 9,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_40",
+      "slotMask": 10,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_41",
+      "slotMask": 10,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_42",
+      "slotMask": 10,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_43",
+      "slotMask": 10,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_44",
+      "slotMask": 11,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_45",
+      "slotMask": 11,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_46",
+      "slotMask": 11,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_47",
+      "slotMask": 11,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_48",
+      "slotMask": 12,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_49",
+      "slotMask": 12,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_50",
+      "slotMask": 12,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_51",
+      "slotMask": 12,
+      "installedCount": 2,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_52",
+      "slotMask": 13,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_53",
+      "slotMask": 13,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_54",
+      "slotMask": 13,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_55",
+      "slotMask": 13,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_56",
+      "slotMask": 14,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_57",
+      "slotMask": 14,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_58",
+      "slotMask": 14,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_59",
+      "slotMask": 14,
+      "installedCount": 3,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    },
+    {
+      "name": "suqing_portal_01_60",
+      "slotMask": 15,
+      "installedCount": 4,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "S"
+      }
+    },
+    {
+      "name": "suqing_portal_01_61",
+      "slotMask": 15,
+      "installedCount": 4,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "E"
+      }
+    },
+    {
+      "name": "suqing_portal_01_62",
+      "slotMask": 15,
+      "installedCount": 4,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "N"
+      }
+    },
+    {
+      "name": "suqing_portal_01_63",
+      "slotMask": 15,
+      "installedCount": 4,
+      "properties": {
+        "BlocksPlacement": "",
+        "CustomName": "Portal",
+        "GroupName": "SuQing",
+        "Material": "MetalScrap",
+        "Material2": "Electric",
+        "solidtrans": "",
+        "Facing": "W"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "method": "built-in image_gen",
+  "cover": {
+    "prompt": "Use case: identity-preserve. Create a finished square Steam Workshop cover for an original Project Zomboid mod. Input image 1 is the strict character identity reference; input image 2 is an approved SuQing series cover for pixel-art treatment, ornate bottom title panel, palette and hierarchy. Keep the exact same young adult dragon woman identity: silver-white long hair, pale violet eyes, paired light-colored dragon horns, pale lavender dragon wings, long white scaled tail, flower hair ornament. Change her clothes to tasteful white-and-lavender practical engineer clothing with silver trims, fully clothed. Scene: she is beside a clearly readable white-and-purple industrial portal arch in a survivor workshop, touching its control panel. The portal has a violet energy opening and four visible automotive battery bays at its base, some installed, so the mod's function is unmistakable. A glimpse through the portal shows a different distant survivor base. Detailed polished anime pixel illustration matching reference 2, warm workbench light against violet portal light, coherent proportions, appealing confident expression. Bottom roughly quarter is the same series-style ornate dark-purple title plaque. Text exactly: Chinese main title '蘇清的传送门', smaller English subtitle \"SuQing's Portals\". No game version, no build number, no mod version, no watermark. Keep character face, horns, wings and white tail identifiable and keep both portal and title readable at thumbnail size.",
+    "references": [
+      "C:\\Users\\15792\\Desktop\\图图\\ChatGPT 图像 2026年10月26日 01_13_03.png",
+      "E:\\code\\suqing-container-upgrade\\docs\\images\\cover.png"
+    ]
+  },
+  "icon": {
+    "prompt": "Use case: stylized-concept. A standalone small game mod icon, not a cover crop. Square 1:1 composition with genuine transparent background. One sturdy white-silver sci-fi portal arch, glowing lavender-violet opening, dark-purple metallic lower base with four clearly separated automotive battery bays, two batteries installed and two visibly empty. Simple polished chunky anime pixel-art icon, crisp strong silhouette, restrained highlights, bold forms that read at 64x64 pixels, matching a white-and-lavender SuQing game-mod series. Frontal three-quarter view, arch completely in frame with generous transparent padding. No person, no text, no numbers, no letters, no watermark, no scenery, no ground plane, no shadow outside object. Four battery bays must remain readable, avoid tiny clutter.",
+    "references": [],
+    "transparent": true
+  }
+}

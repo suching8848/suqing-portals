@@ -1,0 +1,7 @@
+{
+  "Sandbox_SuQingPortals": "SuQing's Portals",
+  "Sandbox_SuQingPortals_TransferCost": "Energy per trip (full-battery equivalents)",
+  "Sandbox_SuQingPortals_TransferCost_tooltip": "Paid entirely at departure. Default 2; range 0.5 to 4. Batteries remain reusable. Four full batteries fund 8 trips at 0.5, 2 trips at 2, or 1 trip at 4. Arrival still needs neither batteries nor power.",
+  "Sandbox_SuQingPortals_ChargePerHour": "Total gate charge per game hour (full-battery equivalents)",
+  "Sandbox_SuQingPortals_ChargePerHour_tooltip": "Total charging rate for the whole gate, not each slot. Default 0.5; range 0.05 to 4. Four empty batteries take 8 game hours; recharge time per trip depends on its energy cost (4 hours at the default cost of 2). Charging occurs only while this gate is loaded and locally powered; unloaded/offline time earns no charge."
+}

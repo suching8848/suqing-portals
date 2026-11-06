@@ -1,0 +1,23 @@
+{
+  "folder": "D:\\steam\\steamapps\\common\\ProjectZomboid\\CodexAssets\\SuQingPortals_20261106\\Upgrade_0.1.1_20261106_160650",
+  "archive": "D:\\steam\\steamapps\\common\\ProjectZomboid\\CodexAssets\\SuQingPortals_20261106\\Upgrade_0.1.1_20261106_160650\\isolated-save-and-portal-before.zip",
+  "archive_sha256": "b887aa3e0454b773b5bc4945280791076fca4fc867c23d2ed3b39d05d1447d2c",
+  "test_save": "D:\\steam\\steamapps\\common\\ProjectZomboid\\CodexAssets\\SuQingPortals_20261106\\IsolatedTest\\data\\Saves\\Sandbox\\2026-11-06_15-46-59",
+  "full_test_save_files": 1151,
+  "snapshot_files": 1223,
+  "verified_every_member": true,
+  "formal_protected_before": {
+    "C:\\Users\\15792\\Zomboid\\options.ini": "12cc1dcceea13e1c496e38c172ec937e27e2ba046316461e43006341eb166b0a",
+    "C:\\Users\\15792\\Zomboid\\mods\\default.txt": "f1127db8f84cc06d3632a47075eccca1961af6cc8e2c7b14e1c72a1063977f31",
+    "C:\\Users\\15792\\Zomboid\\latestSave.ini": "01e1b45eda3434e372a8dc82b0e624195253aa8bb622b066ca3c15b7dea7d0cc",
+    "C:\\Users\\15792\\Zomboid\\viewpoint.properties": "480a0aa558b8885aaf6fba5a4fcd4cfe49610905a31cd44d79f6fb5f56e04701",
+    "C:\\Users\\15792\\Zomboid\\pzopt\\options.ini": "7e9688bd6ca5964715c9dda9cc74dd6f0853170fff812d3203df2d72e7d0ea62",
+    "D:\\steam\\steamapps\\common\\ProjectZomboid\\ProjectZomboid64.json": "8d146c6ef3fb930aa536b1396eca66bd8f448ea2858c9800cde3c5b72af964d3",
+    "D:\\steam\\steamapps\\common\\ProjectZomboid\\projectzomboid.jar": "e1a69eb743ede60b213a0fe7f8b83d4fcab773036d256cc4543a336f3b058a33",
+    "D:\\steam\\steamapps\\common\\ProjectZomboid\\pzopt\\aot\\pzopt.jar": "749cad6f1fe98a37b908583eaf5328ca85f75b80431edc5d31bec1127519639e",
+    "D:\\steam\\steamapps\\common\\ProjectZomboid\\AGENTS.md": "9575c203711896f72b3db277f8697763b664ace74df090bd8130fbdaf7f4ce80",
+    "C:\\Users\\15792\\Zomboid\\Saves\\Sandbox\\2026-10-09_18-19-22\\mods.txt": "fb0c48cdbf3b415b55c03edc3aadef97a2f881499c9a959fb668bb8e93c3e359",
+    "C:\\Users\\15792\\Zomboid\\Saves\\Sandbox\\2026-10-09_18-19-22\\map_sand.bin": "46d6e0e90d6b82bb2f60f4212e671c8e6a7658244a397481071a50f256811583"
+  },
+  "game_started": false
+}

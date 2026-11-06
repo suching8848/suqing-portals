@@ -1,0 +1,244 @@
+{
+  "audited_at": "2026-11-06T20:25:17.219275+08:00",
+  "scope": "Local source/isolated/staging hash audit and recorded offline-validation readback; no new tests or game startup by this script",
+  "source": "E:\\code\\suqing-portals\\mods\\SuQingPortals",
+  "isolated_runtime": "D:\\steam\\steamapps\\common\\ProjectZomboid\\CodexAssets\\SuQingPortals_20261106\\IsolatedTest\\data\\mods\\SuQingPortals",
+  "source_equals_isolated": true,
+  "source_equals_staging": true,
+  "source_equals_recorded_validation_hashes": true,
+  "validation_record": {
+    "path": "E:\\code\\suqing-portals\\tests\\results\\offline-validation.json",
+    "sha256": "5e3721b99160f9173cd8763cd0e7406d1276fc26c7d3142eb108fc3a1bb7daac",
+    "version": "0.1.3-lua-test.2",
+    "result": "PASS",
+    "scope": "Standalone Kahlua, script/resource parsers and copy/archive checks. No game main/world/UI executed.",
+    "checks": {
+      "pure_lua_runtime": {
+        "result": "PASS",
+        "portal_java_binaries": 0,
+        "portal_java_loader_declarations": 0,
+        "requires_zombiebuddy": false,
+        "storage": "Original items in native ItemContainer; Lua-only four-slot interface and guards"
+      },
+      "compile_helper": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\compile_helper.log",
+        "log_exists": true,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "summary": []
+      },
+      "kahlua_compile": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\kahlua_compile.log",
+        "log_exists": true,
+        "log_sha256": "c903893b23ce4ca5ff673ee8b3948eccbc2b4d073bdef83246c0fe912bad1309",
+        "summary": [
+          "COMPILE PASS files=11"
+        ]
+      },
+      "localization": {
+        "keys_per_language": 158,
+        "literal_references": 32,
+        "result": "PASS"
+      },
+      "core_world": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\core_world.log",
+        "log_exists": true,
+        "log_sha256": "c0f2c42c17cd1f5e9d4344956d2976f71784d5d6b9b0f39cc2f1b36f2f156026",
+        "summary": [
+          "Core/World pure-Lua internal-slot assertions passed: 159",
+          "EXECUTE PASS files=6"
+        ]
+      },
+      "client_transfer": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\client_transfer.log",
+        "log_exists": true,
+        "log_sha256": "dee733aedfd37838219611f2a69168e32a1f48c621e2e169028c2c12ada952a6",
+        "summary": [
+          "PORTAL_CLIENT_TRANSFER_ACTION_UI_PICKER checks=541 failures=0",
+          "EXECUTE PASS files=14"
+        ]
+      },
+      "inventory_native_source": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\inventory_native_source.log",
+        "log_exists": true,
+        "log_sha256": "80a6188705e6b798c82fe2bc55586c14da3e21237f2cfdd7a1deb780828a9c60",
+        "summary": []
+      },
+      "inventory_guard": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\inventory_guard.log",
+        "log_exists": true,
+        "log_sha256": "448b207c05ed31bfd13e410c32432a5eef802767370a6609cd1eb678dbf2931e",
+        "summary": [
+          "PORTAL_NATIVE_INTERNAL_UI_GUARD checks=73 failures=0",
+          "EXECUTE PASS files=8"
+        ]
+      },
+      "model_resources": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\model_resources.log",
+        "log_exists": true,
+        "log_sha256": "8382565a2c747106f8f430d03b16d83c45f0b71be924bae9184ef02ba5dcdc02",
+        "summary": [
+          "  \"result\": \"PASS\","
+        ]
+      },
+      "internal_storage_audit_compile": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\internal_storage_audit_compile.log",
+        "log_exists": true,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "summary": []
+      },
+      "picker_interop_compile": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\picker_interop_compile.log",
+        "log_exists": true,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "summary": []
+      },
+      "native_picker_interop_stock": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\native_picker_interop_stock.log",
+        "log_exists": true,
+        "log_sha256": "1ae2686ddb73d0d4017e7d38863151f126373b612d39a47b77026701118d5009",
+        "summary": [
+          "PICKER_INTEROP checks=17 failures=0 old_error_reproduced=true",
+          "PASS product Build/Client uses public Java methods on real native IsoObject; no ClickObject field/getter reconstruction."
+        ]
+      },
+      "native_picker_interop_pzo": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\native_picker_interop_pzo.log",
+        "log_exists": true,
+        "log_sha256": "c06c61181fd7db3405baefa08eb5c96286ccffcd4fa872d377b1937c62264190",
+        "summary": [
+          "PICKER_INTEROP checks=17 failures=0 old_error_reproduced=true",
+          "PASS product Build/Client uses public Java methods on real native IsoObject; no ClickObject field/getter reconstruction."
+        ]
+      },
+      "translation_interop_compile": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\translation_interop_compile.log",
+        "log_exists": true,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "summary": []
+      },
+      "native_translation_interop_stock": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\native_translation_interop_stock.log",
+        "log_exists": true,
+        "log_sha256": "fff2b514c46d69eabd730d07468caa1755fc5dd3e4609aec25e5f640c8eb4358",
+        "summary": [
+          "TRANSLATION_INTEROP checks=1391 failures=0 old_error_reproduced=true productKeys=294 legacy_only=false",
+          "PASS real Translator JSON formatFixer, original LuaJavaClassExposer global getText, CN/EN native placeholders, %% and literal %/$/Chinese names."
+        ]
+      },
+      "native_translation_interop_pzo": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\native_translation_interop_pzo.log",
+        "log_exists": true,
+        "log_sha256": "ff84e1530c379f0df153e18f7014650b891b6926a36af32c403bc3e9fca6f3bc",
+        "summary": [
+          "TRANSLATION_INTEROP checks=1391 failures=0 old_error_reproduced=true productKeys=294 legacy_only=false",
+          "PASS real Translator JSON formatFixer, original LuaJavaClassExposer global getText, CN/EN native placeholders, %% and literal %/$/Chinese names."
+        ]
+      },
+      "native_internal_storage_stock": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\native_internal_storage_stock.log",
+        "log_exists": true,
+        "log_sha256": "c11f094d6a31686b9bae99630be52254dbcb622700cca085a78dfce40080b3f6",
+        "summary": [
+          "NATIVE_INTERNAL_STORAGE checks=181 failures=0 containerBytes=794 objectBytes=1013 format=249",
+          "PASS original four IDs/types/charge/condition/custom Unicode names/nested ModData and slot-ID mapping retained through native object save/load.",
+          "PASS normal isItemAllowed rejection does not prevent dedicated backend direct AddItem/Remove of the original instance."
+        ]
+      },
+      "native_internal_storage_pzo": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\native_internal_storage_pzo.log",
+        "log_exists": true,
+        "log_sha256": "96a9466824b58797d819595e582fc735bb0ca9a6ad0729706161bdbefe1a2156",
+        "summary": [
+          "NATIVE_INTERNAL_STORAGE checks=181 failures=0 containerBytes=794 objectBytes=1013 format=249",
+          "PASS original four IDs/types/charge/condition/custom Unicode names/nested ModData and slot-ID mapping retained through native object save/load.",
+          "PASS normal isItemAllowed rejection does not prevent dedicated backend direct AddItem/Remove of the original instance."
+        ]
+      },
+      "model_native_compile": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\model_native_compile.log",
+        "log_exists": true,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "summary": []
+      },
+      "model_native_readback": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\model_native_readback.log",
+        "log_exists": true,
+        "log_sha256": "61311717add730f39382be8767888874aa7496cacafce33b1386adc9fc72df2a",
+        "summary": [
+          "PASS current Viewpoint ObjReader slotMask=12, triangles=1200",
+          "PASS current Viewpoint ObjReader slotMask=13, triangles=1236",
+          "PASS current Viewpoint ObjReader slotMask=14, triangles=1236",
+          "PASS current Viewpoint ObjReader slotMask=15, triangles=1272",
+          "PASS current Viewpoint PackManifest: 16 occupancy models, 64 correctly rotated bindings, no parser errors",
+          "PASS current Viewpoint Recipe.model keeps supplied tile center (0.5,0.5), floor Z=0, no duplicate center offset"
+        ]
+      },
+      "building_helper_compile": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\building_helper_compile.log",
+        "log_exists": true,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "summary": []
+      },
+      "native_building_localization": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\native_building_localization.log",
+        "log_exists": true,
+        "log_sha256": "2891c1afb456de1e59a5827e2785cde2abda3915f3ae8dbf326dff12be9a4e5b",
+        "summary": [
+          "PORTAL_BUILDING_NATIVE checks=713 failures=0 game_started=false"
+        ]
+      },
+      "isolation_helper_compile": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\isolation_helper_compile.log",
+        "log_exists": true,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "summary": []
+      },
+      "isolated_native_preset": {
+        "exit_code": 0,
+        "log": "E:\\code\\suqing-portals\\tests\\results\\isolated_native_preset.log",
+        "log_exists": true,
+        "log_sha256": "c3a4def1b9f7f1d93db104bbd0b264488b55dc1655a2b8389818818953568d1b",
+        "summary": [
+          "NATIVE PRESET PASS version=6 entries=10"
+        ]
+      }
+    }
+  },
+  "private_absolute_paths_in_distributable_text": [],
+  "private_absolute_paths_in_publishing_prose": [],
+  "preserved_history": "E:\\code\\suqing-portals\\publishing\\ReleasePrep_20261106\\history\\20261106_202517_219234",
+  "game_started": false,
+  "runtime_edited": false,
+  "workshop_uploaded": false,
+  "git_remote_changed": false,
+  "personal_config_or_saves_edited": false,
+  "excluded_from_external_content": [
+    "Local audit/checklist/manifests",
+    "tools/tests/logs",
+    "historical backups",
+    "private character reference images",
+    "other mods and loaders",
+    "saves and personal configuration"
+  ]
+}

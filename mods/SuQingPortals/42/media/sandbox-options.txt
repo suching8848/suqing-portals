@@ -1,0 +1,22 @@
+VERSION = 1,
+
+option SuQingPortals.TransferCost
+{
+    type = double,
+    min = 0.5,
+    max = 4,
+    default = 2,
+    page = SuQingPortals,
+    translation = SuQingPortals_TransferCost,
+}
+
+option SuQingPortals.ChargePerHour
+{
+    type = double,
+    min = 0.05,
+    max = 4,
+    default = 0.5,
+    page = SuQingPortals,
+    translation = SuQingPortals_ChargePerHour,
+}
+

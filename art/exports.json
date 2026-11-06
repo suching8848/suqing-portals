@@ -1,0 +1,11 @@
+{
+  "cover_master": "E:\\code\\suqing-portals\\art\\cover-original.png",
+  "icon_master": "E:\\code\\suqing-portals\\art\\icon-original.png",
+  "icon_alpha_extrema": [
+    0,
+    255
+  ],
+  "icon_independently_generated": true,
+  "tool": "built-in image_gen",
+  "note": "Only format/size exports; source images and character references retained."
+}

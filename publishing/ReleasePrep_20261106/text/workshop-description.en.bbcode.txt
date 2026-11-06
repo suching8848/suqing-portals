@@ -1,0 +1,52 @@
+[h1]SuQing's Portals[/h1]
+With portals, you can travel between places that make great homes and save time on the road. Build two portals, install car batteries and pair the gates to connect your bases. The departure gate pays for the trip. The arrival gate can receive your character even with no batteries and no local electricity.
+
+[b]For B42.21 · Single-player[/b]
+[b]Current candidate: 0.1.3-lua-test.2[/b]
+
+[h2]Features[/h2]
+[list]
+[*]Four separate car-battery slots per gate. Install, remove and recharge the original vanilla batteries for repeated use.
+[*]Multiple independent two-way pairs, with one destination per gate. Name gates and choose, pair or unpair them in management.
+[*]Sandbox trip cost from 0.5 to 4 full-car-battery equivalents, default 2, paid entirely at departure. The batteries remain reusable.
+[*]Arrival requires neither batteries nor power. Returning from that gate requires enough departure charge there.
+[*]Resizable management uses four compact slots in a 2×2 layout and shows the destination, available trips, battery names, condition, charge and action messages. It prominently separates power availability from charging status, names verified grid/generator sources and labels unconfirmed sources explicitly. Context-menu battery actions move the character beside the gate before handling the battery.
+[*]Four construction directions, with installed batteries shown in their actual bays. Optional Viewpoint visuals are included; ordinary isometric play is supported too.
+[/list]
+
+[h2]Energy and charging[/h2]
+One energy equivalent means the charge held by one full car battery. Four full batteries provide 8, 2 or 1 trips at costs of 0.5, 2 or 4 respectively.
+
+Charging occurs only while [b]the gate's area is loaded and locally powered[/b]. Grid electricity requires an indoor room; generator supply follows the native coverage and outdoor-power rules. A power cut stops charging, while previously stored energy can still fund departure.
+
+The default rate is 0.5 energy equivalents per game hour for [b]the whole gate[/b], adjustable from 0.05 to 4. It is not a separate full rate for every slot. At the default rate, four empty batteries take about eight game hours to fill; replacing the default trip's energy takes about four. Unloaded, offline or unverified-power time earns no catch-up charge.
+
+[b]Generator limitation: this test version checks local power but does not yet add a separate charging load to the native generator appliance list or fuel consumption.[/b]
+
+[h2]Construction[/h2]
+Each portal consumes:
+[list]
+[*]8 × Steel Sheet - Small
+[*]4 × Iron Pipe
+[*]8 × Electrical Wire
+[*]16 × Scrap Electronics
+[*]1 × High-end Camera
+[*]1 handheld walkie-talkie: any vanilla handheld model, including the makeshift one. Ordinary radios and large HAM stations are not substitutes.
+[/list]
+Requires [b]Electrical 4 and Welding 3[/b], plus an unbroken Screwdriver, Welding Torch and Welder Mask. All three tools are retained; this version does not additionally consume torch fuel or welding rods. Install car batteries separately after construction.
+
+[h2]Getting started[/h2]
+[list]
+[*]Build two gates through the native construction menu.
+[*]Right-click a gate to open management, name it if desired and select the other gate to pair them.
+[*]Install batteries at departure, then let them charge or use batteries that already have enough energy.
+[*]Use the transfer button when management says the gate is ready. The receiver may remain empty; prepare its batteries before a return journey.
+[/list]
+The trip checks the destination gate and exit. A blocked exit or loading problem enters the return/recovery process. If recovery remains pending, use the recovery context action and keep the log. Remove batteries and unpair gates before disabling the mod.
+
+[h2]Scope and current status[/h2]
+The portal uses pure Lua with no additional portal Java module. Viewpoint is optional for visuals; follow its own requirements if you use it. The mod provides no test-supply menu or item-grant feature; character skills remain player progression.
+
+Currently supports characters and carried items within one world. Vehicles, trailers and multiplayer are not supported. Long-distance loading, interrupted-trip recovery, Viewpoint details and different mod combinations still need further gameplay testing.
+
+[b]Validation status: the user reported that basic use in an earlier isolated test build was generally working. The current candidate passed offline checks for the recipe, configurable cost, text fixes, power display, resizing and giver removal. User gameplay verification is still pending. This is not a claim of complete gameplay acceptance.[/b]

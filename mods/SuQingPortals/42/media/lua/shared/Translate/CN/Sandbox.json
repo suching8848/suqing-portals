@@ -1,0 +1,7 @@
+{
+  "Sandbox_SuQingPortals": "蘇清的传送门",
+  "Sandbox_SuQingPortals_TransferCost": "单次传送耗电量（满电电池等量）",
+  "Sandbox_SuQingPortals_TransferCost_tooltip": "全部由出发端提供。默认2，范围0.5至4；电池保留，只消耗电量。四块满电电池在0.5耗电下可传送8次，在2耗电下2次，在4耗电下1次。到达端仍无需电池或供电。",
+  "Sandbox_SuQingPortals_ChargePerHour": "整门每游戏小时充电量（满电电池等量）",
+  "Sandbox_SuQingPortals_ChargePerHour_tooltip": "整扇门的总充电速率，并非每个槽位速率。默认0.5，范围0.05至4。四块空电池充满默认需8游戏小时；补回一次传送所需时间由单次耗电量决定，默认耗电2时需4小时。只有门所在区域已加载且当地有电时充电，未加载或退出游戏不累计。"
+}

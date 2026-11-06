@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "app_id": 108600,
+  "mod_id": "SuQingPortals",
+  "publishedfileid": "3834693880",
+  "workshop_item_id": "3834693880",
+  "workshop_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880",
+  "github_repository": "https://github.com/suching8848/suqing-portals",
+  "visibility": "private",
+  "visibility_value": 2,
+  "public": false,
+  "state": "uploaded_verified_private",
+  "upload_acknowledged": true,
+  "native_readback_verified": true,
+  "gameplay_acceptance_changed": false,
+  "recorded_at_bjt": "2026-11-06T22:12:38.901484+08:00",
+  "identity_policy": "Reuse this item for later updates; never create another item merely because a new local candidate is prepared.",
+  "uploaded": true,
+  "uploaded_verified_private": true,
+  "verified_at_bjt": "2026-11-06T22:12:38+08:00",
+  "verification_scope": "Native uploaded title, description, metadata, content bytes, tags, preview, dependencies and visibility2 read back. Gameplay acceptance unchanged."
+}

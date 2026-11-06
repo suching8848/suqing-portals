@@ -1,0 +1,60 @@
+module SuQingPortals
+{
+    /* Native BuildLogic owns all ingredient payment and cancellation. Batteries
+       are installed afterward as original inventory items, never recipe fuel. */
+    entity Portal
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_SuQingPortal,
+            uiEnabled = false,
+        }
+        component SpriteConfig
+        {
+            OnCreate = SuQingPortals.World.OnCreate,
+            health = 500,
+            skillBaseHealth = 0,
+            bonusHealth = 0,
+            isThumpable = true,
+            breakSound = BreakObject,
+            face S
+            {
+                layer { row = suqing_portal_01_0, }
+            }
+            face E
+            {
+                layer { row = suqing_portal_01_1, }
+            }
+            face N
+            {
+                layer { row = suqing_portal_01_2, }
+            }
+            face W
+            {
+                layer { row = suqing_portal_01_3, }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildLowNoTool,
+            time = 120,
+            SkillRequired = Electricity:4;MetalWelding:3,
+            category = SuQingPortals,
+            Tags = IGUI_SQP_Name,
+            Tooltip = Tooltip_SQP_Build,
+            inputs
+            {
+                item 1 tags[base:screwdriver] mode:keep flags[NoBrokenItems;ItemCount],
+                item 1 [Base.BlowTorch] mode:keep flags[NoBrokenItems;ItemCount],
+                item 1 tags[base:weldingmask] mode:keep flags[NoBrokenItems;ItemCount],
+                item 8 [Base.SmallSheetMetal] mode:destroy flags[ItemCount],
+                item 4 [Base.MetalPipe] mode:destroy flags[ItemCount],
+                item 8 [Base.ElectricWire] mode:destroy flags[ItemCount],
+                item 16 [Base.ElectronicsScrap] mode:destroy flags[ItemCount],
+                item 1 [Base.CameraExpensive] mode:destroy flags[ItemCount],
+                item 1 [Base.WalkieTalkie1;Base.WalkieTalkie2;Base.WalkieTalkie3;Base.WalkieTalkie4;Base.WalkieTalkie5;Base.WalkieTalkieMakeShift] mode:destroy flags[ItemCount],
+            }
+        }
+    }
+}

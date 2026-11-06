@@ -1,0 +1,47 @@
+[h1]蘇清的传送门 / SuQing's Portals[/h1]
+有了传送，就可以在不同适合建家的地方来回，省去赶路的时间。
+[b]B42.21 单人，0.1.3-lua-test.2 测试候选。[/b]建造两座门，装入原版汽车电池并配对，连接同一世界中的据点。纯Lua，无自有Java或ZombieBuddy硬前置；Viewpoint仅为可选外观适配，须遵循其自身要求。
+
+[h2]使用与电量[/h2]
+[list]
+[*]原生建造菜单提供四个朝向。门可命名、选择目标并绑定或解绑；支持多对独立双向配对，每门一个终点。
+[*]每门四个独立电池槽，可装卸、反复充电，电池本体保留；外观随实际槽位变化。右键装卸会先让人物走近门。
+[*]沙盒单次耗电0.5～4块满电汽车电池等量，默认2，全部由出发门承担。到达门无需电池或供电，返程前须为该端准备电量。四块满电在耗电0.5／2／4时可出发8／2／1次。
+[*]整门充电默认0.5等量／游戏小时，可设0.05～4，不是每槽各充一次。默认四块空电池充满约8游戏小时，补回一次默认旅程约4小时。
+[*]充电仅在门所在区域已加载且当地有电时进行。市电要求室内房间；发电机按原版覆盖与室外供电规则判断。停电停止充电，已存电量可继续出发；未加载、离线或供电不明的时间不追补。
+[*]可缩放2×2四槽界面显示配对目标、可传送次数、电池名称／耐久／电量及操作提示，并区分供电和充电；可靠识别时显示市电或发电机，未知来源明确标注。
+[/list]
+[b]发电机限制：本测试版检查当地供电，但尚未把充电负载计入原版设备清单或额外油耗。[/b]
+
+[h2]每门建造需求[/h2]
+消耗小金属板×8、金属管×4、电线×8、电子零件×16、高端相机×1及手持对讲机×1。接受任一原版手持型号（含自制款）；收音机、大型电台不能替代。
+需电工4、焊接3及完好的螺丝刀、焊枪和焊接面罩。三件工具保留，不额外消耗焊枪燃料或焊条；汽车电池建好后另装。
+
+[h2]操作与限制[/h2]
+建两座门 → 右键管理并选择配对 → 为出发端装电池并充电 → 界面就绪后传送。会检查目标门和出口；阻塞或加载异常进入返回／恢复流程，仍提示恢复时使用右键恢复入口并保留日志。[b]停用前取回电池并解除配对。[/b]
+仅支持同一世界内的人物及随身物品；不支持车辆、拖挂或多人，无领取测试物资功能，技能自行提升。普通视角可用，Viewpoint仅增强外观。
+此前隔离版基本使用有用户正常反馈；当前配方、可调耗电、文字、供电显示、缩放及移除赠送已离线通过。最新候选的游戏操作、长距加载、异常恢复、Viewpoint及不同模组组合仍待用户实测，未宣称全面验收或稳定版。
+
+[h1]English[/h1]
+With portals, you can travel between places that make great homes and save time on the road.
+[b]B42.21 single-player. Test candidate 0.1.3-lua-test.2.[/b] Build and pair gates to connect bases in one world. Pure Lua; no portal Java module or ZombieBuddy dependency. Viewpoint is optional for visuals and has its own requirements.
+
+[h2]Travel and energy[/h2]
+[list]
+[*]Four construction directions. Name gates, select a destination, pair or unpair them. Multiple independent two-way pairs are supported, with one destination per gate.
+[*]Four independent original car-battery slots per gate. Install, remove and recharge batteries repeatedly; batteries remain intact. Their appearance follows the occupied bays. Context actions first move the character beside the gate.
+[*]Sandbox trip cost: 0.5–4 full-car-battery equivalents, default 2, paid entirely at departure. Arrival needs neither batteries nor power; prepare that gate's energy before returning. Four full batteries provide 8/2/1 trips at costs of 0.5/2/4.
+[*]Whole-gate charging rate: 0.05–4 equivalents per game hour, default 0.5, not the full rate per slot. At default, four empty batteries fill in about eight game hours; replacing one default trip costs about four hours.
+[*]Charging requires a loaded, locally powered area. Grid power requires an indoor room; generators follow native coverage and outdoor-power rules. Cuts stop charging but stored energy remains usable. Unloaded, offline or unverified-power time earns no catch-up charge.
+[*]Resizable compact 2×2 management shows the target, available trips, battery names, condition, charge and action messages. Power availability and charging status are separate; verified grid/generator sources are named and unknown sources labelled.
+[/list]
+[b]Generator limitation: charging does not yet add a separate load to the native appliance list or extra fuel consumption.[/b]
+
+[h2]Construction per gate[/h2]
+Consumes 8 small steel sheets, 4 iron pipes, 8 electrical wires, 16 scrap electronics, 1 high-end camera and 1 handheld walkie-talkie. Any vanilla handheld model, including makeshift, is accepted; radios and large HAM stations are excluded.
+Requires Electrical 4, Welding 3 and an unbroken screwdriver, welding torch and welder mask. All tools are retained; no extra torch fuel or welding rods are consumed. Install car batteries separately after building.
+
+[h2]Use and scope[/h2]
+Build two gates → right-click management and pair them → install and charge departure batteries → transfer when ready. Destination and exit checks run during travel. Obstruction or loading failure enters return/recovery; if still pending, use the recovery context action and keep the log. [b]Remove batteries and unpair before disabling.[/b]
+Only characters and carried items within one world are supported. No vehicles, trailers, multiplayer or test-supply giver; skills remain player progression. Ordinary isometric play works without Viewpoint.
+Earlier isolated basic use was reported working. Current recipe, configurable cost, text, power display, resizing and giver-removal passed offline checks. Latest gameplay, long-distance loading, interrupted-trip recovery, Viewpoint and mod combinations still await user testing; full gameplay acceptance or stability is not claimed.

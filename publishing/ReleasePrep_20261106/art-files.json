@@ -1,0 +1,134 @@
+{
+  "status": "SELECTED_COVER_APPLIED",
+  "selected_variant": "C",
+  "algorithm": "SHA-256",
+  "files": [
+    {
+      "path": "exports/A-1024.png",
+      "bytes": 2186193,
+      "sha256": "63597cb216a52bf7129d20e53a7111d3b96039d8d2c3b1b7836aabb5ca7c81fc"
+    },
+    {
+      "path": "exports/A-256.png",
+      "bytes": 160510,
+      "sha256": "d5e4b1d9a94c038977b24a64c14bf36a5b7380ce4f3f79e3bd62c29b90d1e8d3"
+    },
+    {
+      "path": "exports/B-1024.png",
+      "bytes": 2219366,
+      "sha256": "f56fe25d1cd10728bbecc935bb0823f0ae62760afe2525a79e723b74fdab2c89"
+    },
+    {
+      "path": "exports/B-256.png",
+      "bytes": 162305,
+      "sha256": "8f1c32434fd8cfc313d8a6026aadb41d261221f4ad32705a370921b7b9f9fee3"
+    },
+    {
+      "path": "exports/C-1024.png",
+      "bytes": 2288402,
+      "sha256": "a43341105e1f32c816f38be720f373afb031cd1eb2a28fdea91eae89ea4e2d80"
+    },
+    {
+      "path": "exports/C-256.png",
+      "bytes": 162540,
+      "sha256": "e868f801d928c2c5884b5de4933264a69091555fc30b21ada43647e24fadedc0"
+    },
+    {
+      "path": "exports/D-1024.png",
+      "bytes": 2263785,
+      "sha256": "8254b12b1eae08f02c562a1f9e5141ddd483471be64b40be040ddfaf2fbd3790"
+    },
+    {
+      "path": "exports/D-256.png",
+      "bytes": 164229,
+      "sha256": "1d6d4fcb5282544626c62293cd4b9fb881256c0bff4c4966fae0646badb1e0eb"
+    },
+    {
+      "path": "exports/icon-128.png",
+      "bytes": 18266,
+      "sha256": "ef67158f69b27e2c1394cfda0ae40aed287e8ebfd0d165d68d04b64444b95bf9"
+    },
+    {
+      "path": "exports/icon-256.png",
+      "bytes": 58212,
+      "sha256": "804cc8e12a3208cc52c2ca6e694cc5584fd35ccd7fde0c9b2fbee4d56613eada"
+    },
+    {
+      "path": "exports/icon-32.png",
+      "bytes": 1860,
+      "sha256": "d5548b1abab017002090f6515948b4871062ca5847c399c4ebe28d1aa5e14ef3"
+    },
+    {
+      "path": "exports/icon-64.png",
+      "bytes": 5703,
+      "sha256": "a62adec2193efc271af15059ead93735caa03d5a285f734dafe580824743ca94"
+    },
+    {
+      "path": "exports.json",
+      "bytes": 2753,
+      "sha256": "3a304ae29f74c664e20b807c47e934af3c51ff59dcabf19f47f76dd1fd2d9b6c"
+    },
+    {
+      "path": "final/cover.png",
+      "bytes": 2288402,
+      "sha256": "a43341105e1f32c816f38be720f373afb031cd1eb2a28fdea91eae89ea4e2d80"
+    },
+    {
+      "path": "final/poster.png",
+      "bytes": 2288402,
+      "sha256": "a43341105e1f32c816f38be720f373afb031cd1eb2a28fdea91eae89ea4e2d80"
+    },
+    {
+      "path": "icon实际尺寸检查.png",
+      "bytes": 151334,
+      "sha256": "eb926e482504794e80f84ee9960a80c756e970da37b62278df6cbbff4ee2360d"
+    },
+    {
+      "path": "masters/A.png",
+      "bytes": 3238742,
+      "sha256": "bd52ca68020c0c930bf32d48ebbc6accd044fd7dc0d7a46b5e9c4681fe4467e0"
+    },
+    {
+      "path": "masters/B.png",
+      "bytes": 3292579,
+      "sha256": "48664f86f5bc2387225805d4b30abfbf6282e1cc9c05d1db762d4e487e5d2549"
+    },
+    {
+      "path": "masters/C.png",
+      "bytes": 3493050,
+      "sha256": "ecf1f1ddf581ea739add1be98d6b9dc64d1d05533b19ddc6e1487451b7621f2e"
+    },
+    {
+      "path": "masters/D.png",
+      "bytes": 3386213,
+      "sha256": "f7eaf84af914f59a7b55fb5fb27d489478e1a4f4a4894ec3d93e519f7b41dce5"
+    },
+    {
+      "path": "masters/icon.png",
+      "bytes": 849605,
+      "sha256": "1b360ab588abd5c44d61870a749ac06627f1cb32e9a8b545620339ac28e3926a"
+    },
+    {
+      "path": "prompts.json",
+      "bytes": 15154,
+      "sha256": "2b8d0ee6b562e60af0167ccc998bbec9f7e1c9c46fe33ec982161019c861efea"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 5640,
+      "sha256": "9d49a61edbe8a23756ed65d6717c01475612da06f7b81850fdd41221a5d3cbdc"
+    },
+    {
+      "path": "selection.json",
+      "bytes": 718,
+      "sha256": "05a48d752716d67b4413d98d29abbec5c6cf34abd8048476a15e806ad70f7427"
+    },
+    {
+      "path": "四版封面对比.png",
+      "bytes": 3479997,
+      "sha256": "a5b06249569b7b0ef78f7be16ab3aa34861f219e14eaf4dad1d231db4019656f"
+    }
+  ],
+  "runtime_art_replaced_by_this_refresh": false,
+  "scope": "art/ only; original private references are not copied into content"
+}

@@ -1,0 +1,453 @@
+{
+  "generator": "tools/build_portal_assets.py",
+  "seed": 20261106,
+  "models": [
+    {
+      "slotMask": 0,
+      "occupiedSlots": [],
+      "count": 0,
+      "vertices": 2256,
+      "triangles": 1128,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 1,
+      "occupiedSlots": [
+        1
+      ],
+      "count": 1,
+      "vertices": 2328,
+      "triangles": 1164,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 2,
+      "occupiedSlots": [
+        2
+      ],
+      "count": 1,
+      "vertices": 2328,
+      "triangles": 1164,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 3,
+      "occupiedSlots": [
+        1,
+        2
+      ],
+      "count": 2,
+      "vertices": 2400,
+      "triangles": 1200,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 4,
+      "occupiedSlots": [
+        3
+      ],
+      "count": 1,
+      "vertices": 2328,
+      "triangles": 1164,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 5,
+      "occupiedSlots": [
+        1,
+        3
+      ],
+      "count": 2,
+      "vertices": 2400,
+      "triangles": 1200,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 6,
+      "occupiedSlots": [
+        2,
+        3
+      ],
+      "count": 2,
+      "vertices": 2400,
+      "triangles": 1200,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 7,
+      "occupiedSlots": [
+        1,
+        2,
+        3
+      ],
+      "count": 3,
+      "vertices": 2472,
+      "triangles": 1236,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 8,
+      "occupiedSlots": [
+        4
+      ],
+      "count": 1,
+      "vertices": 2328,
+      "triangles": 1164,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 9,
+      "occupiedSlots": [
+        1,
+        4
+      ],
+      "count": 2,
+      "vertices": 2400,
+      "triangles": 1200,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 10,
+      "occupiedSlots": [
+        2,
+        4
+      ],
+      "count": 2,
+      "vertices": 2400,
+      "triangles": 1200,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 11,
+      "occupiedSlots": [
+        1,
+        2,
+        4
+      ],
+      "count": 3,
+      "vertices": 2472,
+      "triangles": 1236,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 12,
+      "occupiedSlots": [
+        3,
+        4
+      ],
+      "count": 2,
+      "vertices": 2400,
+      "triangles": 1200,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 13,
+      "occupiedSlots": [
+        1,
+        3,
+        4
+      ],
+      "count": 3,
+      "vertices": 2472,
+      "triangles": 1236,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 14,
+      "occupiedSlots": [
+        2,
+        3,
+        4
+      ],
+      "count": 3,
+      "vertices": 2472,
+      "triangles": 1236,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    },
+    {
+      "slotMask": 15,
+      "occupiedSlots": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "count": 4,
+      "vertices": 2544,
+      "triangles": 1272,
+      "bounds_xyz": [
+        [
+          -0.48000000000000004,
+          -0.33,
+          0.0
+        ],
+        [
+          0.48000000000000004,
+          0.338,
+          2.005
+        ]
+      ]
+    }
+  ],
+  "sprite_names": [
+    "suqing_portal_01_0",
+    "suqing_portal_01_1",
+    "suqing_portal_01_2",
+    "suqing_portal_01_3",
+    "suqing_portal_01_4",
+    "suqing_portal_01_5",
+    "suqing_portal_01_6",
+    "suqing_portal_01_7",
+    "suqing_portal_01_8",
+    "suqing_portal_01_9",
+    "suqing_portal_01_10",
+    "suqing_portal_01_11",
+    "suqing_portal_01_12",
+    "suqing_portal_01_13",
+    "suqing_portal_01_14",
+    "suqing_portal_01_15",
+    "suqing_portal_01_16",
+    "suqing_portal_01_17",
+    "suqing_portal_01_18",
+    "suqing_portal_01_19",
+    "suqing_portal_01_20",
+    "suqing_portal_01_21",
+    "suqing_portal_01_22",
+    "suqing_portal_01_23",
+    "suqing_portal_01_24",
+    "suqing_portal_01_25",
+    "suqing_portal_01_26",
+    "suqing_portal_01_27",
+    "suqing_portal_01_28",
+    "suqing_portal_01_29",
+    "suqing_portal_01_30",
+    "suqing_portal_01_31",
+    "suqing_portal_01_32",
+    "suqing_portal_01_33",
+    "suqing_portal_01_34",
+    "suqing_portal_01_35",
+    "suqing_portal_01_36",
+    "suqing_portal_01_37",
+    "suqing_portal_01_38",
+    "suqing_portal_01_39",
+    "suqing_portal_01_40",
+    "suqing_portal_01_41",
+    "suqing_portal_01_42",
+    "suqing_portal_01_43",
+    "suqing_portal_01_44",
+    "suqing_portal_01_45",
+    "suqing_portal_01_46",
+    "suqing_portal_01_47",
+    "suqing_portal_01_48",
+    "suqing_portal_01_49",
+    "suqing_portal_01_50",
+    "suqing_portal_01_51",
+    "suqing_portal_01_52",
+    "suqing_portal_01_53",
+    "suqing_portal_01_54",
+    "suqing_portal_01_55",
+    "suqing_portal_01_56",
+    "suqing_portal_01_57",
+    "suqing_portal_01_58",
+    "suqing_portal_01_59",
+    "suqing_portal_01_60",
+    "suqing_portal_01_61",
+    "suqing_portal_01_62",
+    "suqing_portal_01_63"
+  ],
+  "spriteSize": [
+    128,
+    256
+  ],
+  "nativeAnchor": [
+    64,
+    192
+  ],
+  "groundOrigin": [
+    64,
+    224
+  ],
+  "legacyTopCrop": 128,
+  "facings": [
+    "S",
+    "E",
+    "N",
+    "W"
+  ],
+  "mapping": "index = actual slot occupancy mask * 4 + facingIndex; mask bits 0..3 correspond to slots 1..4; S=0,E=1,N=2,W=3",
+  "viewpointRotation": [
+    0,
+    -90,
+    180,
+    90
+  ],
+  "pack": "SuQingPortals_tiles",
+  "tiledef": 7836,
+  "source": "Original deterministic geometry and hand-authored texture atlas. No third-party mesh or texture.",
+  "scope": "Offline mesh/sprite/model-pack generation and common-anchor overlay. Actual PZ placement/FBO rendering and Viewpoint camera views remain for user acceptance."
+}

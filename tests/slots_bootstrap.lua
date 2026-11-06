@@ -1,0 +1,2 @@
+-- Pure-Lua slots use the same native-container mocks as core_world_bootstrap.
+-- There is deliberately no codec, Java bridge, or replacement-item factory.

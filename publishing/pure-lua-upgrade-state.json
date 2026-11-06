@@ -1,0 +1,587 @@
+{
+  "version": "0.1.2-lua-test.1",
+  "folder": "D:\\steam\\steamapps\\common\\ProjectZomboid\\CodexAssets\\SuQingPortals_20261106\\Upgrade_0.1.2_lua_20261106_170326",
+  "test_save": "D:\\steam\\steamapps\\common\\ProjectZomboid\\CodexAssets\\SuQingPortals_20261106\\IsolatedTest\\data\\Saves\\Sandbox\\2026-11-06_15-46-59",
+  "world_archive": "D:\\steam\\steamapps\\common\\ProjectZomboid\\CodexAssets\\SuQingPortals_20261106\\Upgrade_0.1.1_20261106_160650\\isolated-save-and-portal-before.zip",
+  "world_archive_sha256": "b887aa3e0454b773b5bc4945280791076fca4fc867c23d2ed3b39d05d1447d2c",
+  "reused_verified_world_snapshot": true,
+  "world_files": 1151,
+  "previous_runtime_archive": "D:\\steam\\steamapps\\common\\ProjectZomboid\\CodexAssets\\SuQingPortals_20261106\\Upgrade_0.1.2_lua_20261106_170326\\previous-0.1.1-runtime-and-entry.zip",
+  "previous_runtime_sha256": "401838a1a53132681ed4d4fdcacd149949af533515e7c55d0ad402d2843c41ec",
+  "previous_runtime_manifest": {
+    "data/mods/SuQingPortals/42/icon.png": {
+      "sha256": "dfef6bb80ef8ffbd6f571674d24307f0b8a2e724fc0060dc15797fc3496e85c1",
+      "bytes": 88505
+    },
+    "data/mods/SuQingPortals/42/mod.info": {
+      "sha256": "ee3271c2c370483710aafca323c9996b44a01a31f37315b5db3b32925c5c0386",
+      "bytes": 1307
+    },
+    "data/mods/SuQingPortals/42/poster.png": {
+      "sha256": "27cbb727b96c497269ff4d1f7e91e80f591f6152117f063fea225181f85c4bbb",
+      "bytes": 2240088
+    },
+    "data/mods/SuQingPortals/42/media/sandbox-options.txt": {
+      "sha256": "d4199c42baca70542419e8d157a173e3913adba817529bc93c0e850c56277a83",
+      "bytes": 341
+    },
+    "data/mods/SuQingPortals/42/media/suqing_portal_01.tiles": {
+      "sha256": "c678f1bc6351e74a32397a0577fd1465f071e631d246e6cb1a49ca39a78d33e4",
+      "bytes": 7490
+    },
+    "data/mods/SuQingPortals/42/media/java/SuQingPortals.jar": {
+      "sha256": "8e3440251707452e4944a0927c4fc84309a5c124065f505b6cb40d14d4098fe4",
+      "bytes": 5038
+    },
+    "data/mods/SuQingPortals/42/media/scripts/SuQingPortals_Building.txt": {
+      "sha256": "64018eedfeb7b3bfdc5f17ff06e177927b8ceda7e85118cdda0e53474a16085e",
+      "bytes": 1682
+    },
+    "data/mods/SuQingPortals/42/media/scripts/SuQingPortals_Xui.txt": {
+      "sha256": "c7ccb649e202e103a5b1195551eb5f37c65b22d43f333841d7c3fc1a146c66b2",
+      "bytes": 281
+    },
+    "data/mods/SuQingPortals/42/media/texturepacks/SuQingPortals_tiles.pack": {
+      "sha256": "38b0fe6cd576aa2f551a15987a1be9a60b5b419b9fc0e9ac6cb1e995ff87ae8c",
+      "bytes": 1299107
+    },
+    "data/mods/SuQingPortals/42/media/textures/Item_SuQingPortal.png": {
+      "sha256": "ad614989909e86ecd924007e18463d693bc0d6ee3ba0f71d107cf55acdf444b4",
+      "bytes": 9235
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/package.properties": {
+      "sha256": "2be5c731048643153057f66be136dd51504d476e64abe79ece96c2c860c87d69",
+      "bytes": 4141
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal.mtl": {
+      "sha256": "60e24361b624a8f31c5d3d368e9eca57ecf219e28fbb2c683e6155e24a44a063",
+      "bytes": 103
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_0.obj": {
+      "sha256": "bbdb1531a602706e1684b7f612b0857ae004c8763b863baf0b4418bdd9153c4c",
+      "bytes": 217017
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_1.obj": {
+      "sha256": "a0260fcbb3a4ac5b1d7c6e5b590caa613e0c7d37da73fe30892413d4a7948a91",
+      "bytes": 224169
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_10.obj": {
+      "sha256": "599aede03c49dcb0e5536e8298466ae5f9413b1523fb0404d81d542e59fcd867",
+      "bytes": 231250
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_11.obj": {
+      "sha256": "c45f490fa721d57742e956f9d1acadfc309e82221569851a7d10df800492aa2b",
+      "bytes": 238402
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_12.obj": {
+      "sha256": "6439539be93c75137a0661419c9e412379f3df09a5c964c615ec99323867451f",
+      "bytes": 231178
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_13.obj": {
+      "sha256": "1c77067da8b646b0ee990af410aafbcf889711ec92fce63e4f14eba04d4fbdf7",
+      "bytes": 238330
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_14.obj": {
+      "sha256": "cf66625e1efcf31e69625c483509326bae9a62136d74e5b319152a252e2371fe",
+      "bytes": 238330
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_15.obj": {
+      "sha256": "22c75d3ffdc7d627c96ecc55d1cb3bcacaa6f09b8a7f44c65968c498de227634",
+      "bytes": 245482
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_2.obj": {
+      "sha256": "5be53dcedf02b393e4f249301271a9a7e3980f35a40a4d4886b5903d6bb16889",
+      "bytes": 224169
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_3.obj": {
+      "sha256": "671990054ce5ad0288a90278e66f0082d5a9d5d6001a7ce49bdb6af7815ff2de",
+      "bytes": 231321
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_4.obj": {
+      "sha256": "91a251ab4dbb4f43e6462638f67c704fedeb147890520256e6f1b120aca07231",
+      "bytes": 224097
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_5.obj": {
+      "sha256": "0c9ce3c947c929f2c3f273b398b32474461fd0860beb7e61743c3cf29224afa2",
+      "bytes": 231249
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_6.obj": {
+      "sha256": "896cf4c2f2d355efd58fc2e6aec9076b7fff0e2d98ffbb63352d5d3ff5faa7f1",
+      "bytes": 231249
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_7.obj": {
+      "sha256": "a854c83cc3cc0fd5a28e90e5c839a611bcb0a9dc384e93212cc8000ce4956bdb",
+      "bytes": 238401
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_8.obj": {
+      "sha256": "0b067bc3ba50aaf8fe7298be7e41e3ce1a22974e7c1fd9a526c829603b7c7533",
+      "bytes": 224097
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_9.obj": {
+      "sha256": "f82fc2ebf9a5950cf2197cbe95449cbdf3b4add89fa30d834e36ff59e8566e03",
+      "bytes": 231249
+    },
+    "data/mods/SuQingPortals/42/media/viewpoint/portal_atlas.png": {
+      "sha256": "1c2a34206869c466c579e2bcc65a13d4a31ee296b7e924d62a558fb008d742c0",
+      "bytes": 130491
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_0.png": {
+      "sha256": "e69d1f6eda23c6c6b32adef82d0bf32164c941fbd07162b9f3005bba92b58f53",
+      "bytes": 23164
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_1.png": {
+      "sha256": "9532f0e891f469030a1dd7ab5f0f9a41ce9e8168f23087853077efe55ea7c532",
+      "bytes": 22598
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_10.png": {
+      "sha256": "a55911c468aca6ffa38c4ae77ce31a2d184b5a935df6584c7ce3ae55fbc2c586",
+      "bytes": 19942
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_11.png": {
+      "sha256": "4ad5a988afcb54f37aff8588dd4a4c5844a1752c93ed57885fca871d5be19bbc",
+      "bytes": 20502
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_12.png": {
+      "sha256": "a2afa584df99e28499eea6b5afb1027e55ed19cfbb3d4f6a8656871aa4ce064b",
+      "bytes": 23918
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_13.png": {
+      "sha256": "632151014f4fd3a6da232c5296e5139260b6d26a322c806c161d058134ba43ad",
+      "bytes": 23153
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_14.png": {
+      "sha256": "66b43f67ee6345b47e828ac4f300f2e1b1f3dabac04eb907dd6f804da90b1772",
+      "bytes": 20147
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_15.png": {
+      "sha256": "4dc26452e1d89492657f0bfd2e0e606ec5f2474d3b86f4ae7e687d84361e3a48",
+      "bytes": 20628
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_16.png": {
+      "sha256": "30dde0f3ad34f0f2ae93ecf5d49ba78a57dab48cc733a090ffedd70c83da4105",
+      "bytes": 23523
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_17.png": {
+      "sha256": "b33df2b8e2acccf25f604dd18003318054b8bd8a2dc34d3da4484fc96e5df826",
+      "bytes": 22996
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_18.png": {
+      "sha256": "68b2199a438a2891e8a8ea873afb84750c790fb5f793e7876e1f8f26a5a8d136",
+      "bytes": 20081
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_19.png": {
+      "sha256": "2e10d006e9fac7999d02734c61cc3c4812d04f0d03de85e3044575b54a1b9816",
+      "bytes": 20316
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_2.png": {
+      "sha256": "7bee72ca0822ab58385135e76fad811ba6d7638eab04942ac6d42bde1dde9440",
+      "bytes": 19944
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_20.png": {
+      "sha256": "c949cdb5bc13d505c1b67bfcb9c7f618a765fa39e85fdf0d0eedbaf9fef37bf3",
+      "bytes": 24002
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_21.png": {
+      "sha256": "516947bb7256b5f0d9774eec036b5e155c9188c90acd011957e60a123857ebc7",
+      "bytes": 23235
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_22.png": {
+      "sha256": "c2ea769e749c4e1e901b5a6d9ccef22ecd9a0ec88fa440570cc480c6a527f95d",
+      "bytes": 20300
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_23.png": {
+      "sha256": "bd6c9e8af78e8a42b9f304c32954fc2380051a7b1cb919fbca837e8ce61a444e",
+      "bytes": 20582
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_24.png": {
+      "sha256": "4ec26493ad0bc32b1a0ab9379e9002b27183c982d59a08b6efb669f18f2e50be",
+      "bytes": 23815
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_25.png": {
+      "sha256": "2e1581e8c2c50497d5cf944b1cf754f1eae0744ecacb2db4ddae805d2b46c7a7",
+      "bytes": 23242
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_26.png": {
+      "sha256": "d8a257125cc45602b31a11bf8532535f47ad9b89fc74190203f0ea18fde84978",
+      "bytes": 20092
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_27.png": {
+      "sha256": "10300be7301383c9f7eebf93b0bd64cbdecf80d93e06b82057b5f183ff992d89",
+      "bytes": 20487
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_28.png": {
+      "sha256": "bf7e12698ea1e386c2e7d810748909d77b263555b9ed5b5457c7bf3622cefa39",
+      "bytes": 24220
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_29.png": {
+      "sha256": "9ff1e22746c441c3380bf651e91fb05b2135a62eebdb8fe6d9f80fc90be6d760",
+      "bytes": 23447
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_3.png": {
+      "sha256": "6ea1a1b782e821f54f81cae359a5150c22d6196e1c5c38ab06e7a73d6f627c63",
+      "bytes": 20324
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_30.png": {
+      "sha256": "c7e6b8f77529629bbf1f8520335cd69db1186355dcd87ced5b5060317de2032a",
+      "bytes": 20316
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_31.png": {
+      "sha256": "d85f534832b6a262203ebaa31dc777db1ee9d68b07b6ba80510a7348ca02770f",
+      "bytes": 20619
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_32.png": {
+      "sha256": "ca09492001889d7848107afd7ad1e29b08ed69157a336fe8fdc5358662c46e3d",
+      "bytes": 23390
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_33.png": {
+      "sha256": "242b72e17a03ec28a561febd6efa98cd73d2ded7042b2ee37c3cbc213f669c8c",
+      "bytes": 23263
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_34.png": {
+      "sha256": "8e0cf379b1f770cbeb2a4f3ecc281fcc7b3ec10245e33f8feae729b64cc85c53",
+      "bytes": 20447
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_35.png": {
+      "sha256": "b6a32f5b046e14f8560bd4f4304a8d361102add81b7586f33ed3e9c2434b5275",
+      "bytes": 20483
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_36.png": {
+      "sha256": "afc8adc83be6456fe2bf4969c37beda6f228c987efb163b92011b9f066f42c58",
+      "bytes": 23876
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_37.png": {
+      "sha256": "137f8679bc644a794de81217aa235eea2cd0e3346ec1ad1bed518c259ccaa628",
+      "bytes": 23536
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_38.png": {
+      "sha256": "c70aca3c3e596f1e8022cfdd693332ad26701502859f26ff2407a832e9628b5f",
+      "bytes": 20653
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_39.png": {
+      "sha256": "9b19c3374e0efa67719c33a969afa8210efcab404a1f980c425039c785183a8c",
+      "bytes": 20741
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_4.png": {
+      "sha256": "d5e4dcd4bcb97e7e59cf15221de2b33f834bb8aebf358288ddc17885bdb300b1",
+      "bytes": 23674
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_40.png": {
+      "sha256": "774f91903e2acd80624598607e3a15f5d03419b4794989b050e77617d78ee27d",
+      "bytes": 23701
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_41.png": {
+      "sha256": "a11cfc86471511673f211d8e11349c37e0412dee57814cededd936971adfb781",
+      "bytes": 23536
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_42.png": {
+      "sha256": "ca3f8fae02648a49e8ecbb74324361e437754b8550ac363ef3225ef7ad22b062",
+      "bytes": 20442
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_43.png": {
+      "sha256": "c4c0d1d5801591c2760dcba92cbda61ddd9b41c27a8bc6928ae0fcd4650a8a2e",
+      "bytes": 20640
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_44.png": {
+      "sha256": "693da34482f7da00eff8b7e81b06fdba9ecfd45e5497dd8154db4343f51b3449",
+      "bytes": 24121
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_45.png": {
+      "sha256": "3be03296b9889dba3324f1bc0ab95d91d85f95e30f9abb924bed1c54ff0a84cb",
+      "bytes": 23799
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_46.png": {
+      "sha256": "2d916eb1692367ae58aec0b299776d95d8e50ddd1623dbf79fc29c3522f3ce5a",
+      "bytes": 20657
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_47.png": {
+      "sha256": "dfe2f92ad03e7eca55ce93527074b4726ab3963878d56f885173477db32095f0",
+      "bytes": 20773
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_48.png": {
+      "sha256": "badd5023e5011207ecff7ee4a1ad86e2c6d2127967ae6891cfa7dcc75312d908",
+      "bytes": 23660
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_49.png": {
+      "sha256": "2ce4a4ec633d08851c95ac57cab237fe363fc4ff6dc29bff3a976da1a8d73375",
+      "bytes": 23525
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_5.png": {
+      "sha256": "107e0e4e212facb84a4b121dd3c6665ec4a28caba51fa372d432d53ab1d2c6d9",
+      "bytes": 22889
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_50.png": {
+      "sha256": "d7537e418c0638132be10a21e693c79f8208404d832db3c4f77bd7137ff4e6aa",
+      "bytes": 20521
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_51.png": {
+      "sha256": "a95518baf6838f2bfd34ef045a49d9bc68ea5d6c759593864c32e566b0359b33",
+      "bytes": 20490
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_52.png": {
+      "sha256": "3af2e6334757d7a1d8a40cb6376a6c1d72f25587d7a350e43aa478b833d1ac18",
+      "bytes": 24139
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_53.png": {
+      "sha256": "5f9eaaeece131cd3d532cab450ebf0b3f6b0601bc05809e20d3623369dd0b0f3",
+      "bytes": 23769
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_54.png": {
+      "sha256": "6a178705f0faa4b5d78ffd72f457db73c5cfa70437a60e14190e0dc7d3e7a632",
+      "bytes": 20740
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_55.png": {
+      "sha256": "10b61896841fbdd07d6cc9be6ab2c974d5742ac647ec6427ecac4f05d6abf96a",
+      "bytes": 20743
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_56.png": {
+      "sha256": "347822efe65481f337a676b1893e8fc85567375355baedec02bfe17c91f47c3e",
+      "bytes": 23942
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_57.png": {
+      "sha256": "9787816efac74dc07348250b01e56a730ae5042abd9b502ca87294da9e15db2f",
+      "bytes": 23774
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_58.png": {
+      "sha256": "c1e57c4f5236a8d16e65064051943451e5ca46b39f11f9616604a9e5db0106ed",
+      "bytes": 20532
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_59.png": {
+      "sha256": "a3bacf0e51aebb379218f218f3811d804d2213c425ed51b16b3bdc9a557b6a0d",
+      "bytes": 20626
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_6.png": {
+      "sha256": "2ee637cb0493ec35b6cb8cd69277e7042e1d29bef4c1f80c0ec1accca8a04620",
+      "bytes": 20150
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_60.png": {
+      "sha256": "f5ae217e2333d58addacb2bf6933d7670c4eac6304ae7da085bb7072972dfa62",
+      "bytes": 24353
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_61.png": {
+      "sha256": "aecf81454a13eaf990e6b598f3cdfdb579fc53fd28695457d086ef0d6ab129dc",
+      "bytes": 23974
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_62.png": {
+      "sha256": "7ef76cc1b18fb46a4ac15be6597d65be9ac8f1eb1905a60d13fe48e4a05d4a0a",
+      "bytes": 20741
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_63.png": {
+      "sha256": "38292204a073b2d5e7d90ab2681925851ea66d64e19c1764776c57dae94079a3",
+      "bytes": 20766
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_7.png": {
+      "sha256": "a52ea3bec861d47c12a4279bce57d284566ebceeb389ff9afd158ef0ae9e1ae7",
+      "bytes": 20583
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_8.png": {
+      "sha256": "a7baebd9f33f26a415cc9687854aaaa123b0cf9bfa81959868273a99e9f6f370",
+      "bytes": 23498
+    },
+    "data/mods/SuQingPortals/42/media/textures/SuQingPortals/suqing_portal_01_9.png": {
+      "sha256": "59b66631a242e992fcbdcc62fa16420638749e7f993199e8c2ebc52820d76dad",
+      "bytes": 22901
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal.mtl": {
+      "sha256": "60e24361b624a8f31c5d3d368e9eca57ecf219e28fbb2c683e6155e24a44a063",
+      "bytes": 103
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_0.obj": {
+      "sha256": "bbdb1531a602706e1684b7f612b0857ae004c8763b863baf0b4418bdd9153c4c",
+      "bytes": 217017
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_1.obj": {
+      "sha256": "a0260fcbb3a4ac5b1d7c6e5b590caa613e0c7d37da73fe30892413d4a7948a91",
+      "bytes": 224169
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_10.obj": {
+      "sha256": "599aede03c49dcb0e5536e8298466ae5f9413b1523fb0404d81d542e59fcd867",
+      "bytes": 231250
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_11.obj": {
+      "sha256": "c45f490fa721d57742e956f9d1acadfc309e82221569851a7d10df800492aa2b",
+      "bytes": 238402
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_12.obj": {
+      "sha256": "6439539be93c75137a0661419c9e412379f3df09a5c964c615ec99323867451f",
+      "bytes": 231178
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_13.obj": {
+      "sha256": "1c77067da8b646b0ee990af410aafbcf889711ec92fce63e4f14eba04d4fbdf7",
+      "bytes": 238330
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_14.obj": {
+      "sha256": "cf66625e1efcf31e69625c483509326bae9a62136d74e5b319152a252e2371fe",
+      "bytes": 238330
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_15.obj": {
+      "sha256": "22c75d3ffdc7d627c96ecc55d1cb3bcacaa6f09b8a7f44c65968c498de227634",
+      "bytes": 245482
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_2.obj": {
+      "sha256": "5be53dcedf02b393e4f249301271a9a7e3980f35a40a4d4886b5903d6bb16889",
+      "bytes": 224169
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_3.obj": {
+      "sha256": "671990054ce5ad0288a90278e66f0082d5a9d5d6001a7ce49bdb6af7815ff2de",
+      "bytes": 231321
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_4.obj": {
+      "sha256": "91a251ab4dbb4f43e6462638f67c704fedeb147890520256e6f1b120aca07231",
+      "bytes": 224097
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_5.obj": {
+      "sha256": "0c9ce3c947c929f2c3f273b398b32474461fd0860beb7e61743c3cf29224afa2",
+      "bytes": 231249
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_6.obj": {
+      "sha256": "896cf4c2f2d355efd58fc2e6aec9076b7fff0e2d98ffbb63352d5d3ff5faa7f1",
+      "bytes": 231249
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_7.obj": {
+      "sha256": "a854c83cc3cc0fd5a28e90e5c839a611bcb0a9dc384e93212cc8000ce4956bdb",
+      "bytes": 238401
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_8.obj": {
+      "sha256": "0b067bc3ba50aaf8fe7298be7e41e3ce1a22974e7c1fd9a526c829603b7c7533",
+      "bytes": 224097
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_9.obj": {
+      "sha256": "f82fc2ebf9a5950cf2197cbe95449cbdf3b4add89fa30d834e36ff59e8566e03",
+      "bytes": 231249
+    },
+    "data/mods/SuQingPortals/42/media/models/SuQingPortals/portal_atlas.png": {
+      "sha256": "1c2a34206869c466c579e2bcc65a13d4a31ee296b7e924d62a558fb008d742c0",
+      "bytes": 130491
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/SuQingPortals/BatterySlots.lua": {
+      "sha256": "2b6daacad43e2f83e68d5a38c3ce25be236fe08e8e64dbf95d861e787d522411",
+      "bytes": 16507
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/SuQingPortals/Core.lua": {
+      "sha256": "b918c4d3bc468e2fadc12f1c594cd99f11be7df19d87823a59651d3d71e6368d",
+      "bytes": 6541
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/CN/IG_UI.json": {
+      "sha256": "259329744ae11f4aa16edc01f50be6abfe553a6eed3806bef350de31b6a945a8",
+      "bytes": 10866
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/CN/Mod.json": {
+      "sha256": "db607c4675ef96ede7ef39b55c2132a0b8d057956ab67c00e37e031befc39caa",
+      "bytes": 655
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/CN/Moveables.json": {
+      "sha256": "0eb4f6a7cbe36c8a3869cf049c42d13f9c4e31ef6535365ba75daffb7c6d0a06",
+      "bytes": 47
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/CN/Recipes.json": {
+      "sha256": "10915df9ac2f1576584b6f42e594c94e9fe95e4bbbfb8cbe038f91d1076f3f75",
+      "bytes": 89
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/CN/Sandbox.json": {
+      "sha256": "852a771699a7503967cb66c7b2d98711dd6da4561f54cda93507458c1db436b8",
+      "bytes": 776
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/CN/Tooltip.json": {
+      "sha256": "3f79895f27086dc9ed98a84b9758e7be2b4ac350c240fc646025c2923237cade",
+      "bytes": 205
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/EN/IG_UI.json": {
+      "sha256": "06eb149d582d2028652265d3e61f603892c01808261ad945f2b4221ac7663664",
+      "bytes": 11778
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/EN/Mod.json": {
+      "sha256": "7e549b2243acee74d5fdb4f99e361ccbcf4fed46b0ce6b2df06a0b1df00d6d03",
+      "bytes": 793
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/EN/Moveables.json": {
+      "sha256": "4c3ad5eb99ba5712cddad4db8a17564e8affd80c893f742fb1e85df1d7eaef40",
+      "bytes": 45
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/EN/Recipes.json": {
+      "sha256": "bfd7dd5dc47dd20a9224e71faf122a7c0790c90c7169ea36e5d5357bd8f6c421",
+      "bytes": 85
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/EN/Sandbox.json": {
+      "sha256": "e8498f554df9de8df27de707e27ae078646f1f5bdcddc498b28be642589fd789",
+      "bytes": 826
+    },
+    "data/mods/SuQingPortals/42/media/lua/shared/Translate/EN/Tooltip.json": {
+      "sha256": "c7608fa9479b472f10228889502921987cadce88dbcbf651e2038c976c41daac",
+      "bytes": 253
+    },
+    "data/mods/SuQingPortals/42/media/lua/server/SuQingPortals/World.lua": {
+      "sha256": "a27957ea6b157389e3493e3b08a54efd1ef55a925bc504b6c7a36c0dd0d8a1bb",
+      "bytes": 31495
+    },
+    "data/mods/SuQingPortals/42/media/lua/client/SuQingPortals/Actions.lua": {
+      "sha256": "b29f8d9e318d515101cfb73ba03b2fd172313df659c5076260bf3cdf86235a27",
+      "bytes": 4351
+    },
+    "data/mods/SuQingPortals/42/media/lua/client/SuQingPortals/Build.lua": {
+      "sha256": "0189cae9c794be1feec6085844aa718e07944fe30493f2170fa1d525267ab896",
+      "bytes": 1659
+    },
+    "data/mods/SuQingPortals/42/media/lua/client/SuQingPortals/Client.lua": {
+      "sha256": "dc7af680ccfbc988566ed47638e20a920df24b2dc0461b61606d58ffa894f865",
+      "bytes": 8618
+    },
+    "data/mods/SuQingPortals/42/media/lua/client/SuQingPortals/InventoryGuard.lua": {
+      "sha256": "32473c968e142ab000907e8bee0edf0df552cdfa460016fc32b429582dc87ed0",
+      "bytes": 377
+    },
+    "data/mods/SuQingPortals/42/media/lua/client/SuQingPortals/Transfer.lua": {
+      "sha256": "2499816ea9e1c9b133483e4392fbdef0ed1980eeddd58ef6af8a48018e086630",
+      "bytes": 16058
+    },
+    "data/mods/SuQingPortals/42/media/lua/client/SuQingPortals/UI.lua": {
+      "sha256": "707bd713ad1ff39c454adae5a831867f69e466d389619a70355a3e5184ea9d71",
+      "bytes": 15251
+    },
+    "data/mods/SuQingPortals/42/media/lua/client/SuQingPortals/Viewpoint.lua": {
+      "sha256": "483246574553c3bbcaf5d9d2e554414cf3c29dea39de9f03005b26579061be3a",
+      "bytes": 3214
+    },
+    "data/mods/SuQingPortals/42/media/lua/client/SuQingPortals/VisualData.lua": {
+      "sha256": "a614666fb91c0d0365e448e501e81dd796929856140bfc329038b1f6b4fce0b0",
+      "bytes": 552232
+    },
+    "Launch-Isolated.ps1": {
+      "sha256": "e0b70fe75e8de0f3caba55233492220cb8890867683bdb930e8ded644718f1fb",
+      "bytes": 1859
+    },
+    "Start-Portal-Test.cmd": {
+      "sha256": "2f57a2cc67cb6fd0d8d02c8f2e88e9ccb742159ded46f1b160e359a3843c347f",
+      "bytes": 95
+    },
+    "launch-baseline.json": {
+      "sha256": "1ec38a60fad179c1dd6dc149e0e0070dc86ca488b12e2afda76bf4d551a403da",
+      "bytes": 284
+    },
+    "data/mods/default.txt": {
+      "sha256": "8c9a983f881c0058584565bf7d4179ce201b2e9810a75f96aca4519c49f4d78d",
+      "bytes": 165
+    },
+    "data/mods/reset-mods-42_00.txt": {
+      "sha256": "71d78a5af231ad5e8a814868e6228127b68b490911d9b11d3b8e3ea86d7a852f",
+      "bytes": 81
+    },
+    "data/latestSave.ini": {
+      "sha256": "52c02a71537a356e31f4c59a4f34f0f5a9ac6beeea4e81c0f033568eedd83f28",
+      "bytes": 30
+    }
+  },
+  "formal_before": {
+    "C:\\Users\\15792\\Zomboid\\options.ini": "ca0ae6bd4d0c849cd7791dc4433a6a9e1dde58f950fb825ea370c2240ef6bfe4",
+    "C:\\Users\\15792\\Zomboid\\mods\\default.txt": "f1127db8f84cc06d3632a47075eccca1961af6cc8e2c7b14e1c72a1063977f31",
+    "C:\\Users\\15792\\Zomboid\\latestSave.ini": "01e1b45eda3434e372a8dc82b0e624195253aa8bb622b066ca3c15b7dea7d0cc",
+    "C:\\Users\\15792\\Zomboid\\viewpoint.properties": "480a0aa558b8885aaf6fba5a4fcd4cfe49610905a31cd44d79f6fb5f56e04701",
+    "C:\\Users\\15792\\Zomboid\\pzopt\\options.ini": "7e9688bd6ca5964715c9dda9cc74dd6f0853170fff812d3203df2d72e7d0ea62",
+    "D:\\steam\\steamapps\\common\\ProjectZomboid\\ProjectZomboid64.json": "8d146c6ef3fb930aa536b1396eca66bd8f448ea2858c9800cde3c5b72af964d3",
+    "D:\\steam\\steamapps\\common\\ProjectZomboid\\projectzomboid.jar": "e1a69eb743ede60b213a0fe7f8b83d4fcab773036d256cc4543a336f3b058a33",
+    "D:\\steam\\steamapps\\common\\ProjectZomboid\\pzopt\\aot\\pzopt.jar": "749cad6f1fe98a37b908583eaf5328ca85f75b80431edc5d31bec1127519639e",
+    "D:\\steam\\steamapps\\common\\ProjectZomboid\\AGENTS.md": "9575c203711896f72b3db277f8697763b664ace74df090bd8130fbdaf7f4ce80",
+    "C:\\Users\\15792\\Zomboid\\Saves\\Sandbox\\2026-10-09_18-19-22\\mods.txt": "fb0c48cdbf3b415b55c03edc3aadef97a2f881499c9a959fb668bb8e93c3e359",
+    "C:\\Users\\15792\\Zomboid\\Saves\\Sandbox\\2026-10-09_18-19-22\\map_sand.bin": "3bbf0a847cadca91d3b1c30cc870875b92c2a8d9bbcd89e85aba94035f2156fa"
+  },
+  "game_started": false
+}

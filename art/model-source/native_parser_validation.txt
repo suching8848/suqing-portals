@@ -1,0 +1,50 @@
+Offline resource validation for 0.1.1-test.1, recorded 2026-11-06 (Asia/Shanghai).
+Commands used JDK8 javac for the reflection-only helper and installed PZ Java25 for execution.
+Helper: tests/PortalAssetsNativeReadback.java
+Installed Viewpoint: 0.1.6.1
+Viewpoint.jar SHA256: 096bd37d63cb699ac95e9e7ea5245a1b9b5ff08c5161db35f6733b1d1c42b064
+
+PASS current PZ TexturePackPage integer/string readers: 64 standard 128x256 RGBA frames, 512x4096 PNG
+PASS current Viewpoint ObjReader slotMask=0, triangles=1128
+PASS current Viewpoint ObjReader slotMask=1, triangles=1164
+PASS current Viewpoint ObjReader slotMask=2, triangles=1164
+PASS current Viewpoint ObjReader slotMask=3, triangles=1200
+PASS current Viewpoint ObjReader slotMask=4, triangles=1164
+PASS current Viewpoint ObjReader slotMask=5, triangles=1200
+PASS current Viewpoint ObjReader slotMask=6, triangles=1200
+PASS current Viewpoint ObjReader slotMask=7, triangles=1236
+PASS current Viewpoint ObjReader slotMask=8, triangles=1164
+PASS current Viewpoint ObjReader slotMask=9, triangles=1200
+PASS current Viewpoint ObjReader slotMask=10, triangles=1200
+PASS current Viewpoint ObjReader slotMask=11, triangles=1236
+PASS current Viewpoint ObjReader slotMask=12, triangles=1200
+PASS current Viewpoint ObjReader slotMask=13, triangles=1236
+PASS current Viewpoint ObjReader slotMask=14, triangles=1236
+PASS current Viewpoint ObjReader slotMask=15, triangles=1272
+PASS current Viewpoint PackManifest: 16 occupancy models, 64 correctly rotated bindings, no parser errors
+PASS current Viewpoint Recipe.model keeps supplied tile center (0.5,0.5), floor Z=0, no duplicate center offset
+
+Python resource readback: PASS (2778 structural checks, not gameplay assertions).
+All 64 sprites match 128x256 pack rectangles, registered tile properties, original
+geometry scale, and exact occupancy-mask metadata. All model floors remain Z=0.
+The full-bank corrected sprite is the exact unscaled crop of rows 128..383 from
+the old 128x384 raster; removed rows were entirely transparent.
+The native image anchor (64,192) plus ground origin (64,224) places model zero
+at the tile center, 32 pixels below the tile corner. Same reference is used in
+anchor_alignment.png and anchor_four_facings.png, which were visually inspected.
+Per-row alpha>=16 intervals were decoded and compared against all 64 real PNGs.
+
+Additional read-only source inspection:
+- Current IsoObject.setSprite(String) creates a fresh texture-only sprite.
+- Current IsoObject.setSpriteFromName takes its sprite from IsoSpriteManager.instance.
+- Replacing the sprite itself does not replace the object/entity/container fields.
+- Viewpoint ModelPacks.bind(IsoSprite) looks up bound.get(isoSprite.name).
+- Viewpoint PackGather obtains that binding from the current sprite for each object collection.
+- Hence registered sprite changes select the matching model binding; no object-level stale-binding cache was found on this path.
+- Current WorldMesher calls square with j+0.5/i+0.5, so the authored centered mesh
+  does not need extra bind x/y=0.5. Recipe.model adds only authored bind offsets.
+
+Scope: offline standalone parser calls and read-only class inspection only.
+No engine, world, GL context, game process, or gameplay acceptance. Real FBO
+occlusion, depth/cutaway behavior, camera zoom and Viewpoint click behavior are
+still for user acceptance.

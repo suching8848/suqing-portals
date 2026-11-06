@@ -1,0 +1,109 @@
+{
+  "created_at": "2026-11-06T19:35:14.473849+08:00",
+  "mode": "built-in image_gen.imagegen",
+  "selection_status": "User selected C (雨夜归途); applied to local poster and publishing cover; not published",
+  "scope": "art/publishing only; no runtime deployment, game, Workshop upload or publication",
+  "assets": {
+    "A": {
+      "name": "工坊初启",
+      "master": "E:\\code\\suqing-portals\\publishing\\ReleasePrep_20261106\\art\\masters\\A.png",
+      "generated_source": "C:\\Users\\15792\\.codex\\generated_images\\01a1af9d-55be-7c71-8980-fbf74702d3a2\\exec-43840d42-60c6-41d4-ac4f-d32f6211e7bf.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "bd52ca68020c0c930bf32d48ebbc6accd044fd7dc0d7a46b5e9c4681fe4467e0",
+      "unchanged_copy": true,
+      "prompt_record": "E:\\code\\suqing-portals\\publishing\\ReleasePrep_20261106\\art\\prompts.json",
+      "references": [
+        "C:\\Users\\15792\\Desktop\\图图\\ChatGPT 图像 2026年10月26日 01_13_03.png",
+        "E:\\code\\suqing-container-upgrade\\docs\\images\\cover.png",
+        "E:\\code\\suqing-portals\\art\\model-source\\portal_model_preview.png"
+      ],
+      "review": "Visually inspected; identity and bilingual title retained for covers; four distinct battery positions visible. Cover selection pending user; not published."
+    },
+    "B": {
+      "name": "跨门归来",
+      "master": "E:\\code\\suqing-portals\\publishing\\ReleasePrep_20261106\\art\\masters\\B.png",
+      "generated_source": "C:\\Users\\15792\\.codex\\generated_images\\01a1af9d-55be-7c71-8980-fbf74702d3a2\\exec-4b40742f-d0d2-427a-af14-2647ca9e66b0.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "48664f86f5bc2387225805d4b30abfbf6282e1cc9c05d1db762d4e487e5d2549",
+      "unchanged_copy": true,
+      "prompt_record": "E:\\code\\suqing-portals\\publishing\\ReleasePrep_20261106\\art\\prompts.json",
+      "references": [
+        "C:\\Users\\15792\\Desktop\\图图\\ChatGPT 图像 2026年10月26日 01_13_03.png",
+        "E:\\code\\suqing-container-upgrade\\docs\\images\\cover.png",
+        "E:\\code\\suqing-portals\\art\\model-source\\portal_model_preview.png"
+      ],
+      "review": "Visually inspected; identity and bilingual title retained for covers; four distinct battery positions visible. Cover selection pending user; not published."
+    },
+    "C": {
+      "name": "雨夜归途",
+      "master": "E:\\code\\suqing-portals\\publishing\\ReleasePrep_20261106\\art\\masters\\C.png",
+      "generated_source": "C:\\Users\\15792\\.codex\\generated_images\\01a1b09e-2314-7f13-8657-0a63645497d3\\exec-af3b968f-e880-47f7-b72d-207977b1dd19.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "ecf1f1ddf581ea739add1be98d6b9dc64d1d05533b19ddc6e1487451b7621f2e",
+      "unchanged_copy": true,
+      "prompt_record": "E:\\code\\suqing-portals\\publishing\\ReleasePrep_20261106\\art\\prompts.json",
+      "references": [
+        "C:\\Users\\15792\\Desktop\\图图\\ChatGPT 图像 2026年10月26日 01_13_03.png",
+        "E:\\code\\suqing-container-upgrade\\docs\\images\\cover.png",
+        "E:\\code\\suqing-portals\\art\\model-source\\portal_model_preview.png"
+      ],
+      "review": "Visually inspected; identity and bilingual title retained for covers; four distinct battery positions visible. Cover selection pending user; not published."
+    },
+    "D": {
+      "name": "双门远行",
+      "master": "E:\\code\\suqing-portals\\publishing\\ReleasePrep_20261106\\art\\masters\\D.png",
+      "generated_source": "C:\\Users\\15792\\.codex\\generated_images\\01a1b09e-2314-7f13-8657-0a63645497d3\\exec-d27d2211-d8a8-4e9c-b798-975979d9e74a.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "f7eaf84af914f59a7b55fb5fb27d489478e1a4f4a4894ec3d93e519f7b41dce5",
+      "unchanged_copy": true,
+      "prompt_record": "E:\\code\\suqing-portals\\publishing\\ReleasePrep_20261106\\art\\prompts.json",
+      "references": [
+        "C:\\Users\\15792\\Desktop\\图图\\ChatGPT 图像 2026年10月26日 01_13_03.png",
+        "E:\\code\\suqing-container-upgrade\\docs\\images\\cover.png",
+        "E:\\code\\suqing-portals\\art\\model-source\\portal_model_preview.png"
+      ],
+      "review": "Visually inspected; identity and bilingual title retained for covers; four distinct battery positions visible. Cover selection pending user; not published."
+    },
+    "icon": {
+      "name": "独立四槽拱门icon",
+      "master": "E:\\code\\suqing-portals\\publishing\\ReleasePrep_20261106\\art\\masters\\icon.png",
+      "generated_source": "C:\\Users\\15792\\.codex\\generated_images\\01a1b09e-2314-7f13-8657-0a63645497d3\\exec-a7642767-e2f4-4a7c-af72-5c721f1e0ffd.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "1b360ab588abd5c44d61870a749ac06627f1cb32e9a8b545620339ac28e3926a",
+      "unchanged_copy": true,
+      "prompt_record": "E:\\code\\suqing-portals\\publishing\\ReleasePrep_20261106\\art\\prompts.json",
+      "references": [
+        "E:\\code\\suqing-portals\\art\\model-source\\portal_model_preview.png"
+      ],
+      "review": "Dedicated generated icon, not a cover crop; four battery positions and arch inspected.",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "fully_transparent_pixels": 923370,
+      "fully_opaque_pixels": 1388
+    }
+  },
+  "selected_variant": "C",
+  "selection_record": "art/selection.json"
+}

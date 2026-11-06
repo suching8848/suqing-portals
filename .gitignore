@@ -1,0 +1,38 @@
+__pycache__/
+*.class
+tests/results/native-home/
+tests/native-home/
+tests/*.log
+publishing/*.zip
+
+# Rebuildable local artifacts; retain source, art masters and publishing text.
+*.pyc
+*.pyo
+hs_err_pid*.log
+release/
+tests/results/
+tests/*_home/
+tests/runtime_validation/
+publishing/**/history/
+publishing/**/staging/
+*.tmp
+
+# Rebuildable local artifacts; retain source, art masters and publishing text.
+tests/backup_fixture_*/
+replay_pid*.log
+
+# Public source excludes reproducible diagnostics and private runtime homes.
+tests/**/*.log
+validation/*.log
+tests/**/native_home/
+tests/**/native-home/
+tests/**/pzo-home/
+tests/**/*_bytecode.txt
+**/decompiled/
+**/*.sqlite
+**/*.sqlite3
+**/players.db
+**/map_p.bin
+**/map_sand.bin
+art/model-source/legacy_full_bank_reference.png
+publishing/legacy-java/**/*.jar
