@@ -1,5 +1,7 @@
 # SuQing's Portals / 蘇清的传送门
 
+Current item identity, visibility and upload status: [workshop-item.json](publishing/workshop-item.json). Frozen manifests under release/ retain their preparation-time state; an old uploaded=false value there does not describe the current Steam item.
+
 Workshop item: [uploaded and verified private item](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880). Source repository: [suching8848/suqing-portals](https://github.com/suching8848/suqing-portals). Private upload and native content readback completed on2026-11-06. The item is not public; gameplay acceptance is unchanged.
 
 Version `0.1.3-lua-test.2`, Mod ID `SuQingPortals`. Target: the verified B42.21 branch, single-player testing. The portal uses pure Lua with no custom Java component; Viewpoint remains optional. This candidate has not passed user gameplay acceptance.

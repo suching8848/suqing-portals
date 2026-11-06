@@ -1,5 +1,7 @@
 # 蘇清的传送门 / SuQing's Portals
 
+当前工坊ID、可见性与上传状态见[workshop-item.json](publishing/workshop-item.json)。release/中的冻结manifest保留准备时状态；其中历史uploaded=false不代表当前工坊状态。
+
 工坊条目：[已上传并核验的私有条目](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880)。源码仓库：[suching8848/suqing-portals](https://github.com/suching8848/suqing-portals)。2026-11-06已完成私有上传与原生内容读回；未公开，游戏内验收状态不变。
 
 版本：0.1.3-lua-test.2。适用：当前核验的 B42.21 分支、单人测试。Mod ID：`SuQingPortals`。传送门本身使用纯 Lua，不需要自带 Java 组件；Viewpoint 为可选视角适配。
