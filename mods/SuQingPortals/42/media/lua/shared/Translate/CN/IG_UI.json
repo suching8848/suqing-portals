@@ -145,5 +145,10 @@
   "IGUI_SQP_ChargingUnloaded": "未充电：门所在地尚未加载",
   "IGUI_SQP_ChargingUnknown": "充电状态未知：暂时无法确认当地电力",
   "IGUI_SQP_ChargingFault": "充电已暂停：电量更新失败，请保留日志并检查状态",
-  "IGUI_SQP_SlotName": "槽%1 · %2"
+  "IGUI_SQP_SlotName": "槽%1 · %2",
+  "IGUI_SQP_PowerSource_solar": "Immersive Solar Arrays 太阳能储能系统",
+  "IGUI_SQP_GeneratorLoad": "传送门充电：%1 座，额外 %2 升/游戏小时",
+  "IGUI_SQP_GeneratorTotal": "含传送门的总耗油：%1 升/游戏小时",
+  "IGUI_SQP_ChargingUnsupported": "充电已暂停：当地电源尚无可用的计费适配，请检查电源和兼容范围",
+  "IGUI_SQP_Result_power_rollback_failed": "充电结算未能完成回滚，已暂停此门操作；请保留日志和存档以核查原电量。"
 }

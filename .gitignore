@@ -36,3 +36,8 @@ tests/**/*_bytecode.txt
 **/map_sand.bin
 art/model-source/legacy_full_bank_reference.png
 publishing/legacy-java/**/*.jar
+
+# Local save/configuration manifests and reproducible isolated delivery receipts.
+publishing/energy-upgrade-state.json
+publishing/EnergyCompat_20261106/
+publishing/Release_*/latest-frozen.json

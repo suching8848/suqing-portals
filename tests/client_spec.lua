@@ -209,6 +209,7 @@ P.BatterySlots.read(source)[1]:setUsedDelta(0.5);window:refresh(false)
 check(P.UI.chargingState(window.snapshot)=='ChargingUnpowered','partly discharged batteries need local power to charge')
 sourceSquare.powered=true
 sourceSquare.chunk={isGeneratorPoweringSquare=function() return true end}
+TEST.generator(sourceSquare,10);P.Power.refreshSources()
 window:refresh(false)
 label,powered=P.UI.powerText(window.snapshot)
 check(powered==true and label:find('IGUI_SQP_PowerSource_generator',1,true),'verified native chunk coverage names generator power')

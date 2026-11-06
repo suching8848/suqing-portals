@@ -1,11 +1,11 @@
 {
-  "version": "0.1.3-lua-test.2",
-  "time": "2026-11-06T20:24:25.163702+08:00",
+  "version": "0.1.4-lua-test.1",
+  "time": "2026-11-06T23:07:47.386886+08:00",
   "source": "E:\\code\\suqing-portals",
-  "archive": "E:\\code\\suqing-portals\\publishing\\SuQingPortals_0.1.3-lua-test.2_cover-C_test-candidate.zip",
-  "archive_bytes": 6372401,
-  "archive_sha256": "dfa1f3c6d9a350234bfdf3c386cefcaba10b58adf88b0a8a17b008b83cde5acd",
-  "members": 138,
+  "archive": "E:\\code\\suqing-portals\\publishing\\SuQingPortals_0.1.4-lua-test.1_test-candidate.zip",
+  "archive_bytes": 6390650,
+  "archive_sha256": "ac151049aac15382bcec877a9771ff53009a23f14dbf501058476f7025893285",
+  "members": 142,
   "every_member_sha256_verified": true,
   "game_started": false,
   "gameplay_acceptance": "pending_user",
@@ -32,13 +32,17 @@
       "bytes": 8752,
       "sha256": "87117d51bffc4a8a0e264730a4beef79c89869084f308d715c2b6171934237a1"
     },
+    "mods/SuQingPortals/42/media/lua/client/SuQingPortals/PowerDisplay.lua": {
+      "bytes": 2945,
+      "sha256": "1fcd1aab56400f9589eaaefe85a9a872296b9d2f63228de8c3cafeb4e70d16c7"
+    },
     "mods/SuQingPortals/42/media/lua/client/SuQingPortals/Transfer.lua": {
       "bytes": 16058,
       "sha256": "2499816ea9e1c9b133483e4392fbdef0ed1980eeddd58ef6af8a48018e086630"
     },
     "mods/SuQingPortals/42/media/lua/client/SuQingPortals/UI.lua": {
-      "bytes": 21242,
-      "sha256": "bf424acbdd864f8375b8a597e0040a25b9e2b85f9918626832bcef817757e2d1"
+      "bytes": 21417,
+      "sha256": "4e41036f81d4197816084e16c507c6137f19acf76012900f5bf4db62308713e4"
     },
     "mods/SuQingPortals/42/media/lua/client/SuQingPortals/Viewpoint.lua": {
       "bytes": 3214,
@@ -48,21 +52,29 @@
       "bytes": 552232,
       "sha256": "a614666fb91c0d0365e448e501e81dd796929856140bfc329038b1f6b4fce0b0"
     },
+    "mods/SuQingPortals/42/media/lua/server/SuQingPortals/ISAPower.lua": {
+      "bytes": 10044,
+      "sha256": "a52f0b9f2aa64e6b45f275f5d7f8c07d05f2081689b0f509fb5ebb3061d55842"
+    },
+    "mods/SuQingPortals/42/media/lua/server/SuQingPortals/Power.lua": {
+      "bytes": 10271,
+      "sha256": "868d141c31889f78630ef2d83908a778e8c01f9130bcae79ec9d87eaf42861da"
+    },
     "mods/SuQingPortals/42/media/lua/server/SuQingPortals/World.lua": {
-      "bytes": 34238,
-      "sha256": "9541ec6dcb5f257ac8840e5b1390d34466baa6caf75662e43ea6df21d379e56b"
+      "bytes": 35427,
+      "sha256": "8d0df09dad7f0009797bcaf56ab0bbfd3571b9203f14b69b16e9e4f90789cd83"
     },
     "mods/SuQingPortals/42/media/lua/shared/SuQingPortals/BatterySlots.lua": {
       "bytes": 12005,
       "sha256": "ec3e3865bd54e1d39e470db24a811bd3f8133b007f1e4aa2d3aa0632f3fdf329"
     },
     "mods/SuQingPortals/42/media/lua/shared/SuQingPortals/Core.lua": {
-      "bytes": 6976,
-      "sha256": "7c392b02aa5142abf5fd59f2bd96345bf74f3c2563c40e71281c116a0d53c813"
+      "bytes": 7146,
+      "sha256": "374a6caa115d8d5dcddee51e0a71a148d7519666bf86b5568cc460b3ec1f41c4"
     },
     "mods/SuQingPortals/42/media/lua/shared/Translate/CN/IG_UI.json": {
-      "bytes": 11849,
-      "sha256": "5f135b6cc9e15da368da13ea042ef6f0ebb91e4b2599cd0ae3fa90e92ba55947"
+      "bytes": 12375,
+      "sha256": "b65264f6a788811a80c4fd05bd7c21b0ada5eafebf487e97900af51136524ce5"
     },
     "mods/SuQingPortals/42/media/lua/shared/Translate/CN/Mod.json": {
       "bytes": 1145,
@@ -85,8 +97,8 @@
       "sha256": "d484c856e684728e767617f4fbc8062d7d57d620ba3afc2ca330168ba5ac0e5d"
     },
     "mods/SuQingPortals/42/media/lua/shared/Translate/EN/IG_UI.json": {
-      "bytes": 12786,
-      "sha256": "1e5673554da0857eaa59c1fe968bd846672f44887cf1670b3f914a1ad02fb693"
+      "bytes": 13338,
+      "sha256": "c618146594c8f38e0abd8d5b680f82dc731553fdc48e38c3a893e7f2492e4174"
     },
     "mods/SuQingPortals/42/media/lua/shared/Translate/EN/Mod.json": {
       "bytes": 1364,
@@ -537,20 +549,20 @@
       "sha256": "1c2a34206869c466c579e2bcc65a13d4a31ee296b7e924d62a558fb008d742c0"
     },
     "mods/SuQingPortals/42/mod.info": {
-      "bytes": 1584,
-      "sha256": "5700701fd9ba563b4c47b565eb65933099514c23efa8df1b0ac82a041b416ab5"
+      "bytes": 1759,
+      "sha256": "e8a138ffcbd70d920337ba3f2578cc30102d901a9bc807e9c5d7b322e71c66d3"
     },
     "mods/SuQingPortals/42/poster.png": {
       "bytes": 2288402,
       "sha256": "a43341105e1f32c816f38be720f373afb031cd1eb2a28fdea91eae89ea4e2d80"
     },
     "README.md": {
-      "bytes": 8088,
-      "sha256": "3d6f286f1858a1b16a9033c720488316ab74f3c3431e73df384a7603a2df97ec"
+      "bytes": 11418,
+      "sha256": "9b8088ec5d150ab52e491fe9c7866e110a492298c4d1235f735b56b027ad7e66"
     },
     "README.en.md": {
-      "bytes": 8397,
-      "sha256": "d9e5a84d224c5eb33fb1e133608185dd185a9c42e4ca86fa37b3cfae4ef191ea"
+      "bytes": 12070,
+      "sha256": "f73d410078bfae76028e08519c981c90d876edadab59479267ed1ea5f0d2691f"
     },
     "docs/bootstrap-fix-20261106.md": {
       "bytes": 2810,
@@ -560,9 +572,13 @@
       "bytes": 3522,
       "sha256": "df03a2e400d4159eddbb039de9b957900bb4c05d425d7f9976dfd73f4b1f3a80"
     },
+    "docs/供电兼容说明.md": {
+      "bytes": 9574,
+      "sha256": "b21c9ac71ae96e5e8341e0dc7ad87b2f18e3f291f3d277d1a311825eeb50e6d4"
+    },
     "docs/用户测试步骤.md": {
-      "bytes": 3661,
-      "sha256": "622e71dac7f3d19ecfe9e25f3a6a3dd7055085ff90de99a13f3e86d148337e32"
+      "bytes": 8874,
+      "sha256": "36f043ad910d3818d9733f0ceb269d6b0983f9bbf3a74489351f3c31276fcc4a"
     }
   }
 }

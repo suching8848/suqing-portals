@@ -1,0 +1,35 @@
+[h1]SuQing's Portals[/h1]
+Build paired portals and connect your bases with rechargeable car batteries. Departure pays; arrival needs no batteries or local electricity.
+
+[b]0.1.4 · B42.21 · Single-player[/b]
+
+[h2]Features and use[/h2]
+[list]
+[*]Four separate vanilla car-battery slots. Install, retrieve and recharge original items, preserving identity, condition, charge and custom data.
+[*]Name gates and create independent one-to-one two-way pairs. Sandbox trip cost 0.5–4 full-battery equivalents, default 2, entirely at departure. Four full batteries fund 8/2/1 trips at costs 0.5/2/4.
+[*]Arrival needs no battery or power. Returning requires enough energy there.
+[*]Resizable 2×2 management shows sources, charging, pairing, trips and battery details. Small windows retain scrolling; transfer stays in the footer.
+[*]Four directions, matching installed-battery bays and optional Viewpoint models. Ordinary isometric play also works.
+[/list]
+
+Each gate consumes 8 small metal sheets, 4 metal pipes, 8 electrical wires, 16 scrap electronics, 1 high-end camera and 1 vanilla handheld walkie-talkie, including makeshift. Requires Electrical 4/Welding 3. An unbroken screwdriver, welding torch and mask are retained; no extra torch fuel or rods. Install car batteries after construction.
+
+Build two gates through native construction, right-click to manage/name them and select the other gate to pair. Install enough charged batteries at departure, then transfer when ready. The supply-giver menu, grant code and test-tools option are removed.
+
+[h2]Charging and energy[/h2]
+Sandbox charging rate 0.05–4 full-battery equivalents/game hour, default 0.5 for the [b]whole gate[/b]. Four empty batteries take eight game hours to fill at default rate; replacing default trip cost takes four.
+
+Charging requires a loaded gate, verified local supply and a healthy unfilled battery. Indoor grid takes priority; otherwise one covering provider pays. Empty/full/damaged batteries, locks, unloading and power loss create no portal debit. No offline/unloaded catch-up.
+
+[b]Fuel generators[/b] independently pay for charge actually stored: 0.3 L/full-battery equivalent times GeneratorFuelConsumption. Default rate 0.5/native multiplier 0.1 add [b]0.015 L/game hour[/b], excluding normal generator/other-appliance use. Fuel limits charging.
+
+[b]Optional Immersive Solar Arrays 1.2.15[/b] (Workshop 3781944805, Mod ID ISA) pays from one selected bank's real storage. Its proxy is not a fuel generator. Unknown versions, ISA-Fix and unverifiable interfaces are rejected, not free charging. The separate [BETA]-Fix package is unsupported. Ordinary generators work without ISA.
+
+The generator panel shows portal demand and a combined total. Gates are not Java-native appliances; native load/ISA updateDrain remain intact to avoid double billing. BGI/native-load-only time estimates may run long, omitting this independent debit. Actual fuel/storage changes take precedence.
+
+[h2]Scope and limits[/h2]
+Pure Lua; no extra portal Java component. Optional Viewpoint retains its own requirements. Characters/carried items in one world only; [b]no vehicles, trailers or multiplayer[/b]. Recipe, original batteries and schema3 remain. Existing gates owe no new materials.
+
+Retrieve batteries and unpair before disabling. Furniture pickup is unsupported; demolition unpairs/releases originals. Blocked exits/loading failures use return/recovery; retry the context recovery action and keep logs. World/character/chunk files are not one atomic transaction; extreme interruption or corrupt saves retain limits.
+
+[b]Validation: complete offline checks passed. The user reported all current single-player gameplay tests working normally; every third-party combination is not thereby verified.[/b]

@@ -65,7 +65,7 @@ end
 function TEST.reset()
     local database=ModData.getOrCreate("SuQingPortals.World")
     for entry in pairs(database) do database[entry]=nil end
-    TEST.squares,TEST.players={},{}
+    TEST.squares,TEST.players,TEST.generators={},{},{}
     TEST.queued={}
     TEST.pathBlocked=false
     if SuQingPortals.Actions then SuQingPortals.Actions.pending={} end
@@ -181,7 +181,7 @@ end
 function getTextOrNull(key) return 'ui:'..key end
 function getMouseX() return TEST.mouseX or 0 end
 function getMouseY() return TEST.mouseY or 0 end
-function instanceof(item,typeName) return typeName=='InventoryContainer' and item.getInventory~=nil end
+function instanceof(item,typeName) return item and (item.class==typeName or (typeName=='InventoryContainer' and item.getInventory~=nil)) end
 IsoUtils={XToScreen=function(x,y,z) return (x-y)*64 end,YToScreen=function(x,y,z) return (x+y)*32-z*96 end}
 IsoCamera={getOffX=function() return 0 end,getOffY=function() return 0 end,getScreenLeft=function() return 0 end,getScreenTop=function() return 0 end}
 TEST.contextPickCalls=0

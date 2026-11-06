@@ -1,0 +1,21 @@
+{
+  "local_publisher": "tools/publish_portal_release.py",
+  "source_publisher": "ReleaseRepair_20261106/tools/publish_workshop_release.py",
+  "source_sha256": "48c1e185ef6eff08f27405d82af4ee022ce40c938de522e707b7ddf252bd11df",
+  "local_sha256": "87818a30326d7b4281cf33e6b73244fad3e643c3891a9ff7c3a2cf51481042d4",
+  "changes": [
+    "Keep the historical publication receipt ledger location",
+    "Allow stable portal releases only for existing item 3834693880 with explicit publication authorization and gameplay_accepted + publication_ready",
+    "Normalize duplicated Windows line endings for the committed source; no executable logic change"
+  ],
+  "preserved": [
+    "Existing-item visibility is queried and preserved",
+    "All owner/app/slug/content/text/preview/dependency guards",
+    "Durable receipts and uncertainty/retry guards",
+    "Separate read/preflight/upload/verify stages; no implicit create"
+  ],
+  "syntax_check": "PASS in memory",
+  "steam_calls_during_preparation": false,
+  "source_publisher_unchanged": true,
+  "upload_publisher_sha256": "68fb9a51963478cd84e3d95eb84ac9757b9629eddcc87e11b8dedb8cf94a569a"
+}

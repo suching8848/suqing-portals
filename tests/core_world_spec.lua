@@ -64,49 +64,26 @@ near(Core.totalCharge(broken), 0, "charging rollback atomic")
 local Slots = SuQingPortals.BatterySlots
 check(SuQingPortalCodec == nil, "pure Lua runtime has no codec global")
 local powerSquare=T.square(600,600,0,false)
-local powerObject=T.object(powerSquare)
-World.register(powerObject)
+local powerObject=T.object(powerSquare);World.register(powerObject)
 local power=World.powerInfo(powerObject)
-check(power.loaded and power.powered==false and power.source=="none","loaded disconnected gate reports no local power")
+check(power.loaded and power.powered==false,'disconnected gate reports no power')
 powerSquare.grid=true
-power=World.powerInfo(powerObject)
-check(power.grid==false and power.powered==false and power.source=="none","outdoor grid availability never claims a usable connection")
+check(not World.localPower(powerObject),'outdoor grid cannot charge')
 powerSquare.room={}
-power=World.powerInfo(powerObject)
-check(power.grid and power.powered and power.source=="grid","indoor grid power positively identified")
+check(World.powerInfo(powerObject).source=='grid' and World.localPower(powerObject),'indoor grid selected without fuel billing')
 powerSquare.grid,powerSquare.room,powerSquare.powered=false,nil,true
-power=World.powerInfo(powerObject)
-check(power.powered and power.generator==nil and power.source=="area","regional power without coverage evidence has unknown source")
-function powerSquare:getGenerator() error("same-tile generator lookup must never identify coverage") end
-local coverageCalls=0
-powerSquare.chunk={isGeneratorPoweringSquare=function(self,x,y,z)
-    coverageCalls=coverageCalls+1
-    check(x==600 and y==600 and z==0,"native coverage query only inspects the current portal square")
-    return true
-end}
-power=World.powerInfo(powerObject)
-check(power.generator and power.source=="generator" and coverageCalls==1,"native chunk coverage positively identifies generator supply from any covered tile")
-powerSquare.grid,powerSquare.room=true,{}
-power=World.powerInfo(powerObject)
-check(power.grid and power.generator and power.source=="grid_generator","simultaneous eligible grid and generator supplies remain visible")
-powerSquare.chunk.isGeneratorPoweringSquare=function() return false end
-power=World.powerInfo(powerObject)
-check(power.powered and power.grid and power.generator==false and power.area and power.source=="grid_area","grid plus unconfirmed regional source is not mislabelled as generator")
-powerSquare.grid,powerSquare.room=false,nil
-power=World.powerInfo(powerObject)
-check(power.powered and power.generator==false and power.source=="area","haveElectricity alone cannot override a negative native generator coverage result")
-powerSquare.chunk.isGeneratorPoweringSquare=function() error("optional API unavailable") end
-power=World.powerInfo(powerObject)
-check(power.powered and power.source=="area" and power.generator==nil,"coverage API failure safely keeps unknown regional source")
-check(World.localPower(powerObject)==true and World.State(powerObject).powerInfo.source=="area","display inspection never changes the legacy charging predicate")
-powerSquare.powered=false
-power=World.powerInfo(powerObject)
-check(power.powered==false and power.generator==false and power.source=="none","power loss updates connection without stale generator guesses")
-T.squares["600:600:0"]=nil
-power=World.powerInfo(powerObject)
-check(not power.loaded and power.powered==nil and power.source=="unknown","unloaded square reports unknown without reusing cached power")
-check(World.powerInfo(nil).source=="unknown","missing square power remains unknown")
-T.squares["600:600:0"]=powerSquare
+SuQingPortals.Power.refreshSources()
+check(World.powerInfo(powerObject).source=='area' and not World.localPower(powerObject),'unmetered regional source never provides free charging')
+local powerGen=T.generator(T.square(602,600,0,false),10)
+SuQingPortals.Power.refreshSources()
+check(World.powerInfo(powerObject).source=='generator' and World.localPower(powerObject),'loaded activated covering generator is a billable source')
+powerGen.activated=false
+check(not World.localPower(powerObject),'inactive generator cannot provide charge')
+powerGen.activated=true
+T.squares['600:600:0']=nil
+check(not World.powerInfo(powerObject).loaded,'unloaded gate power remains unknown')
+check(World.powerInfo(nil).source=='unknown','missing gate remains unknown')
+T.squares['600:600:0']=powerSquare
 local sourceSquare,targetSquare=T.square(100,100,0,true),T.square(10000,9000,0,false)
 local source,target=T.object(sourceSquare),T.object(targetSquare,"suqing_portal_01_3")
 local sourceRecord,targetRecord=World.register(source),World.OnCreate({thumpable=target})

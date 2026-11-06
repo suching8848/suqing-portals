@@ -40,7 +40,7 @@ function U.powerText(snapshot)
     if not info or info.powered==nil then return text("PowerUnknown"),nil end
     if not info.powered then return text("PowerDisconnected"),false end
     local source=info.source
-    local known={grid=true,generator=true,grid_generator=true,grid_area=true,area=true}
+    local known={grid=true,generator=true,solar=true,grid_generator=true,grid_area=true,area=true}
     if not known[source] then source="area" end
     return text("PowerConnected",text("PowerSource_"..source)),true
 end
@@ -50,6 +50,7 @@ function U.chargingState(snapshot)
     if s.migrationRequired then return "MigrationStatus" end
     if not s.storageReady then return "StorageUnavailable" end
     if s.pending then return "TravelBusy" end
+    if s.chargeError=="power_unsupported" then return "ChargingUnsupported" end
     if s.chargeError then return "ChargingFault" end
     local installed,healthy,needsCharge=0,0,false
     for slot=1,4 do
@@ -68,6 +69,7 @@ function U.chargingState(snapshot)
     if s.loaded==false then return "ChargingUnloaded" end
     local info=s.powerInfo
     if not info or info.powered==nil then return "ChargingUnknown" end
+    if info.powered and info.metered==false then return "ChargingUnsupported" end
     return info.powered and "ChargingActive" or "ChargingUnpowered"
 end
 

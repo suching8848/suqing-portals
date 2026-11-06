@@ -3,7 +3,7 @@ SuQingPortals = SuQingPortals or {}
 local Core = {}
 SuQingPortals.Core = Core
 
-Core.VERSION = "0.1.3-lua-test.2"
+Core.VERSION = "0.1.4"
 Core.SCHEMA = 3
 Core.SLOT_COUNT = 4
 Core.TRANSFER_COST = 2.0

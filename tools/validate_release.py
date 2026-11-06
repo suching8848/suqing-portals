@@ -80,7 +80,7 @@ def translations():
             literal.update('IGUI_SQP_' + x for x in re.findall(r'\btext\(\s*"([A-Za-z0-9_]+)"\s*[,)]', content))
             if 'text("PowerSource_"..source)' in content:
                 literal.update('IGUI_SQP_PowerSource_' + suffix
-                               for suffix in ('grid', 'generator', 'grid_generator', 'grid_area', 'area'))
+                               for suffix in ('grid', 'generator', 'solar', 'grid_generator', 'grid_area', 'area'))
     missing = literal - game_keys['EN']
     if missing:
         raise RuntimeError('Untranslated UI literals: ' + repr(sorted(missing)))
@@ -138,16 +138,29 @@ def main():
     run('kahlua_compile', interpreter(*(lua + translated), compile_only=True), cwd=GAME)
     translations()
     shared_slots = MOD / 'media/lua/shared/SuQingPortals/BatterySlots.lua'
+    power_modules = [MOD / 'media/lua/server/SuQingPortals/ISAPower.lua', MOD / 'media/lua/server/SuQingPortals/Power.lua']
     shared_storage = [shared_slots] if shared_slots.exists() else []
     slots_bootstrap = [ROOT / 'tests/slots_bootstrap.lua'] if (ROOT / 'tests/slots_bootstrap.lua').exists() else []
+    run('native_power_api', [sys.executable, ROOT / 'tools/validate_power_api.py'])
+    run('power_settlement', interpreter(ROOT / 'tests/core_world_bootstrap.lua', *slots_bootstrap,
+        MOD / 'media/lua/shared/SuQingPortals/Core.lua', *shared_storage, *power_modules,
+        MOD / 'media/lua/server/SuQingPortals/World.lua', ROOT / 'tests/power_spec.lua'), cwd=GAME)
+    run('power_display', interpreter(ROOT / 'tests/core_world_bootstrap.lua',
+        MOD / 'media/lua/client/SuQingPortals/PowerDisplay.lua', ROOT / 'tests/power_display_spec.lua'), cwd=GAME)
+    run('isa_power', interpreter(MOD / 'media/lua/server/SuQingPortals/ISAPower.lua', ROOT / 'tests/isa_power_spec.lua'), cwd=GAME)
+    isa_source = Path(r'D:\steam\steamapps\workshop\content\108600\3781944805\mods\ImmersiveSolarArrays\42\media\lua\server\ImmersiveSolarArrays\PowerBank\PowerBankObject_Server.lua')
+    run('isa_native_interop', interpreter(ROOT / 'tests/isa_native_interop_bootstrap.lua', isa_source,
+        MOD / 'media/lua/server/SuQingPortals/ISAPower.lua', ROOT / 'tests/isa_native_interop_spec.lua'), cwd=GAME)
     run('core_world', interpreter(ROOT / 'tests/core_world_bootstrap.lua', *slots_bootstrap,
         MOD / 'media/lua/shared/SuQingPortals/Core.lua',
         *shared_storage,
+        *power_modules,
         MOD / 'media/lua/server/SuQingPortals/World.lua', ROOT / 'tests/core_world_spec.lua'), cwd=GAME)
     if (ROOT / 'tests/client_bootstrap.lua').exists():
         run('client_transfer', interpreter(ROOT / 'tests/core_world_bootstrap.lua', *slots_bootstrap,
             MOD / 'media/lua/shared/SuQingPortals/Core.lua',
             *shared_storage,
+            *power_modules,
             MOD / 'media/lua/server/SuQingPortals/World.lua',
             ROOT / 'tests/client_bootstrap.lua',
             MOD / 'media/lua/client/SuQingPortals/Build.lua',
@@ -161,6 +174,7 @@ def main():
         run('inventory_native_source', [sys.executable, ROOT / 'tools/prepare_inventory_guard_fixture.py'])
         run('inventory_guard', interpreter(ROOT / 'tests/core_world_bootstrap.lua',
             MOD / 'media/lua/shared/SuQingPortals/Core.lua', *shared_storage,
+            *power_modules,
             MOD / 'media/lua/server/SuQingPortals/World.lua',
             ROOT / 'tests/inventory_guard_bootstrap.lua', ROOT / 'tests/inventory_guard_native.lua',
             MOD / 'media/lua/client/SuQingPortals/InventoryGuard.lua', ROOT / 'tests/inventory_guard_spec.lua'), cwd=GAME)

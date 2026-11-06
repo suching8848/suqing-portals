@@ -101,7 +101,9 @@ def deploy():
     if TARGET.resolve() != TARGET.absolute():
         raise RuntimeError('Refusing redirected test-mod path')
     changes = {p for p in set(expected) | set(state['runtime_before']) if expected.get(p) != state['runtime_before'].get(p)}
-    if changes != ALLOWED or set(expected) != set(state['runtime_before']):
+    allow_added = globals().get('ALLOW_ADDED_FILES', False)
+    old_paths, new_paths = set(state['runtime_before']), set(expected)
+    if changes != ALLOWED or not old_paths.issubset(new_paths) or (not allow_added and new_paths != old_paths):
         raise RuntimeError('Unexpected hotfix scope: ' + repr(changes))
     if any(Path(p).suffix.lower() in ('.jar', '.class', '.dll') for p in expected):
         raise RuntimeError('Non-Lua product binary found')

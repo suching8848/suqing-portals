@@ -1,5 +1,6 @@
 require "SuQingPortals/Core"
 require "SuQingPortals/BatterySlots"
+require "SuQingPortals/Power"
 SuQingPortals = SuQingPortals or {}
 local SP, Core = SuQingPortals, SuQingPortals.Core
 local Slots = SuQingPortals.BatterySlots
@@ -214,56 +215,15 @@ function World.List(player, source)
 end
 
 function World.localPower(object)
-    local square = object and object:getSquare()
-    if not square then return nil end
-    if square.haveElectricity and square:haveElectricity() then return true end
-    if square.hasGridPower and square:hasGridPower() and square.getRoom and square:getRoom() then return true end
-    return false
+    local info = SP.Power.info(object)
+    return info.powered == true and info.metered == true
 end
 
 -- Display-only inspection of this loaded square. The charging predicate above
 -- remains unchanged. getGenerator() only finds an object on the same tile;
 -- the native chunk coverage query also recognizes generators on other tiles.
 function World.powerInfo(object)
-    local info = { loaded = false, source = "unknown" }
-    local ok, square = pcall(function() return object and object:getSquare() end)
-    if not ok or not square then return info end
-    local loaded, current = pcall(function()
-        local cell = getCell and getCell()
-        return cell and cell:getGridSquare(square:getX(), square:getY(), square:getZ())
-    end)
-    if not loaded or current ~= square then return info end
-    info.loaded = true
-    local read, regional, grid = pcall(function()
-        local areaPower, gridPower
-        if square.haveElectricity then areaPower = square:haveElectricity() == true end
-        if square.hasGridPower and square.getRoom then
-            gridPower = square:hasGridPower() and square:getRoom() ~= nil
-        end
-        return areaPower, gridPower
-    end)
-    if not read then return info end
-    info.grid = grid
-    if regional == true or grid == true then info.powered = true
-    elseif regional ~= nil and grid ~= nil then info.powered = false end
-    if regional == false then info.generator = false end
-    if regional then
-        local checked, covered = pcall(function()
-            local chunk = square.getChunk and square:getChunk()
-            if chunk and chunk.isGeneratorPoweringSquare then
-                return chunk:isGeneratorPoweringSquare(square:getX(), square:getY(), square:getZ())
-            end
-        end)
-        if checked and type(covered) == "boolean" then info.generator = covered end
-    end
-    info.area = regional == true and info.generator ~= true
-    if grid and info.generator then info.source = "grid_generator"
-    elseif grid and info.area then info.source = "grid_area"
-    elseif grid then info.source = "grid"
-    elseif info.generator then info.source = "generator"
-    elseif info.powered then info.source = "area"
-    elseif info.powered == false then info.source = "none" end
-    return info
+    return SP.Power.info(object)
 end
 
 function World.getSnapshot(object)
@@ -298,7 +258,8 @@ function World.getSnapshot(object)
     snapshot.storageReady = valid
     snapshot.migrationRequired = data.schema ~= 3 or data.migrationJournal ~= nil
     snapshot.migrationError = data.migrationError
-    snapshot.reason = validationCode or (data.pendingToken and "portal_busy") or nil
+    snapshot.reason = validationCode or (data.pendingToken and "portal_busy") or
+        (data.chargeError == "power_rollback_failed" and "power_rollback_failed") or nil
     snapshot.legacyItems = {}
     if data.schema == 1 then
         for _, item in ipairs(Slots.legacyItems(object)) do
@@ -306,7 +267,7 @@ function World.getSnapshot(object)
                 charge = Core.isBattery(item) and Core.chargeOf(item) or nil, condition = item:getCondition() }
         end
     end
-    snapshot.canTeleport = valid and snapshot.pairId ~= nil and not snapshot.pending and snapshot.totalCharge + Core.EPSILON >= snapshot.cost
+    snapshot.canTeleport = valid and data.chargeError ~= "power_rollback_failed" and snapshot.pairId ~= nil and not snapshot.pending and snapshot.totalCharge + Core.EPSILON >= snapshot.cost
     return snapshot
 end
 
@@ -322,6 +283,7 @@ local function validateAction(player, object)
     if player.isDead and player:isDead() then return false, "player_dead" end
     if not Core.near({ x = player:getX(), y = player:getY(), z = player:getZ() }, store().portals[data.id], 3) then return false, "too_far" end
     if data.pendingToken then return false, "portal_busy" end
+    if data.chargeError == "power_rollback_failed" then return false, "power_rollback_failed" end
     return true
 end
 
@@ -666,28 +628,61 @@ end
 function World.chargeTick()
     if not supported() then return end
     local now = hours()
-    local rate = Core.DEFAULT_CHARGE_PER_HOUR
-    if SandboxVars and SandboxVars.SuQingPortals and tonumber(SandboxVars.SuQingPortals.ChargePerHour) then
-        rate = math.max(0, tonumber(SandboxVars.SuQingPortals.ChargePerHour))
-    end
+    local power, rate = SP.Power, SP.Power.chargeRate()
+    power.refreshSources()
     for id, record in pairs(store().portals) do
         local object = not record.removed and World.findObject(record) or nil
         if object then
             local data, previous = objectData(object), runtime.clocks[id]
-            local powered = World.localPower(object) == true
+            local clockHours = now
+            local info = power.info(object)
+            local powered = info.powered == true and info.metered == true
             local valid = World.validateContainer(object)
-            if valid and not data.pendingToken and powered and previous and previous.powered and now > previous.hours then
-                local items = World.batteries(object)
-                local before = chargeSnapshot(items)
-                local amount, code = Core.charge(items, (now - previous.hours) * rate)
-                if amount and amount > 0 then
-                    local saved, persistError = persistMutation(object, items, before)
-                    if not saved then amount, code = nil, persistError end
-                end
-                if amount == nil then data.chargeError = code
-                elseif amount > 0 then data.chargeError = nil; dirty(object) end
+            if data.chargeError ~= "power_rollback_failed" then
+                if info.error == "power_unsupported" then data.chargeError = "power_unsupported"
+                elseif data.chargeError == "power_unsupported" then data.chargeError = nil end
             end
-            runtime.clocks[id] = { hours = now, powered = powered }
+            if valid and not data.pendingToken and data.chargeError ~= "power_rollback_failed" and powered
+                and previous and previous.powered and previous.providerKey == info.providerKey and now > previous.hours then
+                local items = World.batteries(object)
+                local capacity, due = power.capacity(items), (now - previous.hours) * rate
+                local requested = math.min(capacity, due)
+                if requested > 0 and due <= Core.EPSILON then clockHours = previous.hours end
+                if requested > 0 and due > Core.EPSILON then
+                    local before = chargeSnapshot(items)
+                    local payment, approved, code = power.begin(object, requested, info.providerKey)
+                    if payment then
+                        local amount
+                        amount, code = Core.charge(items, approved)
+                        if amount then
+                            local saved, persistError = persistMutation(object, items, before)
+                            if not saved then amount, code = nil, persistError end
+                        end
+                        if amount then
+                            local settled, failure = power.finish(payment, amount)
+                            if not settled then
+                                local restored = pcall(function()
+                                    for slot = 1, 4 do
+                                        if items[slot] and before[slot] ~= nil then
+                                            items[slot]:setUsedDelta(before[slot])
+                                            if math.abs(items[slot]:getCurrentUsesFloat()-before[slot])>Core.EPSILON then error("charge rollback readback failed") end
+                                        end
+                                    end
+                                end)
+                                local persisted = restored and Slots.persist(object, items)
+                                amount, code = nil, persisted and failure or "power_rollback_failed"
+                            end
+                        end
+                        if not amount then
+                            local restored = power.rollback(payment)
+                            if not restored or code == "battery_rollback_failed" then code = "power_rollback_failed" end
+                        end
+                        if amount then data.chargeError = nil; dirty(object)
+                        else data.chargeError = code or "power_write_failed" end
+                    else data.chargeError = code or "power_write_failed" end
+                end
+            end
+            runtime.clocks[id] = { hours = clockHours, powered = powered, providerKey = info.providerKey }
             visual(object)
         else runtime.clocks[id] = nil end
     end
@@ -742,6 +737,7 @@ end
 if Events then
     if Events.OnGameStart then Events.OnGameStart.Add(function()
         runtime.objects, runtime.clocks, runtime.ticks = {}, {}, 0
+        SP.Power.initialized = false
     end) end
     if Events.OnTick then Events.OnTick.Add(function()
         runtime.ticks = runtime.ticks + 1

@@ -1,0 +1,24 @@
+{
+  "version": "0.1.4",
+  "workshop_item_id": "3834693880",
+  "workshop_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880",
+  "status": "uploaded_verified_public",
+  "verified_at_bjt": "2026-11-06T23:35:54.470271+08:00",
+  "native_submit_result": 1,
+  "visibility": 0,
+  "readback_checks": {
+    "title": true,
+    "description": true,
+    "metadata": true,
+    "content_bytes": true,
+    "preview_present": true,
+    "tags": true,
+    "dependencies": true
+  },
+  "runtime_files": 136,
+  "content_tree_sha256": "5a315001896a87aae5b514538a81648d40b09e01bab5083d27b2efeb123025ec",
+  "content_bytes": 13496297,
+  "user_single_player_accepted": true,
+  "logic_unchanged_during_stable_promotion": true,
+  "verification_boundary": "Native success plus exact text, metadata tree hash, content-byte total, tags and preview presence; not a remote per-file SHA download."
+}

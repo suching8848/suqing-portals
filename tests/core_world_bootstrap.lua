@@ -5,8 +5,12 @@ function isServer() return false end
 local saved = {}
 ModData = { getOrCreate = function(name) saved[name] = saved[name] or {}; return saved[name] end }
 TEST = { hours = 100, squares = {}, players = {}, itemId = 100, checks = 0 }
+TEST.generators = {}
 function getGameTime() return { getWorldAgeHours = function() return TEST.hours end } end
-function getCell() return { getGridSquare = function(self, x, y, z) return TEST.squares[x .. ":" .. y .. ":" .. z] end } end
+function getCell() return { getGridSquare = function(self, x, y, z) return TEST.squares[x .. ":" .. y .. ":" .. z] end,
+    getProcessIsoObjects = function() return TEST.list(TEST.generators) end } end
+function instanceof(object, class) return object and object.class == class end
+IsoGenerator = { isPoweringSquare = function(gx,gy,gz,x,y,z) return (gx-x)^2+(gy-y)^2<=400 and math.abs(gz-z)<=3 end }
 function getSpecificPlayer(index) return TEST.players[index] end
 Events = {}
 for _, name in ipairs({ "OnTick", "LoadGridsquare", "OnObjectAboutToBeRemoved", "OnCreatePlayer", "OnGameStart" }) do
@@ -99,7 +103,23 @@ function TEST.square(x, y, z, powered)
     function square:getChunk() return self.chunk end
     function square:AddWorldInventoryItem(item, x, y, z) self.dropped[#self.dropped + 1] = item end
     TEST.squares[x .. ":" .. y .. ":" .. z] = square
+    if powered then TEST.generator(square, 10) end
     return square
+end
+
+function TEST.generator(square, fuel)
+    local gen = {class="IsoGenerator", square=square, fuel=fuel or 10, activated=true, connected=true, condition=100}
+    function gen:getSquare() return self.square end
+    function gen:getFuel() return self.fuel end
+    function gen:setFuel(value) self.fuel=nativeFloat32 and nativeFloat32(math.max(0,value)) or math.max(0,value); if self.failWrite then self.failWrite=false;error('fuel setter failed') end end
+    function gen:isActivated() return self.activated end
+    function gen:setActivated(value) self.activated=value end
+    function gen:isConnected() return self.connected end
+    function gen:getCondition() return self.condition end
+    function gen:getTextureName() return 'appliances_misc_01_0' end
+    function gen:getTotalPowerUsing() return 0.002 end
+    TEST.generators[#TEST.generators+1]=gen
+    return gen
 end
 
 function TEST.object(square, sprite)
