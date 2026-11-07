@@ -147,8 +147,10 @@
   "IGUI_SQP_ChargingFault": "Charging paused: a charge update failed. Keep the log and check the gate.",
   "IGUI_SQP_SlotName": "Slot %1 - %2",
   "IGUI_SQP_PowerSource_solar": "Immersive Solar Arrays battery bank",
+  "IGUI_SQP_PowerSource_livewire": "Live Wire battery storage",
   "IGUI_SQP_GeneratorLoad": "Portal charging: %1 gate(s), additional %2 L/game hour",
   "IGUI_SQP_GeneratorTotal": "Total including portal charging: %1 L/game hour",
   "IGUI_SQP_ChargingUnsupported": "Charging paused: no supported energy meter for this local source. Check the source and compatibility.",
+  "IGUI_SQP_ChargingLiveWireUnavailable": "Charging paused: Live Wire battery storage cannot be used.",
   "IGUI_SQP_Result_power_rollback_failed": "Charging settlement could not roll back safely. Gate operations are paused; preserve logs and the save for balance recovery."
 }

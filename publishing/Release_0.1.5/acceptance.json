@@ -1,0 +1,23 @@
+{
+  "version": "0.1.5",
+  "workshop_id": "3834693880",
+  "frozen_at_bjt": "2026-11-08T07:40:53.191934+08:00",
+  "gameplay_accepted_scope": "B42.21 single-player isolated compatibility setup on 2026-11-08",
+  "runtime_files": 137,
+  "runtime_exactly_matches_test_zip_and_personal_installation": true,
+  "test_candidate_archive_sha256": "56b395b0fd48daa0e04523b6a20405bc71862c3a4240157733507fc20887799c",
+  "changed_from_0.1.4": [
+    "42/media/lua/client/SuQingPortals/UI.lua",
+    "42/media/lua/server/SuQingPortals/LiveWirePower.lua",
+    "42/media/lua/server/SuQingPortals/Power.lua",
+    "42/media/lua/server/SuQingPortals/World.lua",
+    "42/media/lua/shared/SuQingPortals/Core.lua",
+    "42/media/lua/shared/Translate/CN/IG_UI.json",
+    "42/media/lua/shared/Translate/EN/IG_UI.json",
+    "42/mod.info"
+  ],
+  "preview_sha256": "653360142c28bb6fe9a0545f0fe23ca8e0928756bb874a049361fa07601c774a",
+  "preview_same_as_0.1.4": true,
+  "content_tree_sha256": "2830c1ea98cb64a5a8c201191d6046ef25eca76bbcf44b8f2f4bfa2546457f35",
+  "content_bytes": 13505257
+}

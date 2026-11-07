@@ -638,14 +638,20 @@ function World.chargeTick()
             local info = power.info(object)
             local powered = info.powered == true and info.metered == true
             local valid = World.validateContainer(object)
+            local available = valid and not data.pendingToken and data.chargeError ~= "power_rollback_failed"
+            local items = available and powered and World.batteries(object) or nil
+            local capacity = items and power.capacity(items) or 0
+            local elapsed = previous and now - previous.hours or 0
             if data.chargeError ~= "power_rollback_failed" then
-                if info.error == "power_unsupported" then data.chargeError = "power_unsupported"
-                elseif data.chargeError == "power_unsupported" then data.chargeError = nil end
+                if info.error == "power_unsupported" or info.error == "power_livewire_unavailable" then
+                    data.chargeError = info.error
+                elseif data.chargeError == "power_unsupported" or data.chargeError == "power_livewire_unavailable" then
+                    data.chargeError = nil
+                end
             end
-            if valid and not data.pendingToken and data.chargeError ~= "power_rollback_failed" and powered
-                and previous and previous.powered and previous.providerKey == info.providerKey and now > previous.hours then
-                local items = World.batteries(object)
-                local capacity, due = power.capacity(items), (now - previous.hours) * rate
+            if items and previous and previous.powered and previous.providerKey == info.providerKey and elapsed > 0
+                and (not info.maxInterval or elapsed <= info.maxInterval) then
+                local due = elapsed * rate
                 local requested = math.min(capacity, due)
                 if requested > 0 and due <= Core.EPSILON then clockHours = previous.hours end
                 if requested > 0 and due > Core.EPSILON then
@@ -653,7 +659,7 @@ function World.chargeTick()
                     local payment, approved, code = power.begin(object, requested, info.providerKey)
                     if payment then
                         local amount
-                        amount, code = Core.charge(items, approved)
+                        amount, code = Core.charge(items, approved, payment.liveWireLimited)
                         if amount then
                             local saved, persistError = persistMutation(object, items, before)
                             if not saved then amount, code = nil, persistError end
@@ -682,7 +688,8 @@ function World.chargeTick()
                     else data.chargeError = code or "power_write_failed" end
                 end
             end
-            runtime.clocks[id] = { hours = clockHours, powered = powered, providerKey = info.providerKey }
+            local observed = powered and (info.source ~= "livewire" or (available and capacity > Core.EPSILON))
+            runtime.clocks[id] = { hours = clockHours, powered = observed, providerKey = info.providerKey }
             visual(object)
         else runtime.clocks[id] = nil end
     end

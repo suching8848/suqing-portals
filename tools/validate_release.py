@@ -80,7 +80,7 @@ def translations():
             literal.update('IGUI_SQP_' + x for x in re.findall(r'\btext\(\s*"([A-Za-z0-9_]+)"\s*[,)]', content))
             if 'text("PowerSource_"..source)' in content:
                 literal.update('IGUI_SQP_PowerSource_' + suffix
-                               for suffix in ('grid', 'generator', 'solar', 'grid_generator', 'grid_area', 'area'))
+                               for suffix in ('grid', 'generator', 'solar', 'livewire', 'grid_generator', 'grid_area', 'area'))
     missing = literal - game_keys['EN']
     if missing:
         raise RuntimeError('Untranslated UI literals: ' + repr(sorted(missing)))
@@ -138,13 +138,22 @@ def main():
     run('kahlua_compile', interpreter(*(lua + translated), compile_only=True), cwd=GAME)
     translations()
     shared_slots = MOD / 'media/lua/shared/SuQingPortals/BatterySlots.lua'
-    power_modules = [MOD / 'media/lua/server/SuQingPortals/ISAPower.lua', MOD / 'media/lua/server/SuQingPortals/Power.lua']
+    server_portals = MOD / 'media/lua/server/SuQingPortals'
+    power_modules = [server_portals / name for name in ('ISAPower.lua', 'LiveWirePower.lua', 'Power.lua')]
     shared_storage = [shared_slots] if shared_slots.exists() else []
     slots_bootstrap = [ROOT / 'tests/slots_bootstrap.lua'] if (ROOT / 'tests/slots_bootstrap.lua').exists() else []
     run('native_power_api', [sys.executable, ROOT / 'tools/validate_power_api.py'])
     run('power_settlement', interpreter(ROOT / 'tests/core_world_bootstrap.lua', *slots_bootstrap,
         MOD / 'media/lua/shared/SuQingPortals/Core.lua', *shared_storage, *power_modules,
         MOD / 'media/lua/server/SuQingPortals/World.lua', ROOT / 'tests/power_spec.lua'), cwd=GAME)
+    livewire = GAME.parents[1] / 'workshop/content/108600/3821807453/mods/batman_LiveWire/42.21/media/lua'
+    lw_shared = livewire / 'shared/LiveWire'
+    lw_server = livewire / 'server/LiveWire'
+    run('livewire_storage', interpreter(ROOT / 'tests/core_world_bootstrap.lua', *slots_bootstrap,
+        *(lw_shared / name for name in ('LW_Core.lua', 'LW_Defs.lua', 'LW_Physics.lua', 'LW_Marks.lua')),
+        *(lw_server / name for name in ('LW_PowerHistory.lua', 'LW_Registry.lua', 'LW_Demand.lua', 'LW_Batteries.lua', 'LW_Simulation.lua')),
+        MOD / 'media/lua/shared/SuQingPortals/Core.lua', *shared_storage, *power_modules,
+        server_portals / 'World.lua', ROOT / 'tests/livewire_storage_spec.lua'), cwd=GAME)
     run('power_display', interpreter(ROOT / 'tests/core_world_bootstrap.lua',
         MOD / 'media/lua/client/SuQingPortals/PowerDisplay.lua', ROOT / 'tests/power_display_spec.lua'), cwd=GAME)
     run('isa_power', interpreter(MOD / 'media/lua/server/SuQingPortals/ISAPower.lua', ROOT / 'tests/isa_power_spec.lua'), cwd=GAME)

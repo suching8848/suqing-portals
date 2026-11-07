@@ -1,10 +1,10 @@
 # SuQing's Portals / 蘇清的传送门
 
-Version **0.1.4**, for the verified **B42.21 branch and single-player**. Mod ID: `SuQingPortals`. The portal uses pure Lua without a custom Java component. Viewpoint visuals are optional.
+Source version **0.1.5** targets **B42.21 single-player**. The mod ID is `SuQingPortals`. It uses pure Lua, with optional Viewpoint visuals.
 
-On 2026-11-06, the user reported that all gameplay tests in the current single-player scope worked normally. The complete offline suite also passed. This does not establish multiplayer, vehicle transport or compatibility with every third-party combination.
+The user accepted **0.1.5** in the B42.21 single-player isolated setup on November 8, 2026. See the [power compatibility notes](docs/供电兼容说明.md) for the tested scope and energy rules.
 
-Workshop: [3834693880](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880). Source: [suching8848/suqing-portals](https://github.com/suching8848/suqing-portals). The current native lookup confirms the item is public (visibility=0); this update reuses the same item and retains that visibility. **Version 0.1.4 was uploaded and verified through native online readback.** Current item status is in [publishing/workshop-item.json](publishing/workshop-item.json), with this release's result in [publishing/Release_0.1.4/publication-result.json](publishing/Release_0.1.4/publication-result.json). Frozen historical manifests retain their original facts.
+The verified Workshop publication record is for **0.1.4**, item `3834693880`. [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [0.1.4 publication record](publishing/Release_0.1.4/publication-result.json) · [GitHub source](https://github.com/suching8848/suqing-portals)
 
 ## Building and travel
 
@@ -26,6 +26,7 @@ Charging requires a loaded gate, a verified local provider and a healthy battery
 
 - **Fuel generators:** independently debit fuel for energy actually and successfully stored, at `0.3 L × GeneratorFuelConsumption` per full-battery equivalent. A 0.5 charging rate and native default multiplier 0.1 add **0.015 L per game hour**, excluding ordinary generator and other-appliance consumption. Available fuel limits the charging step.
 - **Optional Immersive Solar Arrays 1.2.15:** Workshop `3781944805`, Mod ID `ISA`. Charging debits one selected bank's real original-battery storage. Its solar supply proxy is not treated as a fuel generator. Ordinary generator support does not require ISA. Only reviewed version 1.2.15 is supported. Unknown versions, unverifiable interfaces and `ISA-Fix` combinations are rejected by the bridge; a local electricity flag cannot create free charge. The separate `Immersive Solar Arrays [BETA]-Fix / 3592668881` package is outside support.
+- **Optional Live Wire 1.7.2.** With `batman_LiveWire` from Workshop item `3821807453` enabled, a gate can draw stored energy from loaded battery cabinets on a network whose inverter is supplying power. Indoor mains, independent generators and supported ISA sources take priority. The gate's appliance circuit must be enabled. Networks with a linked Live Wire backup generator or without usable cabinet storage are ineligible. See the power compatibility notes below for rates and limits.
 - **Panels and estimates:** the generator-panel wrapper shows additional portal demand and a combined total. The portal is not registered as a Java-native appliance. Native total load and ISA `updateDrain` remain intact to avoid double billing. BGI and other estimates based solely on native total load may overestimate remaining time because they do not include this independent debit. Actual fuel/storage changes take precedence.
 
 See [power compatibility notes](docs/供电兼容说明.md) for exact settlement rules.
@@ -40,10 +41,10 @@ Travel validates the destination identity and exit before completion. Failure re
 
 ## Development and repeat checks
 
-- [User test steps](docs/用户测试步骤.md) retain single-player regression and isolated outage procedures; the user reported this round working normally.
+- See the [user test steps](docs/用户测试步骤.md) for isolated outage and single-player regression procedures.
 - `tools/validate_release.py` runs standalone Kahlua, native API/resource checks, energy settlement and ISA interoperability without starting a game world.
 - `mods/SuQingPortals` contains runtime files. `art/` retains reference provenance, prompts, masters and reproducible model resources.
-- `publishing/Release_0.1.4` holds this release preparation. Historical `release/` manifests and candidates retain their freeze-time facts.
+- `publishing/Release_0.1.5` contains this version’s acceptance and publication materials. The previous records are in `publishing/Release_0.1.4`.
 
 The user performs all gameplay operation. Existing isolated entries and outage templates remain available for repeat checks; actual paths/lists belong to their deployment/template receipts. Historical notes do not establish personal enablement. Complete this round's full save and relevant configuration backup before personal deployment; recovery follows that verified backup receipt.
 

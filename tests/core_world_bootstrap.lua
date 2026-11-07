@@ -13,7 +13,7 @@ function instanceof(object, class) return object and object.class == class end
 IsoGenerator = { isPoweringSquare = function(gx,gy,gz,x,y,z) return (gx-x)^2+(gy-y)^2<=400 and math.abs(gz-z)<=3 end }
 function getSpecificPlayer(index) return TEST.players[index] end
 Events = {}
-for _, name in ipairs({ "OnTick", "LoadGridsquare", "OnObjectAboutToBeRemoved", "OnCreatePlayer", "OnGameStart" }) do
+for _, name in ipairs({ "OnTick", "LoadGridsquare", "OnObjectAboutToBeRemoved", "OnCreatePlayer", "OnGameStart", "EveryHours", "EveryOneMinute", "EveryTenMinutes", "OnInitGlobalModData" }) do
     local event = { callbacks = {} }
     event.Add = function(fn) event.callbacks[#event.callbacks + 1] = fn end
     event.run = function(...)

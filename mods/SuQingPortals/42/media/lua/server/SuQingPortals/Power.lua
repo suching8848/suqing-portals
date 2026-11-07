@@ -1,7 +1,9 @@
 -- Optional sources and transactional charging costs. Never edits native load totals.
 require "SuQingPortals/Core"
 require "SuQingPortals/ISAPower"
+require "SuQingPortals/LiveWirePower"
 local P, Core = SuQingPortals, SuQingPortals.Core
+local LiveWirePower = P.LiveWirePower
 local Power = { sources = {}, fuelCarry = {}, sourceIds = {}, nextSourceId = 0 }
 P.Power = Power
 Power.RAW_FUEL_PER_EQUIVALENT = 0.3 -- Native charger: 0.05 L/h at 1/6 battery/h.
@@ -53,7 +55,7 @@ local function active(source, square)
     local gen = source.generator
     local genSquare = loaded(gen)
     if not genSquare or not gen:isConnected() or not gen:isActivated() or gen:getCondition() <= 0 then return false end
-    if not IsoGenerator or not IsoGenerator.isPoweringSquare then return false end
+    if not IsoGenerator or not IsoGenerator.isPoweringSquare or LiveWirePower.managedGenerator(gen) then return false end
     if not IsoGenerator.isPoweringSquare(genSquare:getX(), genSquare:getY(), genSquare:getZ(), square:getX(), square:getY(), square:getZ()) then return false end
     if source.kind == "solar" then
         return source.bank and source.bank:getIsoObject() == gen and source.bank:shouldDrain(gen) == true
@@ -85,7 +87,8 @@ function Power.provider(object)
         end
     end
     if best then best.key = identity; return best end
-    return nil, "power_unsupported"
+    local source, reason = LiveWirePower.source(square)
+    return source, reason or (not source and "power_unsupported" or nil)
 end
 function Power.info(object)
     local ok, source, code = pcall(Power.provider, object)
@@ -95,8 +98,10 @@ function Power.info(object)
     if source then
         info.powered, info.metered, info.source, info.providerKey = true, true, source.kind, source.key
         info.rawLoadPerHour = Power.chargeRate() * Power.RAW_FUEL_PER_EQUIVALENT
+        info.maxInterval = source.maxInterval
     elseif code == "power_disconnected" then info.powered, info.source = false, "none"
     elseif code == "power_unsupported" then info.powered, info.source, info.error = true, "area", code
+    elseif code == "power_livewire_unavailable" then info.powered, info.source, info.error = true, "livewire", code
     else info.error = code end
     return info
 end
@@ -123,6 +128,7 @@ function Power.rollback(receipt)
     if receipt.finished then return false, "power_receipt_closed" end
     local ok, result = pcall(function()
         if receipt.source.kind == "solar" then return P.ISAPower.rollback(receipt.solarReceipt) end
+        if receipt.source.kind == "livewire" then return LiveWirePower.rollback(receipt.source) end
         if receipt.source.kind == "generator" then
             local gen = receipt.source.generator
             gen:setFuel(receipt.before)
@@ -150,6 +156,9 @@ function Power.begin(object, requested, expectedKey)
             return nil, 0, valid and (failure == "isa_rollback_failed" and "power_rollback_failed" or failure) or "power_write_failed"
         end
         receipt.solarReceipt, approved = solarReceipt, amount
+    elseif source.kind == "livewire" then
+        approved = math.min(requested, source.available / source.cost)
+        receipt.liveWireLimited = source.available / source.cost <= requested + Core.EPSILON
     elseif source.kind == "generator" then
         local gen = source.generator
         receipt.before, receipt.cost = gen:getFuel(), Power.RAW_FUEL_PER_EQUIVALENT * Power.fuelMultiplier()
@@ -173,6 +182,7 @@ function Power.finish(receipt, amount)
     if receipt.rolledBack or not finite(amount) or amount < 0 or amount > receipt.approved + Core.EPSILON then return false, "power_invalid_amount" end
     local ok, result = pcall(function()
         if receipt.source.kind == "solar" then return P.ISAPower.finish(receipt.solarReceipt, amount) end
+        if receipt.source.kind == "livewire" then return LiveWirePower.debit(receipt.source, amount) end
         if receipt.source.kind == "generator" then
             writeFuel(receipt, amount)
             if receipt.source.generator:getFuel() <= 0 then receipt.source.generator:setActivated(false) end

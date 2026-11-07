@@ -1,0 +1,7 @@
+0.1.5 · B42.21 单人 / Single-player
+
+新增 Live Wire 1.7.2 可选供电。门在有电且设备回路开启的覆盖内按实际充入量扣除电池柜储能，管理界面显示「Live Wire 储能」。
+支持带可用电池柜、未挂接备用发电机的网络。市电、独立发电机和已验证的 ISA 来源优先。
+
+Added optional Live Wire 1.7.2 charging from a powered network with the equipment circuit enabled. The management window identifies Live Wire storage, and cabinet energy is debited only for charge actually stored.
+Eligible networks have available cabinet storage and no linked backup generator. Mains, independent generators and supported ISA sources take priority.

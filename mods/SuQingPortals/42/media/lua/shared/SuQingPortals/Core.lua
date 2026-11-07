@@ -3,7 +3,7 @@ SuQingPortals = SuQingPortals or {}
 local Core = {}
 SuQingPortals.Core = Core
 
-Core.VERSION = "0.1.4"
+Core.VERSION = "0.1.5"
 Core.SCHEMA = 3
 Core.SLOT_COUNT = 4
 Core.TRANSFER_COST = 2.0
@@ -124,7 +124,7 @@ end
 
 -- This distributes the portal's total charging rate across its installed
 -- healthy batteries. It changes only UsedDelta, preserving identity/condition.
-function Core.charge(items, amount)
+function Core.charge(items, amount, roundDown)
     amount = tonumber(amount) or 0
     if amount <= 0 or amount ~= amount then return 0 end
     local changed, total = {}, 0
@@ -132,11 +132,16 @@ function Core.charge(items, amount)
         local item = items[slot]
         if Core.isBattery(item) and (not item.getCondition or item:getCondition() > 0) then
             local before = Core.clampCharge(item:getCurrentUsesFloat())
-            local add = math.min(1 - before, amount - total)
-            if add > 0 then
+            local target = before + math.min(1 - before, amount - total)
+            -- A source-limited payment cannot fund a native use rounded upward.
+            if roundDown and target > before and item.getUseDelta then
+                local step = item:getUseDelta()
+                if step > 0 then target = math.floor((target - 0.0000001) / step) * step end
+            end
+            if target > before then
                 changed[#changed + 1] = { item = item, value = before }
                 local actual
-                local ok = pcall(function() actual = writeCharge(item, before + add) end)
+                local ok = pcall(function() actual = writeCharge(item, target) end)
                 if not ok then
                     local rollbackOK = true
                     for index = #changed, 1, -1 do

@@ -1,10 +1,10 @@
 # 蘇清的传送门 / SuQing's Portals
 
-版本：**0.1.4**。适用：当前核验的 **B42.21、单人游戏**。Mod ID：`SuQingPortals`。本体为纯 Lua，无自有 Java 组件；Viewpoint 是可选外观适配。
+源码版本为 **0.1.5**，目标为 **B42.21 单人游戏**。Mod ID 为 `SuQingPortals`。本体使用纯 Lua，Viewpoint 外观适配可选。
 
-用户于2026-11-06反馈本轮单人游戏内测试全部正常，完整离线检查亦已通过。该确认不构成联机、车辆传送或所有第三方模组组合的兼容声明。
+用户于 2026-11-08 确认 **0.1.5** 的 B42.21 单人隔离联测可用。可复查范围与能源规则见[供电兼容说明](docs/供电兼容说明.md)。
 
-工坊：[3834693880](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880)。源码：[suching8848/suqing-portals](https://github.com/suching8848/suqing-portals)。本轮原生查询确认工坊当前公开（visibility=0）；沿用原条目并保持当前可见性。**0.1.4已上传并通过原生在线读回核验**；当前条目状态见[publishing/workshop-item.json](publishing/workshop-item.json)，本轮结果见[publishing/Release_0.1.4/publication-result.json](publishing/Release_0.1.4/publication-result.json)。历史冻结包和manifest保留其生成时状态。
+工坊已核验的发布记录为 **0.1.4**，条目 ID 为 `3834693880`。[Steam 工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [0.1.4 发布记录](publishing/Release_0.1.4/publication-result.json) · [GitHub 源码](https://github.com/suching8848/suqing-portals)
 
 ## 使用与建造
 
@@ -26,6 +26,7 @@
 
 - **普通发电机：**按实际成功充入量独立扣油，每满电等量为`0.3 L × GeneratorFuelConsumption`。默认速率0.5、原版默认倍率0.1时，额外消费为**0.015 L/游戏小时**；发电机自身及其他设备油耗另计。燃油不足限制本次充入量。
 - **可选Immersive Solar Arrays 1.2.15：**工坊`3781944805`、Mod ID `ISA`，从选定银行的真实原电池储能结算，不把太阳能代理发电机当燃油机扣油。未安装ISA时普通发电机仍可使用。仅支持已核对的1.2.15；未知版本、接口无法核实或`ISA-Fix`组合拒绝桥接，不凭当地通电免费补电。另一个`Immersive Solar Arrays [BETA]-Fix / 3592668881`不在支持范围内。
+- **可选 Live Wire 1.7.2。** 启用工坊 `3821807453` 的 `batman_LiveWire` 后，门可从正在供电的逆变器网络中提取已加载电池柜的真实储能。室内市电、独立发电机和受支持的 ISA 电源优先。门的设备回路须开启，挂接 Live Wire 备用发电机的网络以及没有可用电池柜的网络会暂停这条充电路径。具体换算和限制见下方说明。
 - **面板与估算：**发电机面板显示额外传送门负载及合计；没有把门注册进Java原生设备清单，不改写原生总负载或ISA `updateDrain`，避免重复计费。BGI等仅读原生总负载的剩余时间估算可能偏长，仍未合入这份独立消费；以实际燃油／储能变化为准。
 
 详见[供电兼容说明](docs/供电兼容说明.md)。
@@ -40,10 +41,10 @@
 
 ## 开发与复查
 
-- [用户测试步骤](docs/用户测试步骤.md)：保留单人回归步骤和隔离供电对照方法；本轮用户已反馈全部正常。
+- 隔离供电对照和单人回归流程见[用户测试步骤](docs/用户测试步骤.md)。
 - `tools/validate_release.py`：独立Kahlua、原生API／资源解析、供电结算及ISA互操作检查；不启动游戏世界。
 - `mods/SuQingPortals`：运行资源；`art/`：原始参考来源、提示词、母版与可复现模型资源。
-- `publishing/Release_0.1.4`：本轮发布准备；历史`release/`与候选包不回写其冻结事实。
+- `publishing/Release_0.1.5` 保存本版验收与发布资料，`publishing/Release_0.1.4` 保存上一版记录。
 
 所有游戏内操作仍由用户完成。隔离入口和供电模板可继续用于后续复查，路径及名单以相应实际部署／模板回执为准，不能由旧文档推定正式名单。正式部署前须完成本轮完整存档及相关配置备份，恢复以该备份回执为准。
 
