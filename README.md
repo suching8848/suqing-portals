@@ -4,7 +4,7 @@
 
 用户于 2026-11-08 确认 **0.1.5** 的 B42.21 单人隔离联测可用。可复查范围与能源规则见[供电兼容说明](docs/供电兼容说明.md)。
 
-工坊已核验的发布记录为 **0.1.4**，条目 ID 为 `3834693880`。[Steam 工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [0.1.4 发布记录](publishing/Release_0.1.4/publication-result.json) · [GitHub 源码](https://github.com/suching8848/suqing-portals)
+工坊 **0.1.5** 已更新并核验为公开，沿用条目 `3834693880`。[Steam 工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [0.1.5 发布记录](publishing/Release_0.1.5/publication-result.json) · [GitHub 源码](https://github.com/suching8848/suqing-portals)
 
 ## 使用与建造
 

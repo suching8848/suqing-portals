@@ -1,0 +1,32 @@
+{
+  "version": "0.1.5",
+  "source_commit": "3b22bf9f527ad6e81037c49390817b37d0241a50",
+  "workshop_item_id": "3834693880",
+  "workshop_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880",
+  "status": "uploaded_verified_public",
+  "verified_at_bjt": "2026-11-08T07:42:25.070364+08:00",
+  "native_submit_result": 1,
+  "visibility": 0,
+  "readback_checks": {
+    "title": true,
+    "description": true,
+    "metadata": true,
+    "content_bytes": true,
+    "preview_present": true,
+    "tags": true,
+    "dependencies": true
+  },
+  "runtime_files": 137,
+  "content_tree_sha256": "2830c1ea98cb64a5a8c201191d6046ef25eca76bbcf44b8f2f4bfa2546457f35",
+  "content_bytes": 13505257,
+  "public_api": {
+    "result": 1,
+    "visibility": 0,
+    "description_version": "0.1.5",
+    "file_size": 13505257,
+    "updated_at_bjt": "2026-11-08T07:42:06+08:00"
+  },
+  "tested_runtime_sha256_matches": true,
+  "acceptance_scope": "User-accepted isolated B42.21 single-player setup on 2026-11-08.",
+  "verification_scope": "Successful native submit, uncached native readback and independent public Steam API. Native readback verifies title, description, metadata tree hash, content byte count, tags, preview presence and dependencies. Remote per-file hashes were not downloaded."
+}

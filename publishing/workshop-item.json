@@ -13,14 +13,14 @@
   "upload_acknowledged": true,
   "native_readback_verified": true,
   "gameplay_acceptance_changed": true,
-  "recorded_at_bjt": "2026-11-06T23:36:22.386188+08:00",
+  "recorded_at_bjt": "2026-11-08T07:42:25.070364+08:00",
   "identity_policy": "Reuse this item for later updates; never create another item merely because a new local candidate is prepared.",
   "uploaded": true,
   "uploaded_verified_private": false,
-  "verified_at_bjt": "2026-11-06T23:35:54.470271+08:00",
-  "verification_scope": "Successful native submit callback plus online title, bilingual description, metadata tree hash, content byte count, tags, preview and visibility0. Not a remote per-file SHA download.",
-  "preparation_record_policy": "This file is the current item identity and private-upload status. Immutable release manifests describe their freeze-time state; uploaded=false in a historical preparation record is not the current Steam item status.",
-  "version": "0.1.4",
-  "gameplay_accepted_version": "0.1.4",
-  "content_tree_sha256": "5a315001896a87aae5b514538a81648d40b09e01bab5083d27b2efeb123025ec"
+  "verified_at_bjt": "2026-11-08T07:42:25.070364+08:00",
+  "verification_scope": "Successful native submit, uncached native readback and independent public Steam API. Native readback verifies title, description, metadata tree hash, content byte count, tags, preview presence and dependencies. Remote per-file hashes were not downloaded.",
+  "preparation_record_policy": "This file records the current Workshop item. Immutable preparation records retain their freeze-time status.",
+  "version": "0.1.5",
+  "gameplay_accepted_version": "0.1.5",
+  "content_tree_sha256": "2830c1ea98cb64a5a8c201191d6046ef25eca76bbcf44b8f2f4bfa2546457f35"
 }

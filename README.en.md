@@ -4,7 +4,7 @@ Source version **0.1.5** targets **B42.21 single-player**. The mod ID is `SuQing
 
 The user accepted **0.1.5** in the B42.21 single-player isolated setup on November 8, 2026. See the [power compatibility notes](docs/供电兼容说明.md) for the tested scope and energy rules.
 
-The verified Workshop publication record is for **0.1.4**, item `3834693880`. [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [0.1.4 publication record](publishing/Release_0.1.4/publication-result.json) · [GitHub source](https://github.com/suching8848/suqing-portals)
+Workshop **0.1.5** is public and verified on the existing item `3834693880`. [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [0.1.5 publication record](publishing/Release_0.1.5/publication-result.json) · [GitHub source](https://github.com/suching8848/suqing-portals)
 
 ## Building and travel
 
