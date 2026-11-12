@@ -12,15 +12,16 @@
   "state": "uploaded_verified_public",
   "upload_acknowledged": true,
   "native_readback_verified": true,
-  "gameplay_acceptance_changed": true,
-  "recorded_at_bjt": "2026-11-08T07:42:25.070364+08:00",
+  "gameplay_acceptance_changed": false,
+  "recorded_at_bjt": "2026-11-12T16:20:00.809814+08:00",
   "identity_policy": "Reuse this item for later updates; never create another item merely because a new local candidate is prepared.",
   "uploaded": true,
   "uploaded_verified_private": false,
-  "verified_at_bjt": "2026-11-08T07:42:25.070364+08:00",
-  "verification_scope": "Successful native submit, uncached native readback and independent public Steam API. Native readback verifies title, description, metadata tree hash, content byte count, tags, preview presence and dependencies. Remote per-file hashes were not downloaded.",
+  "verified_at_bjt": "2026-11-12T16:20:00.809814+08:00",
+  "verification_scope": "Successful native submit and uncached native Workshop readback verified the title, description, content-tree metadata, byte count, tags, preview size and dependencies.",
   "preparation_record_policy": "This file records the current Workshop item. Immutable preparation records retain their freeze-time status.",
   "version": "0.1.5",
   "gameplay_accepted_version": "0.1.5",
-  "content_tree_sha256": "2830c1ea98cb64a5a8c201191d6046ef25eca76bbcf44b8f2f4bfa2546457f35"
+  "content_tree_sha256": "680e1357823200775f75d1fc016b53bb064849b42d76eb4c3fb2a2a41fd9ce20",
+  "title": "蘇清的传送门 | SuQing's Portals [SP]"
 }
