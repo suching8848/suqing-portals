@@ -1,8 +1,8 @@
 # 蘇清的传送门 / SuQing's Portals
 
-源码版本为 **0.1.5**，目标为 **B42.21 单人游戏**。Mod ID 为 `SuQingPortals`。本体使用纯 Lua，Viewpoint 外观适配可选。
+源码运行版本为 **0.1.5**，适用于 **B42.21 单人游戏**，另有 **B42.22.2 离线兼容候选**。Mod ID 为 `SuQingPortals`。本体使用纯 Lua，Viewpoint 外观适配可选。
 
-用户于 2026-11-08 确认 **0.1.5** 的 B42.21 单人隔离联测可用。可复查范围与能源规则见[供电兼容说明](docs/供电兼容说明.md)。
+用户于 2026-11-08 确认 **0.1.5** 的 B42.21 单人隔离联测可用。B42.22.2 候选保留原版号及门体、四槽和 schema3 保存格式。普通视角相关接口与独立 Live Wire 储能路径已做离线回归，完整游戏内验收待完成。Viewpoint 和独立的 Live Wire × ISA 并网补丁在新版另行适配。可复查范围与能源规则见[供电兼容说明](docs/供电兼容说明.md)。
 
 工坊 **0.1.5** 已更新并核验为公开，沿用条目 `3834693880`。[Steam 工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [0.1.5 发布记录](publishing/Release_0.1.5/publication-result.json) · [GitHub 源码](https://github.com/suching8848/suqing-portals)
 
@@ -44,7 +44,7 @@
 - 隔离供电对照和单人回归流程见[用户测试步骤](docs/用户测试步骤.md)。
 - `tools/validate_release.py`：独立Kahlua、原生API／资源解析、供电结算及ISA互操作检查；不启动游戏世界。
 - `mods/SuQingPortals`：运行资源；`art/`：原始参考来源、提示词、母版与可复现模型资源。
-- `publishing/Release_0.1.5` 保存本版验收与发布资料，`publishing/Release_0.1.4` 保存上一版记录。
+- `publishing/Release_0.1.5` 保存 42.21 工坊版验收与发布资料，`publishing/Release_0.1.4` 保存上一版记录。
 
 所有游戏内操作仍由用户完成。隔离入口和供电模板可继续用于后续复查，路径及名单以相应实际部署／模板回执为准，不能由旧文档推定正式名单。正式部署前须完成本轮完整存档及相关配置备份，恢复以该备份回执为准。
 

@@ -1,8 +1,8 @@
 # SuQing's Portals / 蘇清的传送门
 
-Source version **0.1.5** targets **B42.21 single-player**. The mod ID is `SuQingPortals`. It uses pure Lua, with optional Viewpoint visuals.
+Source runtime version **0.1.5** supports **B42.21 single-player** and has an **offline B42.22.2 compatibility candidate**. The mod ID is `SuQingPortals`. It uses pure Lua, with optional Viewpoint visuals.
 
-The user accepted **0.1.5** in the B42.21 single-player isolated setup on November 8, 2026. See the [power compatibility notes](docs/供电兼容说明.md) for the tested scope and energy rules.
+The user accepted **0.1.5** in the B42.21 single-player isolated setup on November 8, 2026. The B42.22.2 candidate retains the runtime version, portal entity, original four slots and schema3 save format. Standard-view interfaces and independent Live Wire storage passed offline regression. In-game acceptance is pending. Viewpoint and the separate Live Wire × ISA shared-grid patch require their own compatibility work on the newer build. See the [power compatibility notes](docs/供电兼容说明.md) for the tested scope and energy rules.
 
 Workshop **0.1.5** is public and verified on the existing item `3834693880`. [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [0.1.5 publication record](publishing/Release_0.1.5/publication-result.json) · [GitHub source](https://github.com/suching8848/suqing-portals)
 
@@ -44,7 +44,7 @@ Travel validates the destination identity and exit before completion. Failure re
 - See the [user test steps](docs/用户测试步骤.md) for isolated outage and single-player regression procedures.
 - `tools/validate_release.py` runs standalone Kahlua, native API/resource checks, energy settlement and ISA interoperability without starting a game world.
 - `mods/SuQingPortals` contains runtime files. `art/` retains reference provenance, prompts, masters and reproducible model resources.
-- `publishing/Release_0.1.5` contains this version’s acceptance and publication materials. The previous records are in `publishing/Release_0.1.4`.
+- `publishing/Release_0.1.5` contains the B42.21 Workshop build’s acceptance and publication materials. The previous records are in `publishing/Release_0.1.4`.
 
 The user performs all gameplay operation. Existing isolated entries and outage templates remain available for repeat checks; actual paths/lists belong to their deployment/template receipts. Historical notes do not establish personal enablement. Complete this round's full save and relevant configuration backup before personal deployment; recovery follows that verified backup receipt.
 
