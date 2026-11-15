@@ -87,7 +87,7 @@ function Power.provider(object)
         end
     end
     if best then best.key = identity; return best end
-    local source, reason = LiveWirePower.source(square)
+    local source, reason = LiveWirePower.source(square, object)
     return source, reason or (not source and "power_unsupported" or nil)
 end
 function Power.info(object)

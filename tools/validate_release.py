@@ -1,5 +1,6 @@
 """Offline checks only. Never starts the game's main class or a world."""
 from pathlib import Path
+import argparse
 import hashlib
 import json
 import re
@@ -114,7 +115,14 @@ def pure_lua_runtime():
 
 def main():
     global report
-    if '--text-only' in sys.argv:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--text-only', action='store_true')
+    parser.add_argument('--livewire-root', action='append', type=Path, metavar='MOD_VERSION_DIR',
+                        help='LiveWire version directory containing mod.info and media; repeat to check several releases')
+    parser.add_argument('--isa-root', action='append', type=Path, metavar='MOD_VERSION_DIR',
+                        help='Use a verified ISA version directory for native power interoperability')
+    args = parser.parse_args()
+    if args.text_only:
         report = json.loads((RESULTS / 'offline-validation.json').read_text(encoding='utf-8'))
         current = {str(p.relative_to(MOD)).replace('\\', '/'): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in MOD.rglob('*') if p.is_file()}
@@ -146,20 +154,48 @@ def main():
     run('power_settlement', interpreter(ROOT / 'tests/core_world_bootstrap.lua', *slots_bootstrap,
         MOD / 'media/lua/shared/SuQingPortals/Core.lua', *shared_storage, *power_modules,
         MOD / 'media/lua/server/SuQingPortals/World.lua', ROOT / 'tests/power_spec.lua'), cwd=GAME)
-    livewire = GAME.parents[1] / 'workshop/content/108600/3821807453/mods/batman_LiveWire/42.21/media/lua'
-    lw_shared = livewire / 'shared/LiveWire'
-    lw_server = livewire / 'server/LiveWire'
-    run('livewire_storage', interpreter(ROOT / 'tests/core_world_bootstrap.lua', *slots_bootstrap,
-        *(lw_shared / name for name in ('LW_Core.lua', 'LW_Defs.lua', 'LW_Physics.lua', 'LW_Marks.lua')),
-        *(lw_server / name for name in ('LW_PowerHistory.lua', 'LW_Registry.lua', 'LW_Demand.lua', 'LW_Batteries.lua', 'LW_Simulation.lua')),
-        MOD / 'media/lua/shared/SuQingPortals/Core.lua', *shared_storage, *power_modules,
-        server_portals / 'World.lua', ROOT / 'tests/livewire_storage_spec.lua'), cwd=GAME)
+    installed = GAME.parents[1] / 'workshop/content/108600/3821807453/mods/batman_LiveWire/42.21'
+    for livewire in args.livewire_root or [installed]:
+        livewire = livewire.resolve()
+        package_version = re.search(r'^modversion=(1\.7\.2|2\.0\.[0123]|2\.1\.[012])\s*$',
+                                    (livewire / 'mod.info').read_text(encoding='utf-8'), re.M)
+        if not package_version:
+            raise ValueError('Unexpected LiveWire package version in ' + str(livewire))
+        version = package_version[1]
+        metadata = RESULTS / ('livewire-package-' + version + '.lua')
+        metadata.write_text('LIVEWIRE_PACKAGE_VERSION = ' + json.dumps(version) + '\n', encoding='utf-8')
+        lw_shared = livewire / 'media/lua/shared/LiveWire'
+        lw_server = livewire / 'media/lua/server/LiveWire'
+        shared_names = ['LW_Core.lua', 'LW_Defs.lua', 'LW_Physics.lua', 'LW_Marks.lua']
+        server_names = ['LW_PowerHistory.lua', 'LW_Registry.lua', 'LW_Demand.lua', 'LW_Batteries.lua']
+        if version.startswith('2.'):
+            shared_names += ['LW_EventBus.lua', 'LW_Extension.lua', 'LW_Coupling.lua',
+                             'LW_Coverage.lua', 'LW_CircuitProvider.lua']
+            server_names.append('LW_Inverters.lua')
+        if version in ('2.1.0', '2.1.1', '2.1.2'):
+            shared_names.append('LW_Consumers.lua')
+        server_names.append('LW_Simulation.lua')
+        run('livewire_storage_' + version, interpreter(ROOT / 'tests/core_world_bootstrap.lua', *slots_bootstrap,
+            metadata, *(lw_shared / name for name in shared_names), *(lw_server / name for name in server_names),
+            MOD / 'media/lua/shared/SuQingPortals/Core.lua', *shared_storage, *power_modules,
+            server_portals / 'World.lua', ROOT / 'tests/livewire_storage_spec.lua'), cwd=GAME)
     run('power_display', interpreter(ROOT / 'tests/core_world_bootstrap.lua',
         MOD / 'media/lua/client/SuQingPortals/PowerDisplay.lua', ROOT / 'tests/power_display_spec.lua'), cwd=GAME)
     run('isa_power', interpreter(MOD / 'media/lua/server/SuQingPortals/ISAPower.lua', ROOT / 'tests/isa_power_spec.lua'), cwd=GAME)
-    isa_source = Path(r'D:\steam\steamapps\workshop\content\108600\3781944805\mods\ImmersiveSolarArrays\42\media\lua\server\ImmersiveSolarArrays\PowerBank\PowerBankObject_Server.lua')
-    run('isa_native_interop', interpreter(ROOT / 'tests/isa_native_interop_bootstrap.lua', isa_source,
-        MOD / 'media/lua/server/SuQingPortals/ISAPower.lua', ROOT / 'tests/isa_native_interop_spec.lua'), cwd=GAME)
+    isa_installed = GAME.parents[1] / 'workshop/content/108600/3781944805/mods/ImmersiveSolarArrays/42'
+    for isa_root in args.isa_root or [isa_installed]:
+        isa_root = isa_root.resolve()
+        info = (isa_root / 'mod.info').read_text(encoding='utf-8-sig')
+        match = re.search(r'^modversion=(1\.2\.1[56])\s*$', info, re.M)
+        if not match:
+            raise ValueError('Unexpected ISA package version in ' + str(isa_root))
+        version = match[1]
+        metadata = RESULTS / ('isa-package-' + version + '.lua')
+        metadata.write_text('ISA_PACKAGE_VERSION = ' + json.dumps(version) + '\n', encoding='utf-8')
+        isa_source = isa_root / 'media/lua/server/ImmersiveSolarArrays/PowerBank/PowerBankObject_Server.lua'
+        run('isa_native_interop_' + version, interpreter(metadata, ROOT / 'tests/isa_native_interop_bootstrap.lua',
+            isa_source, MOD / 'media/lua/server/SuQingPortals/ISAPower.lua', ROOT / 'tests/isa_native_interop_spec.lua'),
+            cwd=GAME)
     run('core_world', interpreter(ROOT / 'tests/core_world_bootstrap.lua', *slots_bootstrap,
         MOD / 'media/lua/shared/SuQingPortals/Core.lua',
         *shared_storage,
@@ -194,28 +230,35 @@ def main():
         ROOT / 'tests/NativeInternalStorageAudit.java'])
     java_flags = [JAVA, '-Xint', '-Xms16m', '-Xmx128m', '-XX:+UseSerialGC', '-XX:ReservedCodeCacheSize=32m',
         '--enable-native-access=ALL-UNNAMED', '-Duser.home=' + str(HOME)]
+    pzo_aot = GAME / 'pzopt/aot/pzopt.jar'
+
+    def pzo_aot_check(name, classes, options, main_class, *arguments):
+        if not pzo_aot.is_file():
+            report['checks'][name] = {'result': 'SKIP', 'reason': 'PZO AOT JAR unavailable'}
+            print(name + ': SKIP (PZO AOT JAR unavailable)')
+            return
+        classpath = ';'.join(map(str, [classes, pzo_aot, GAME / 'projectzomboid.jar']))
+        run(name, java_flags + options + ['-cp', classpath, main_class, *arguments], cwd=GAME)
+
     picker_classes = RESULTS / 'picker-interop-classes'
     picker_classes.mkdir(exist_ok=True)
     run('picker_interop_compile', [JAVAC, '-encoding', 'UTF-8', '-d', picker_classes,
         ROOT / 'tests/PortalPickerInteropAudit.java'])
     picker_stock_cp = ';'.join(map(str, [picker_classes, GAME / 'projectzomboid.jar']))
-    picker_pzo_cp = ';'.join(map(str, [picker_classes, GAME / 'pzopt/aot/pzopt.jar', GAME / 'projectzomboid.jar']))
     run('native_picker_interop_stock', java_flags + ['-cp', picker_stock_cp, 'PortalPickerInteropAudit', MOD, HOME / 'picker-stock'], cwd=GAME)
-    run('native_picker_interop_pzo', java_flags + ['-cp', picker_pzo_cp, 'PortalPickerInteropAudit', MOD, HOME / 'picker-pzo'], cwd=GAME)
+    pzo_aot_check('native_picker_interop_pzo', picker_classes, [], 'PortalPickerInteropAudit', MOD, HOME / 'picker-pzo')
     translation_classes = RESULTS / 'translation-interop-classes'
     translation_classes.mkdir(exist_ok=True)
     run('translation_interop_compile', [JAVAC, '-encoding', 'UTF-8', '-d', translation_classes,
         ROOT / 'tests/PortalTranslationInteropAudit.java'])
     translation_stock_cp = ';'.join(map(str, [translation_classes, GAME / 'projectzomboid.jar']))
-    translation_pzo_cp = ';'.join(map(str, [translation_classes, GAME / 'pzopt/aot/pzopt.jar', GAME / 'projectzomboid.jar']))
     run('native_translation_interop_stock', java_flags + ['-Djava.awt.headless=true', '-cp', translation_stock_cp,
         'PortalTranslationInteropAudit', MOD, HOME / 'translation-stock'], cwd=GAME)
-    run('native_translation_interop_pzo', java_flags + ['-Djava.awt.headless=true', '-cp', translation_pzo_cp,
-        'PortalTranslationInteropAudit', MOD, HOME / 'translation-pzo'], cwd=GAME)
+    pzo_aot_check('native_translation_interop_pzo', translation_classes, ['-Djava.awt.headless=true'],
+        'PortalTranslationInteropAudit', MOD, HOME / 'translation-pzo')
     stock_cp = ';'.join(map(str, [fixture_classes, GAME / 'projectzomboid.jar']))
-    actual_cp = ';'.join(map(str, [fixture_classes, GAME / 'pzopt/aot/pzopt.jar', GAME / 'projectzomboid.jar']))
     run('native_internal_storage_stock', java_flags + ['-cp', stock_cp, 'NativeInternalStorageAudit', HOME / 'internal-stock'], cwd=GAME)
-    run('native_internal_storage_pzo', java_flags + ['-cp', actual_cp, 'NativeInternalStorageAudit', HOME / 'internal-pzo'], cwd=GAME)
+    pzo_aot_check('native_internal_storage_pzo', fixture_classes, [], 'NativeInternalStorageAudit', HOME / 'internal-pzo')
     run('model_native_compile', [JAVAC, '-encoding', 'UTF-8', ROOT / 'tests/PortalAssetsNativeReadback.java'])
     vp_jar = GAME / 'CodexAssets/SuQingPortals_20261106/IsolatedTest/data/mods/Viewpoint/42/media/java/client/Viewpoint.jar'
     run('model_native_readback', java_flags + ['-cp', ';'.join(map(str, [ROOT / 'tests', GAME / 'projectzomboid.jar', vp_jar])),

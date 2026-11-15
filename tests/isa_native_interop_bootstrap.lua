@@ -4,7 +4,7 @@ ISA_NATIVE = {checks = 0, banks = {}, isa = {}}
 function isClient() return false end
 function isServer() return false end
 function getActivatedMods() return {contains = function(self, name) return name == "ISA" end} end
-function getModInfoByID() return {getModVersion=function() return "1.2.15" end} end
+function getModInfoByID() return {getModVersion=function() return assert(ISA_PACKAGE_VERSION, "missing ISA upstream package version") end} end
 SandboxVars = {ISA = {DrainCalc = 2, ChargeFreq = 1, batteryDegradeChance = 0}}
 function getWorld() return {isHydroPowerOn = function() return false end} end
 SGlobalObject = {}

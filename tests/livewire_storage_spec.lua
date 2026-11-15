@@ -2,7 +2,9 @@
 local T, P, lw = TEST, SuQingPortals, LiveWire
 local W, E, R = P.World, P.Power, lw.Registry
 local check, near = T.assert, T.near
-local version, active = "1.7.2", true
+local packageVersion, active = LIVEWIRE_PACKAGE_VERSION or lw.VERSION, true
+local version = packageVersion
+local modern = lw.VERSION ~= "1.7.2"
 function getActivatedMods() return { contains = function(_, id) return active and id == "batman_LiveWire" end } end
 function getModInfoByID() return { getModVersion = function() return version end } end
 local temperature = 20
@@ -11,7 +13,7 @@ function sendItemStats() end
 lw.Config = { get = function(key)
     if key == "BatteryCapacityMultiplier" then return 1 end
     return key == "BatteryCold"
-end }
+end, tileRange = function() return 20 end, verticalRange = function() return 3 end }
 lw.Migration = { run = function() return true end }
 R.init()
 
@@ -159,7 +161,11 @@ near(charge(), 0.1, "unlocking starts a fresh observation")
 
 version = "1.7.3"
 check(not E.info(portal).metered, "unknown Live Wire version refuses settlement")
-version = "1.7.2"
+version = modern and "1.7.2" or "2.0.1"
+check(not E.info(portal).metered, "mismatched LiveWire runtime and package refuse settlement")
+version = lw.VERSION == "2.1.0" and "2.0.3" or "2.1.0"
+check(not E.info(portal).metered, "mismatched package and runtime versions are refused")
+version = packageVersion
 active = false
 check(not E.info(portal).metered, "disabled Live Wire does not participate")
 active = true
@@ -192,7 +198,8 @@ local limited, allowed = E.begin(portal, 2)
 check(limited and allowed > 0 and allowed < 2, "approved amount limited by available real cabinet energy")
 check(E.finish(limited, allowed), "partial source availability can be settled")
 doorBattery:setUsedDelta(0.4)
-local reserve = lw.Sim.idleW(grid) * lw.STEP_HOURS / (1000 * inv.eff)
+local inverters = modern and lw.Inverters or lw.Sim
+local reserve = inverters.idleW(grid) * lw.STEP_HOURS / (1000 * inv.eff)
 local outputCost = 0.30 / inv.eff
 local warm = lw.Batteries.capacity(bankBattery.kind, bankBattery.condition)
 lw.Batteries.setEnergy(bankBattery, reserve + outputCost * 0.012346, warm)
@@ -200,4 +207,35 @@ W.chargeTick()
 advance(0.1)
 check(charge() > 0.41233 and charge() < 0.412346, "source-limited writes round down to a native battery use")
 check(energy(bankBattery) >= reserve, "native rounding cannot spend protected ordinary-load reserve")
+if modern then
+    bankBattery:setCurrentUses(90000)
+    local cut = false
+    check(lw.CircuitProvider.register({ blocked = function(object, kind, owner)
+        return cut and object == portal and kind == "equipment" and owner == grid
+    end }), "register a simulated equipment provider through the real extension interface")
+    cut = true
+    check(E.info(portal).error == "power_livewire_unavailable", "2.0 circuit provider can cut the portal")
+    cut = false
+    check(E.info(portal).metered, "closed provider circuit restores eligibility")
+    lw.Extended = { Points = { servedAt = function() return true end } }
+    check(E.info(portal).error == "power_livewire_unavailable", "an unwired portal cannot bypass a board")
+    lw.Extended = nil
+
+    local enabledExtra = true
+    check(lw.Coverage.register({
+        replacesDisc = true,
+        covers = function(id, _, x, y, z)
+            return enabledExtra and id == inv.id and x == 55 and y == 10 and z == 0
+        end,
+        bounds = function() end, positions = function() return {} end,
+        scan = function() end, step = function() return true, 0 end, idsAt = function() return {} end,
+    }), "register a simulated coverage provider through the real extension interface")
+    local extendedSquare = T.square(55, 10, 0)
+    extendedSquare.powered = true
+    local extendedPortal = T.object(extendedSquare)
+    check(not E.info(portal).metered, "replaced disc is not a source of portal power")
+    check(E.info(extendedPortal).source == "livewire", "confirmed extended coverage is eligible outside the disc")
+    enabledExtra = false
+    check(not E.info(extendedPortal).metered, "losing extended coverage ends charging eligibility")
+end
 print("PORTAL_LIVEWIRE_STORAGE checks=" .. T.checks .. " failures=0")

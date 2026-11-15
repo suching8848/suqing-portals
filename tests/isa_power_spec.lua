@@ -132,7 +132,8 @@ check(qr and A.rollback(qr), "quantized debit refunds")
 check(qgen.data.SuQingPortalsISAEnergyCarry == carryBefore and q.charge == exactBefore, "rollback restores exact carry and native charge")
 check(A.costPerEquivalent(1e308, 1e308) == nil, "overflow cost rejected")
 
-version="1.2.16";check(not A.isSupported() and #A.banks()==0,"unknown ISA version fails closed")
+version="1.2.16";check(A.isSupported() and #A.banks()>0,"ISA 1.2.16 accepts the verified bank interface")
+version="1.2.17";check(not A.isSupported() and #A.banks()==0,"unknown ISA version fails closed")
 getModInfoByID=savedInfo
 require, getActivatedMods, isClient, isServer, SandboxVars = previous.require, previous.mods, previous.client, previous.server, previous.sandbox
 print("PORTAL_ISA_POWER_SETTLEMENT checks=" .. checks .. " failures=0")

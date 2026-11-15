@@ -1,8 +1,10 @@
--- Optional Live Wire 1.7.2 storage settlement. No simulation hooks.
+-- Optional LiveWire storage settlement. No simulation hooks.
 SuQingPortals = SuQingPortals or {}
 local A = { KWH_PER_EQUIVALENT = 0.30 }
 SuQingPortals.LiveWirePower = A
-local VERSION, EPS = "1.7.2", 0.00000001
+local EPS = 0.00000001
+-- LiveWire 2.0.1 ships Lua that reports runtime 2.0.0.
+local runtimeVersions = { ["1.7.2"] = "1.7.2", ["2.0.0"] = "2.0.0", ["2.0.1"] = "2.0.0", ["2.0.2"] = "2.0.2", ["2.0.3"] = "2.0.3", ["2.1.0"] = "2.1.0", ["2.1.1"] = "2.1.1", ["2.1.2"] = "2.1.2" }
 local unavailable = "power_livewire_unavailable"
 
 local function finite(value)
@@ -18,11 +20,16 @@ local function runtime()
     if not enabled() then return nil end
     local lw = LiveWire
     local info = getModInfoByID and getModInfoByID("batman_LiveWire")
-    if not lw or lw.VERSION ~= VERSION or lw.SCHEMA ~= 2 or not info or info:getModVersion() ~= VERSION then return nil end
+    local version = info and runtimeVersions[info:getModVersion()]
+    if not version or not lw or lw.VERSION ~= version or lw.SCHEMA ~= 2 then return nil end
     local r = lw.Registry
-    if r and r.ready and not r.readOnly and r.data and r.anchors and lw.Batteries and lw.Demand and lw.Sim then
-        return lw, r
-    end
+    if not r or not r.ready or r.readOnly or not r.data or not r.anchors or not lw.Batteries or not lw.Demand then return nil end
+    local modern = version ~= "1.7.2"
+    local inverters = modern and lw.Inverters or lw.Sim
+    if not inverters or type(inverters.idleW) ~= "function" then return nil end
+    if modern and (not lw.Coverage or type(lw.Coverage.covers) ~= "function"
+        or not lw.CircuitProvider or type(lw.CircuitProvider.blocked) ~= "function") then return nil end
+    return lw, r, inverters.idleW, modern
 end
 
 -- A Live Wire backup remains a real IsoGenerator. Never bill it a second way.
@@ -53,13 +60,15 @@ local function bankOffer(batteries, bank, reserve, cost)
     return { bank = bank, entries = entries, available = stock - reserve, identity = table.concat(identity, ",") }
 end
 
-function A.source(square)
-    local lw, r = runtime()
+function A.source(square, object)
+    local lw, r, idleW, modern = runtime()
     if not lw then return nil end
     local x, y, z = square:getX(), square:getY(), square:getZ()
     local selected, nearest
     for id, anchor in pairs(r.anchors) do
-        if anchor.on == true and IsoGenerator.isPoweringSquare(anchor.x, anchor.y, anchor.z, x, y, z) then
+        local covers = anchor.on == true and ((modern and lw.Coverage.covers(id, anchor, x, y, z))
+            or (not modern and IsoGenerator.isPoweringSquare(anchor.x, anchor.y, anchor.z, x, y, z)))
+        if covers then
             local distance = (anchor.x - x)^2 + (anchor.y - y)^2
             if not selected or distance < nearest or (distance == nearest and id < selected) then
                 selected, nearest = id, distance
@@ -72,6 +81,12 @@ function A.source(square)
     if not grid or grid.inverter ~= selected or not grid.powered or inv.state ~= "on"
         or not finite(inv.cond) or inv.cond <= 0 or inv.x ~= anchor.x or inv.y ~= anchor.y or inv.z ~= anchor.z
         or grid.mainOff or grid.equipmentOff then return nil, unavailable end
+    if modern then
+        if object and lw.CircuitProvider.blocked(object, "equipment", grid) then return nil, unavailable end
+        local points = lw.Extended and lw.Extended.Points
+        -- Portals have no Extended wiring adapter. Respect a board's unwired-appliance rule.
+        if points and points.servedAt(x, y, z) then return nil, unavailable end
+    end
 
     local invSquare = getCell():getGridSquare(inv.x, inv.y, inv.z)
     local history = r.data.powerHistory and r.data.powerHistory[selected]
@@ -83,7 +98,7 @@ function A.source(square)
     if not finite(eff) or eff < 0.05 or eff > 1 or not finite(grid.lastTick)
         or now < grid.lastTick or now - grid.lastTick > 2 * lw.STEP_HOURS then return nil, unavailable end
 
-    local demand, pump, idle = grid.demand, grid.pumpW or 0, lw.Sim.idleW(grid)
+    local demand, pump, idle = grid.demand, grid.pumpW or 0, idleW(grid)
     if not finite(demand) or demand < 0 or not finite(pump) or pump < 0 or not finite(idle) or idle < 0 then
         return nil, unavailable
     end

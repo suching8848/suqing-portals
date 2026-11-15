@@ -24,6 +24,16 @@ function triggerEvent(name,...)
     for _,callback in ipairs(Events[name].callbacks or {}) do callback(...) end
 end
 local baseContainer=TEST.container
+-- The native B42.22 transfer path rejects moving an item into its own container chain.
+function ItemContainer.chainContainsContainingItem(container, itemId)
+    local containingItem = container and container.containingItem
+    while containingItem do
+        if containingItem:getID() == itemId then return true end
+        container = containingItem:getContainer()
+        containingItem = container and container.containingItem
+    end
+    return false
+end
 function TEST.container(parent)
     local container=baseContainer(parent)
     function container:getEffectiveCapacity() return self.capacity or 40 end

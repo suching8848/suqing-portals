@@ -3,6 +3,7 @@ SuQingPortals = SuQingPortals or {}
 local A = {}
 SuQingPortals.ISAPower = A
 local EPS, locked = 0.0001, {}
+local isaVersions = { ["1.2.15"] = true, ["1.2.16"] = true }
 local CARRY_KEY = "SuQingPortalsISAEnergyCarry"
 
 local function finite(value)
@@ -15,7 +16,7 @@ local function system()
         local mods = getActivatedMods()
         if not mods or not mods:contains("ISA") or mods:contains("ISA-Fix") then return nil end
         local info = getModInfoByID and getModInfoByID("ISA")
-        if not info or not info.getModVersion or info:getModVersion() ~= "1.2.15" then return nil end
+        if not info or not info.getModVersion or not isaVersions[info:getModVersion()] then return nil end
         local isa = require "ImmersiveSolarArrays/Utilities"
         local s = type(isa) == "table" and isa.PBSystem_Server
         if s and s.getLuaObjectCount and s.getLuaObjectByIndex and s.getLuaObjectOnSquare and s.isValidIsoObject then return s end
