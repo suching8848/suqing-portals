@@ -1,0 +1,8 @@
+newmtl fridge_atlas
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.12 0.12 0.12
+Ns 22
+d 1
+illum 2
+map_Kd fridge_atlas.png

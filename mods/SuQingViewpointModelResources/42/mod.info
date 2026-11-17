@@ -1,0 +1,10 @@
+name=SuQing's Viewpoint Model Resources
+namezh=蘇清的 Viewpoint 模型资源
+id=SuQingViewpointModelResources
+author=SuQing
+modversion=1.0.0
+versionMin=42.22.2
+versionMax=42.22
+require=\Viewpoint
+description=Restores the 3D portal and freshness fridge models for Viewpoint 0.1.7 in single-player.
+descriptionzh=为 Viewpoint 0.1.7 单人游戏恢复传送门和返鲜冰箱的三维模型。

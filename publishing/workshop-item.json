@@ -13,22 +13,24 @@
   "upload_acknowledged": true,
   "native_readback_verified": true,
   "gameplay_acceptance_changed": false,
-  "recorded_at_bjt": "2026-11-15T18:25:57.640477+08:00",
+  "recorded_at_bjt": "2026-11-18T03:01:54.880855+08:00",
   "identity_policy": "Reuse this item for later updates; never create another item merely because a new local candidate is prepared.",
   "uploaded": true,
   "uploaded_verified_private": false,
-  "verified_at_bjt": "2026-11-15T18:25:57.640477+08:00",
+  "verified_at_bjt": "2026-11-18T03:01:54.880855+08:00",
   "verification_scope": "Native success plus exact text, metadata tree hash, content-byte total, tags and preview presence; not a remote per-file SHA download.",
   "preparation_record_policy": "This file records the current Workshop item. Immutable preparation records retain their freeze-time status.",
-  "version": "0.1.6-rc.6",
+  "version": "0.1.6-rc.11",
   "gameplay_accepted_version": "0.1.5",
-  "content_tree_sha256": "bba7abb8f152b0c99ca36b76885f2ecfba0a162df9f5c6f20102d3bdea13ab05",
+  "content_tree_sha256": "d198799208a400b8e55d932dadfe718c641ba7fd7a88cd25956dcb0632f48e5c",
   "title": "蘇清的传送门 | SuQing's Portals [SP]",
   "mod_versions": {
-    "SuQingPortals": "0.1.6-rc.6"
+    "SuQingPortals": "0.1.6-rc.11",
+    "SuQingPortalsTravelGuard": "0.1.0-rc.1",
+    "SuQingViewpointModelResources": "1.0.0"
   },
-  "content_bytes": 13507412,
-  "content_file_count": 137,
+  "content_bytes": 17584387,
+  "content_file_count": 167,
   "tags": [
     "Build 42",
     "building",
@@ -42,5 +44,6 @@
     "visibility": "public",
     "content_tree_sha256": "680e1357823200775f75d1fc016b53bb064849b42d76eb4c3fb2a2a41fd9ce20",
     "verified_at_bjt": "2026-11-12T16:20:00.809814+08:00"
-  }
+  },
+  "native_verification": "publishing/verification-0.1.6-rc.11.json"
 }

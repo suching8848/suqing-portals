@@ -6,7 +6,9 @@ Supports Live Wire 2.1.5 and fixes charging settlement when combined with ISA. C
 
 The candidate uses the LiveWire 2.0.0, 2.0.1, 2.0.2, 2.0.3, 2.1.0 through 2.1.5 coverage, equipment circuit, and inverter idle-power interfaces. It retains the portal entity, four original slots and schema3 save format. The user accepted **0.1.5** in the B42.21 single-player isolated setup on November 8, 2026. Single-player autosaves confirmed that mixed-grid charging resumed. Cross-chunk travel awaits gameplay acceptance. See the [power compatibility notes](docs/供电兼容说明.md) for scope and energy rules.
 
-Workshop **0.1.6-rc.6** is public and verified on the existing item `3834693880`. [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [Current publication record](publishing/workshop-item.json) · [GitHub source](https://github.com/suching8848/suqing-portals)
+Workshop **0.1.6-rc.11** is public and verified on the existing item `3834693880`. [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [Current publication record](publishing/workshop-item.json) · [GitHub source](https://github.com/suching8848/suqing-portals)
+
+The same Workshop item contains the separately enabled [Travel Guard and Viewpoint models](docs/optional-companions.md).
 
 ## Building and travel
 

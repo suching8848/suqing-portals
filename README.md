@@ -6,7 +6,9 @@
 
 候选版适配 LiveWire 2.0.0、2.0.1、2.0.2、2.0.3、2.1.0 至 2.1.5 的覆盖、设备回路和逆变器空载功率接口，沿用门体、四槽和 schema3 保存格式。用户于 2026-11-08 确认 **0.1.5** 的 B42.21 单人隔离联测可用。正式单人档已确认混合电网充电恢复，跨区传送待验收。范围与能源规则见[供电兼容说明](docs/供电兼容说明.md)。
 
-工坊 **0.1.6-rc.6** 已更新并核验为公开，沿用条目 `3834693880`。[Steam 工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [当前发布记录](publishing/workshop-item.json) · [GitHub 源码](https://github.com/suching8848/suqing-portals)
+工坊 **0.1.6-rc.11** 已更新并核验为公开，沿用条目 `3834693880`。[Steam 工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [当前发布记录](publishing/workshop-item.json) · [GitHub 源码](https://github.com/suching8848/suqing-portals)
+
+[可选行程保护与 Viewpoint 模型](docs/optional-companions.md) 随同一工坊条目提供，可分别启用。
 
 ## 使用与建造
 
