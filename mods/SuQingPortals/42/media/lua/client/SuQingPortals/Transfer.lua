@@ -5,6 +5,7 @@ local P = SuQingPortals
 P.Transfer = P.Transfer or {}
 local T = P.Transfer
 T.active = T.active or {}
+T.guards = T.guards or {}
 T.LOAD_TIMEOUT_MS = 20000
 
 local function now() return getTimestampMs() end
@@ -19,26 +20,63 @@ function T.isBusy(player)
         (P.World and P.World.getPending and P.World.getPending(player) ~= nil)) or false
 end
 
--- Verified against the local B42.21 jar: the true second argument writes the
--- existing cheat flag directly. No god mode, body-damage reset or healing.
 local function captureFlags(player)
     return { ghost = player:isGhostMode(), noClip = player:isNoClip(), blockMovement = player:isBlockMovement() }
 end
 
+local function protectionEnabled(player)
+    local guard = T.guards[player]
+    return (not guard or guard.bridge.active(player, guard.token) == true)
+        and player:isNoClip() and player:isGhostMode() and player:isBlockMovement()
+end
+
 local function applyProtection(player)
-    player:setNoClip(true, true)
-    player:setGhostMode(true, true)
+    local guard = T.guards[player]
+    local bridge = guard and guard.bridge or SuQingPortalTravelGuard
+    local token = bridge and bridge.begin(player)
+    if type(token) == "number" and token > 0 then
+        -- Native scope handles exist only in memory. Existing world journals
+        -- can acquire a new scope when the character is loaded again.
+        T.guards[player] = { bridge = bridge, token = token }
+    elseif bridge then
+        return false
+    else
+        -- The old API still works when the game permits these two flags.
+        -- Its second argument bypasses the role check, subject to PlayerCheats.
+        player:setNoClip(true, true)
+        player:setGhostMode(true, true)
+    end
     player:setBlockMovement(true)
-    return player:isNoClip() and player:isGhostMode() and player:isBlockMovement()
+    return protectionEnabled(player)
 end
 
 local function restoreFlags(player, flags)
+    local guard = T.guards[player]
+    if guard then
+        local ok, stillActive = pcall(function()
+            guard.bridge.finish(player, guard.token)
+            return guard.bridge.active(player, guard.token)
+        end)
+        if not ok or stillActive ~= false then
+            print("[SuQingPortals] native travel protection could not be released: " .. tostring(stillActive))
+            return false
+        end
+        T.guards[player] = nil
+    end
     if not flags then return true end
     local allOK = true
     local operations = {
-        function() player:setNoClip(flags.noClip == true, true) end,
-        function() player:setGhostMode(flags.ghost == true, true) end,
-        function() player:setBlockMovement(flags.blockMovement == true) end,
+        function()
+            if player:isNoClip() ~= (flags.noClip == true) then player:setNoClip(flags.noClip == true, true) end
+        end,
+        function()
+            if player:isGhostMode() ~= (flags.ghost == true) then player:setGhostMode(flags.ghost == true, true) end
+        end,
+        function()
+            if player:isBlockMovement() ~= (flags.blockMovement == true) then
+                player:setBlockMovement(flags.blockMovement == true)
+            end
+        end,
     }
     for _, operation in ipairs(operations) do
         local ok, errorText = pcall(operation)
@@ -95,6 +133,20 @@ local function move(player, position)
     player:teleportTo(math.floor(position.x), math.floor(position.y), math.floor(position.z))
 end
 
+local function squarePosition(square)
+    return { x = square:getX(), y = square:getY(), z = square:getZ() }
+end
+
+local function atPosition(player, position)
+    return math.floor(player:getX()) == math.floor(position.x)
+        and math.floor(player:getY()) == math.floor(position.y)
+        and math.floor(player:getZ()) == math.floor(position.z)
+end
+
+local function arrivedAt(player, square)
+    return player:getSquare() == square and atPosition(player, squarePosition(square))
+end
+
 local function cleanup(active, code, retainMarker)
     local player = active.player
     local restored = restoreFlags(player, active.marker.flags)
@@ -103,14 +155,29 @@ local function cleanup(active, code, retainMarker)
     if not restored then
         active.marker.phase = "flags_recovery_required"
         message(player, "flags_recovery_required")
-    else message(player, code) end
+    elseif code then message(player, code) end
+end
+
+local function waitForReturnProtection(active, code)
+    active.failure = code or active.failure or "protection_failed"
+    active.phase, active.marker.phase = "return_protection", "return_protection"
+    active.nextCheck = now() + 1000
+    if not active.protectionNotice then
+        active.protectionNotice = true
+        message(active.player, "protection_failed")
+    end
 end
 
 local function beginReturn(active, code)
     active.failure = code or "transfer_failed"
+    if not protectionEnabled(active.player) and not applyProtection(active.player) then
+        return waitForReturnProtection(active, active.failure)
+    end
     active.marker.phase = "returning"
     active.phase = "returning"
     active.deadline = now() + T.LOAD_TIMEOUT_MS
+    active.retryReturnAt = active.deadline
+    active.returnLanding = nil
     move(active.player, active.ticket.origin)
 end
 
@@ -135,6 +202,42 @@ local function sourceSquare(active)
     return nil
 end
 
+local function checkReturn(active)
+    local player = active.player
+    if active.returnLanding then
+        local position = active.returnLanding
+        local square = getCell():getGridSquare(position.x, position.y, position.z)
+        if T.safeSquare(square, player) then
+            if arrivedAt(player, square) then return true end
+            if now() < active.returnLandingUntil then return false end
+        end
+        active.returnLanding = nil
+        return false
+    end
+    local square = sourceSquare(active)
+    if not square then
+        if active.phase == "recovery_wait" and not atPosition(player, active.ticket.origin)
+            and now() >= (active.retryReturnAt or 0) then
+            active.retryReturnAt = now() + T.LOAD_TIMEOUT_MS
+            move(player, active.ticket.origin)
+        end
+        return false
+    end
+    if arrivedAt(player, square) then return true end
+    active.returnLanding = squarePosition(square)
+    active.returnLandingUntil = now() + T.LOAD_TIMEOUT_MS
+    move(player, active.returnLanding)
+    return false
+end
+
+local function settleReturn(active)
+    local ok, failure = P.World.FinishTransfer(active.player, active.ticket.token, false, active.failure)
+    if ok then return cleanup(active, "returned_refunded", false) end
+    active.marker.phase = "refund_recovery_required"
+    print("[SuQingPortals] returned but refund remains pending: " .. tostring(failure))
+    return cleanup(active, "refund_recovery_required", true)
+end
+
 function T.begin(player, object)
     if isClient() or isServer() then return false, "singleplayer_only" end
     if not player or player:isDead() then return false, "player_unavailable" end
@@ -142,7 +245,8 @@ function T.begin(player, object)
     if P.Actions and P.Actions.isBusy(player) then return false, "player_busy" end
     if player:getVehicle() then return false, "in_vehicle" end
     if player:isOnFire() then return false, "player_on_fire" end
-    if player:isBlockMovement() then return false, "player_busy" end
+    if player:isBlockMovement() or player:isFalling() or player:isClimbing()
+        or player:isPerformingGrappleAnimation() then return false, "player_busy" end
     if not P.World or not P.World.reserveTeleport then return false, "not_ready" end
     local square = object and object:getSquare()
     if not square then return false, "source_not_loaded" end
@@ -160,7 +264,10 @@ function T.begin(player, object)
     player:getModData().SuQingPortalsTravel = marker
     local protected, protectionResult = pcall(applyProtection, player)
     if not protected or not protectionResult then
-        print("[SuQingPortals] protection could not be enabled: " .. tostring(protectionResult))
+        print("[SuQingPortals] protection could not be enabled: " .. tostring(protectionResult)
+            .. "; native=" .. tostring(T.guards[player] ~= nil)
+            .. ", noclip=" .. tostring(player:isNoClip()) .. ", ghost=" .. tostring(player:isGhostMode())
+            .. ", movementLocked=" .. tostring(player:isBlockMovement()))
         local restored = restoreFlags(player, marker.flags)
         if restored then player:getModData().SuQingPortalsTravel = nil end
         return false, "protection_failed"
@@ -188,6 +295,22 @@ function T.begin(player, object)
     marker.token, marker.phase = ticket.token, "loading_target"
     local active = { player = player, ticket = ticket, marker = marker, phase = "loading_target", deadline = now() + T.LOAD_TIMEOUT_MS }
     T.active[key(player)] = active
+    local checked, ready = pcall(protectionEnabled, player)
+    if not checked or not ready then
+        -- The native move has not been called. A still-valid origin can refund
+        -- immediately without moving the player or waiting for protection.
+        if key(player) == ticket.playerNum and player:getX() == ticket.origin.x
+            and player:getY() == ticket.origin.y and player:getZ() == ticket.origin.z
+            and T.safeSquare(player:getSquare(), player) then
+            local attempted, refunded = pcall(P.World.FinishTransfer, player, ticket.token, false, "protection_failed")
+            if attempted and refunded then
+                cleanup(active, nil, false)
+                return false, "protection_failed"
+            end
+        end
+        waitForReturnProtection(active, "protection_failed")
+        return true, "transfer_started"
+    end
     local moved, errorText = pcall(move, player, T.front(ticket.target))
     if not moved then
         print("[SuQingPortals] teleport request failed: " .. tostring(errorText))
@@ -204,7 +327,7 @@ function T.step(active)
         if player:isDead() or T.safeSquare(player:getSquare(), player) then
             return cleanup(active, "protection_restored", false)
         end
-        if not player:isNoClip() or not player:isGhostMode() or not player:isBlockMovement() then
+        if not protectionEnabled(player) then
             local protected = applyProtection(player)
             if not protected and not active.protectionNotice then
                 active.protectionNotice = true
@@ -217,30 +340,31 @@ function T.step(active)
         P.World.FinishTransfer(player, ticket.token, false, "player_died")
         return cleanup(active, "player_unavailable", false)
     end
-    if not player:isNoClip() or not player:isGhostMode() or not player:isBlockMovement() then
-        if not applyProtection(player) then return beginReturn(active, "protection_failed") end
+    if active.phase == "return_protection" then
+        if now() >= active.nextCheck then return beginReturn(active, active.failure) end
+        return
     end
-    if active.phase == "loading_target" then
+    if not protectionEnabled(player) and not applyProtection(player) then
+        return waitForReturnProtection(active, "protection_failed")
+    end
+    if active.phase == "loading_target" or active.phase == "landing_target" then
         local square, code = T.targetSquare(ticket, player)
         if square then
-            active.marker.phase = "target_validated"
-            move(player, { x = square:getX(), y = square:getY(), z = square:getZ() })
-            local ok, failure = P.World.FinishTransfer(player, ticket.token, true, "arrived")
-            if ok then return cleanup(active, "arrived", false) end
-            return beginReturn(active, failure)
+            if arrivedAt(player, square) then
+                active.marker.phase = "target_validated"
+                local ok, failure = P.World.FinishTransfer(player, ticket.token, true, "arrived")
+                if ok then return cleanup(active, "arrived", false) end
+                return beginReturn(active, failure)
+            elseif active.phase == "loading_target" then
+                active.phase, active.marker.phase = "landing_target", "landing_target"
+                move(player, squarePosition(square))
+            end
+        elseif code ~= "destination_loading" then
+            return beginReturn(active, code)
         end
-        if code ~= "destination_loading" then return beginReturn(active, code) end
         if now() >= active.deadline then return beginReturn(active, "destination_timeout") end
     elseif active.phase == "returning" then
-        local square = sourceSquare(active)
-        if square then
-            move(player, { x = square:getX(), y = square:getY(), z = square:getZ() })
-            local ok, failure = P.World.FinishTransfer(player, ticket.token, false, active.failure)
-            if ok then return cleanup(active, "returned_refunded", false) end
-            active.marker.phase = "refund_recovery_required"
-            print("[SuQingPortals] returned but refund remains pending: " .. tostring(failure))
-            return cleanup(active, "refund_recovery_required", true)
-        end
+        if checkReturn(active) then return settleReturn(active) end
         if now() >= active.deadline then
             print("[SuQingPortals] return loading timed out; retained travel protection and recovery journal")
             return waitForRecovery(active, "return_recovery_required")
@@ -248,14 +372,7 @@ function T.step(active)
     elseif active.phase == "recovery_wait" then
         if now() < (active.nextCheck or 0) then return end
         active.nextCheck = now() + 1000
-        local square = sourceSquare(active)
-        if square then
-            move(player, { x = square:getX(), y = square:getY(), z = square:getZ() })
-            local ok, failure = P.World.FinishTransfer(player, ticket.token, false, active.failure)
-            if ok then return cleanup(active, "returned_refunded", false) end
-            print("[SuQingPortals] safe return found but charge recovery remains: " .. tostring(failure))
-            return cleanup(active, "refund_recovery_required", true)
-        end
+        if checkReturn(active) then return settleReturn(active) end
     end
 end
 
@@ -265,7 +382,10 @@ function T.tick()
         if not ok then
             print("[SuQingPortals] transfer interrupted: " .. tostring(errorText))
             local returned, returnError
-            if active.phase == "returning" or active.phase == "recovery_wait" or active.phase == "flags_recovery" then
+            if active.phase == "return_protection" then
+                returned = true
+                waitForReturnProtection(active, active.failure)
+            elseif active.phase == "returning" or active.phase == "recovery_wait" or active.phase == "flags_recovery" then
                 returned = true
                 if active.ticket then waitForRecovery(active, "return_recovery_required")
                 else active.phase, active.marker.phase = "flags_recovery", "flags_recovery" end
@@ -287,9 +407,9 @@ function T.recover(player)
             if T.safeSquare(player:getSquare(), player) then
                 if restoreFlags(player, marker.flags) then player:getModData().SuQingPortalsTravel = nil end
             else
-                applyProtection(player)
                 marker.phase = "flags_recovery"
                 T.active[key(player)] = { player = player, marker = marker, phase = "flags_recovery" }
+                if not applyProtection(player) then message(player, "protection_failed") end
                 message(player, "recovery_wait")
             end
         end
@@ -302,11 +422,11 @@ function T.recover(player)
         restoreFlags(player, marker.flags)
         return message(player, "protection_failed")
     end
-    local atTarget = math.abs(player:getX() - ticket.target.x) <= 4 and
-        math.abs(player:getY() - ticket.target.y) <= 4 and math.floor(player:getZ()) == math.floor(ticket.target.z)
+    local phase = marker.phase
+    local outbound = phase == "loading_target" or phase == "landing_target" or phase == "target_validated"
     local active = { player = player, ticket = ticket, marker = marker, deadline = now() + T.LOAD_TIMEOUT_MS }
     T.active[key(player)] = active
-    if atTarget then
+    if outbound and ticket.phase == "debited" and atPosition(player, T.front(ticket.target)) then
         active.phase, marker.phase = "loading_target", "loading_target"
     else beginReturn(active, "interrupted_transfer") end
 end

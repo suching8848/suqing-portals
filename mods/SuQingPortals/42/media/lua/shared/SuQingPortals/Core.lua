@@ -3,7 +3,7 @@ SuQingPortals = SuQingPortals or {}
 local Core = {}
 SuQingPortals.Core = Core
 
-Core.VERSION = "0.1.6-rc.6"
+Core.VERSION = "0.1.6-rc.11"
 Core.SCHEMA = 3
 Core.SLOT_COUNT = 4
 Core.TRANSFER_COST = 2.0
@@ -134,7 +134,8 @@ function Core.charge(items, amount, roundDown)
             local before = Core.clampCharge(item:getCurrentUsesFloat())
             local target = before + math.min(1 - before, amount - total)
             -- A source-limited payment cannot fund a native use rounded upward.
-            if roundDown and target > before and item.getUseDelta then
+            -- A target of 1 is already funded and cannot round above capacity.
+            if roundDown and target > before and target < 1 and item.getUseDelta then
                 local step = item:getUseDelta()
                 if step > 0 then target = math.floor((target - 0.0000001) / step) * step end
             end

@@ -546,11 +546,17 @@ World.BeginTransfer = World.reserveTeleport
 local function finish(player, token, success, reason)
     local database = store()
     local ticket = database.pending[token]
+    local outcome = success and "committed" or "refunded"
     if not ticket then
-        if database.completed[token] then return true, "already_finished" end
-        return false, "missing_transfer"
+        local previous = database.completed[token]
+        if not previous then return false, "missing_transfer" end
+        if type(previous) ~= "table" then return false, "completed_outcome_unknown" end
+        if not player or previous.playerKey ~= playerKey(player) then return false, "wrong_player" end
+        if previous.phase ~= outcome then return false, "completed_outcome_mismatch" end
+        return true, "already_finished"
     end
     if not player or ticket.playerKey ~= playerKey(player) then return false, "wrong_player" end
+    if success and ticket.phase ~= "debited" then return false, "incomplete_transfer" end
     local object = World.findObject(ticket.sourceId)
     if not object and not success then ticket.phase = "recovery_required"; return false, "source_not_loaded" end
     if object then
@@ -561,14 +567,21 @@ local function finish(player, token, success, reason)
         if not settled then ticket.phase, ticket.failure = "recovery_required", code; return false, code end
         objectData(object).pendingToken, objectData(object).pendingTransfer = nil, nil
     end
-    ticket.phase, ticket.reason = success and "committed" or "refunded", reason
+    ticket.phase, ticket.reason = outcome, reason
     ticket.sourceSettled = object ~= nil
     database.completed[token] = ticket
     database.pending[token] = nil
-    player:getModData().SuQingPortalsPending = nil
     runtime.clocks[ticket.sourceId] = nil
-    dirty(object)
-    if object then Slots.ensure(object); visual(object); dirty(object) end
+    -- Presentation and stale marker cleanup run after the terminal receipt.
+    -- A refresh exception cannot change the outcome or start another move.
+    local refreshed, refreshError = pcall(function()
+        player:getModData().SuQingPortalsPending = nil
+        dirty(object)
+        if object then Slots.ensure(object); visual(object); dirty(object) end
+    end)
+    if not refreshed then
+        print("[SuQingPortals] " .. outcome .. " transfer refresh failed: " .. tostring(refreshError))
+    end
     -- Bound successful receipts; pending records are never pruned automatically.
     local count = 0
     for _ in pairs(database.completed) do count = count + 1 end
