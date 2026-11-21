@@ -4,7 +4,7 @@ local A = { KWH_PER_EQUIVALENT = 0.30 }
 SuQingPortals.LiveWirePower = A
 local EPS = 0.00000001
 -- LiveWire 2.0.1 ships Lua that reports runtime 2.0.0.
-local runtimeVersions = { ["1.7.2"] = "1.7.2", ["2.0.0"] = "2.0.0", ["2.0.1"] = "2.0.0", ["2.0.2"] = "2.0.2", ["2.0.3"] = "2.0.3", ["2.1.0"] = "2.1.0", ["2.1.1"] = "2.1.1", ["2.1.2"] = "2.1.2", ["2.1.3"] = "2.1.3", ["2.1.4"] = "2.1.4", ["2.1.5"] = "2.1.5" }
+local runtimeVersions = { ["1.7.2"] = "1.7.2", ["2.0.0"] = "2.0.0", ["2.0.1"] = "2.0.0", ["2.0.2"] = "2.0.2", ["2.0.3"] = "2.0.3", ["2.1.0"] = "2.1.0", ["2.1.1"] = "2.1.1", ["2.1.2"] = "2.1.2", ["2.1.3"] = "2.1.3", ["2.1.4"] = "2.1.4", ["2.1.5"] = "2.1.5", ["2.1.6"] = "2.1.6", ["2.1.8"] = "2.1.8", ["2.2.0"] = "2.2.0" }
 local unavailable = "power_livewire_unavailable"
 
 local function finite(value)
@@ -102,9 +102,11 @@ function A.source(square, object)
     if not finite(demand) or demand < 0 or not finite(pump) or pump < 0 or not finite(idle) or idle < 0 then
         return nil, unavailable
     end
+    local linked = grid.linkedW or 0
+    if not finite(linked) or linked < 0 then return nil, unavailable end
     -- Keep at least one regular simulation step of ordinary loads in reserve.
     -- Assume no new production and do not count energy reserved by the cold model.
-    local reserve = (demand + pump + idle) * math.max(now - grid.lastTick, lw.STEP_HOURS) / (1000 * eff)
+    local reserve = (demand + pump + linked + idle) * math.max(now - grid.lastTick, lw.STEP_HOURS) / (1000 * eff)
     local cost, offer = A.KWH_PER_EQUIVALENT / eff, nil
     for id in pairs(grid.members) do
         local dev = r.device(id)

@@ -157,7 +157,7 @@ def main():
     installed = GAME.parents[1] / 'workshop/content/108600/3821807453/mods/batman_LiveWire/42.21'
     for livewire in args.livewire_root or [installed]:
         livewire = livewire.resolve()
-        package_version = re.search(r'^modversion=(1\.7\.2|2\.0\.[0123]|2\.1\.[012])\s*$',
+        package_version = re.search(r'^modversion=(1\.7\.2|2\.0\.[0123]|2\.1\.[01234568]|2\.2\.0)\s*$',
                                     (livewire / 'mod.info').read_text(encoding='utf-8'), re.M)
         if not package_version:
             raise ValueError('Unexpected LiveWire package version in ' + str(livewire))
@@ -172,7 +172,7 @@ def main():
             shared_names += ['LW_EventBus.lua', 'LW_Extension.lua', 'LW_Coupling.lua',
                              'LW_Coverage.lua', 'LW_CircuitProvider.lua']
             server_names.append('LW_Inverters.lua')
-        if version in ('2.1.0', '2.1.1', '2.1.2'):
+        if version in ('2.1.0', '2.1.1', '2.1.2', '2.1.3', '2.1.4', '2.1.5', '2.1.6', '2.1.8', '2.2.0'):
             shared_names.append('LW_Consumers.lua')
         server_names.append('LW_Simulation.lua')
         run('livewire_storage_' + version, interpreter(ROOT / 'tests/core_world_bootstrap.lua', *slots_bootstrap,

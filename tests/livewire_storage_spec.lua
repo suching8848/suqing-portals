@@ -187,6 +187,13 @@ square.room, square.grid = nil, false
 grid.demand = 10000
 check(not E.info(portal).metered, "existing loads retain a storage reserve")
 grid.demand = 0
+if lw.VERSION == "2.2.0" then
+    grid.linkedW = 10000
+    check(not E.info(portal).metered, "wired third-party loads retain a storage reserve")
+    grid.linkedW = -1
+    check(not E.info(portal).metered, "invalid wired demand is refused")
+    grid.linkedW = nil
+end
 temperature = -10
 bankBattery:setCurrentUses(100)
 secondBattery:setCurrentUses(100)

@@ -1,0 +1,28 @@
+{
+  "item_id": "3834693880",
+  "version": "0.1.6-rc.12",
+  "verified_at_bjt": "2026-11-18T15:27:01.909003+08:00",
+  "published_at_bjt": "2026-11-18T15:25:57+08:00",
+  "visibility": "public",
+  "mod_versions": {
+    "SuQingPortals": "0.1.6-rc.12",
+    "SuQingPortalsTravelGuard": "0.1.0-rc.1",
+    "SuQingViewpointModelResources": "1.0.0"
+  },
+  "content_tree_sha256": "852dffc78fd2fe3459ef2d62a62037357fbd4773cb41b2b189882414b62b1c82",
+  "content_files": 167,
+  "content_bytes": 17584603,
+  "required_workshop_ids": [
+    "3619862853"
+  ],
+  "checks": {
+    "title": true,
+    "description": true,
+    "metadata": true,
+    "content_bytes": true,
+    "preview_policy": true,
+    "tags": true,
+    "dependencies": true
+  },
+  "verification_scope": "Native success plus exact text, metadata tree hash, content-byte total, tags and preview presence; not a remote per-file SHA download."
+}

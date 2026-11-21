@@ -41,6 +41,9 @@ function TEST.player(square,index)
     function player:isNoClip() return self.noClip end
     function player:isGhostMode() return self.ghost end
     function player:isBlockMovement() return self.block end
+    function player:isFalling() return self.falling or false end
+    function player:isClimbing() return self.climbing or false end
+    function player:isPerformingGrappleAnimation() return self.grappling or false end
     function player:setNoClip(value,force)
         if self.rejectProtection and value then return end
         if self.rejectRestore and not value then return end

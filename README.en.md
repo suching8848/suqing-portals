@@ -1,14 +1,16 @@
 # SuQing's Portals / 蘇清的传送门
 
-Source candidate **0.1.6-rc.11** targets **B42.22.2 single-player** in this round. The mod ID is `SuQingPortals`. It uses pure Lua, with optional Viewpoint visuals.
+Supports LiveWire 2.2.0. Standalone LiveWire charging reserves one normal simulation step of demand from wired third-party appliances.
 
-Supports Live Wire 2.1.5 and fixes charging settlement when combined with ISA. Charging rounds down to a native battery increment and debits the charge actually stored. Improves destination checks, return protection and recovery on reload.
+Version **0.1.6-rc.14** targets **B42.22.2 single-player**. The mod ID is `SuQingPortals`. It uses pure Lua, with optional Viewpoint visuals.
 
-The candidate uses the LiveWire 2.0.0, 2.0.1, 2.0.2, 2.0.3, 2.1.0 through 2.1.5 coverage, equipment circuit, and inverter idle-power interfaces. It retains the portal entity, four original slots and schema3 save format. The user accepted **0.1.5** in the B42.21 single-player isolated setup on November 8, 2026. Single-player autosaves confirmed that mixed-grid charging resumed. Cross-chunk travel awaits gameplay acceptance. See the [power compatibility notes](docs/供电兼容说明.md) for scope and energy rules.
+Supports Live Wire 2.1.8 and retains the charging settlement fix for mixed ISA grids. Charging rounds down to a native battery increment and debits the charge actually stored. Improves destination checks, return protection and recovery on reload.
 
-Workshop **0.1.6-rc.11** is public and verified on the existing item `3834693880`. [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [Current publication record](publishing/workshop-item.json) · [GitHub source](https://github.com/suching8848/suqing-portals)
+The candidate uses the LiveWire 2.0.0, 2.0.1, 2.0.2, 2.0.3, 2.1.0 through 2.1.6, 2.1.8, and 2.2.0 coverage, equipment circuit, and inverter idle-power interfaces. It retains the portal entity, four original slots and schema3 save format. The user accepted **0.1.5** in the B42.21 single-player isolated setup on November 8, 2026. Single-player autosaves confirmed mixed-grid charging on rc.11. Offline storage and mixed-grid settlement checks passed on rc.13. In-game validation is pending. See the [power compatibility notes](docs/供电兼容说明.md) for scope and energy rules.
 
-The same Workshop item contains the separately enabled [Travel Guard and Viewpoint models](docs/optional-companions.md).
+Workshop **0.1.6-rc.12** is public and verified on the existing item `3834693880`. [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3834693880) · [Current publication record](publishing/workshop-item.json) · [GitHub source](https://github.com/suching8848/suqing-portals)
+
+This release requires the bundled [Travel Guard](docs/optional-companions.md) in the Mods menu. Enabling Portals also enables Travel Guard and its ZombieBuddy dependency. Travel Guard requires JAR approval and supports the verified B42.22.2, PZ Optimization and ZombieBuddy 2.3.4 single-player setup. This version cannot be enabled on B42.21. The Viewpoint models remain optional.
 
 ## Building and travel
 
@@ -30,7 +32,7 @@ Charging requires a loaded gate, a verified local provider and a healthy battery
 
 - **Fuel generators:** independently debit fuel for energy actually and successfully stored, at `0.3 L × GeneratorFuelConsumption` per full-battery equivalent. A 0.5 charging rate and native default multiplier 0.1 add **0.015 L per game hour**, excluding ordinary generator and other-appliance consumption. Available fuel limits the charging step.
 - **Optional Immersive Solar Arrays 1.2.15 or 1.2.16.** Workshop `3781944805`, Mod ID `ISA`. Charging debits one selected bank's real original-battery storage. Its solar supply proxy is not treated as a fuel generator. Ordinary generator support does not require ISA. Both versions have been reviewed. Unknown versions, unverifiable interfaces and `ISA-Fix` combinations are rejected by the bridge; a local electricity flag cannot create free charge. The separate `Immersive Solar Arrays [BETA]-Fix / 3592668881` package is outside support.
-- **Optional LiveWire 1.7.2, 2.0.0, 2.0.1, 2.0.2, 2.0.3, 2.1.0 through 2.1.5.** With `batman_LiveWire` from Workshop item `3821807453` enabled, a gate can draw stored energy from loaded battery cabinets on a network whose inverter is supplying power. Indoor mains, independent generators and supported ISA sources take priority. The gate's appliance circuit must be enabled. Networks with a linked LiveWire backup generator or without usable cabinet storage are ineligible. See the power compatibility notes for rates and the scope of Extended breaker boards.
+- **Optional LiveWire 1.7.2, 2.0.0, 2.0.1, 2.0.2, 2.0.3, 2.1.0 through 2.1.6, 2.1.8, and 2.2.0.** With `batman_LiveWire` from Workshop item `3821807453` enabled, a gate can draw stored energy from loaded battery cabinets on a network whose inverter is supplying power. Indoor mains, independent generators and supported ISA sources take priority. The gate's appliance circuit must be enabled. Networks with a linked LiveWire backup generator or without usable cabinet storage are ineligible. See the power compatibility notes for rates and the scope of Extended breaker boards.
 - **Panels and estimates:** the generator-panel wrapper shows additional portal demand and a combined total. The portal is not registered as a Java-native appliance. Native total load and ISA `updateDrain` remain intact to avoid double billing. BGI and other estimates based solely on native total load may overestimate remaining time because they do not include this independent debit. Actual fuel/storage changes take precedence.
 
 See [power compatibility notes](docs/供电兼容说明.md) for exact settlement rules.
